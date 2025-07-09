@@ -1,0 +1,9 @@
+[submodule "stable-queue"]
+	path = stable-queue
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git
+[submodule "linux-stable-rc"]
+	path = linux-stable-rc
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git
+[submodule "linux"]
+	path = linux
+	url = git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git

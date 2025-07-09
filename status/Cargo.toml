@@ -1,0 +1,39 @@
+[package]
+name = "mailbot"
+version = "0.1.0"
+edition = "2024"
+authors = ["Sasha Levin <sashal@kernel.org>"]
+description = "Linux kernel stable patch validation bot"
+
+[dependencies]
+anyhow = "1.0"
+clap = { version = "4.0", features = ["derive"] }
+lettre = "0.11"
+mail-parser = "0.11"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+git2 = "0.20"
+regex = "1.0"
+chrono = "0.4"
+shellexpand = "3.0"
+tempfile = "3.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+lazy_static = "1.4"
+sha1 = "0.10"
+base64 = "0.22"
+thiserror = "2.0"
+walkdir = "2.0"
+urlencoding = "2.1"
+rayon = "1.10"
+indicatif = "0.17"
+
+[dev-dependencies]
+mockall = "0.13"
+proptest = "1.0"
+criterion = "0.6"
+
+[[bench]]
+name = "email_parsing"
+harness = false

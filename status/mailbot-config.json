@@ -1,0 +1,20 @@
+{
+  "linux_dir": "../linux",
+  "stable_queue_dir": "../stable-queue/scripts",
+  "active_versions_file": "../stable-queue/active_kernel_versions",
+  "pending_dir": "./series",
+  "worktree_dir": "./worktrees",
+  "output_dir": "./output",
+  "ignored_authors": [
+    "Sasha Levin",
+    "Linux Kernel Distribution System",
+    "Greg Kroah-Hartman"
+  ],
+  "email": {
+    "from": "Sasha Levin <sashal@kernel.org>",
+    "reply_to": null,
+    "smtp": null
+  },
+  "build_command": "stable build log",
+  "debug": false
+}

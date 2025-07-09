@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Stable Queue - Possible Issues</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 15px;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+        h2 {
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+        .header {
+            background-color: white;
+            padding: 12px 18px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        .issue-section {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+        }
+        th {
+            background-color: #f8f9fa;
+            padding: 8px 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 2px solid #dee2e6;
+        }
+        td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        .subject {
+            font-weight: 500;
+        }
+        .author {
+            color: #7f8c8d;
+            font-size: 0.92em;
+        }
+        .author a {
+            color: #7f8c8d;
+            text-decoration: none;
+        }
+        .author a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+        .queue-version {
+            font-weight: 600;
+            color: #3498db;
+        }
+        .missing-versions {
+            color: #e74c3c;
+            font-size: 0.9em;
+        }
+        .filename {
+            font-family: monospace;
+            font-size: 0.88em;
+        }
+        .filename a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .filename a:hover {
+            text-decoration: underline;
+        }
+        .queue-version a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .queue-version a:hover {
+            text-decoration: underline;
+        }
+        .warning {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .info {
+            background-color: #f39c12;
+            color: white;
+        }
+        .timestamp {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .no-issues {
+            text-align: center;
+            color: #27ae60;
+            padding: 40px;
+            font-size: 1.2em;
+        }
+        .nav {
+            background-color: #2c3e50;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+        .nav-links {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+        }
+        .nav-links a.active {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-links">
+            <a href="queue-status.html">Queue Status</a>
+            <a href="possible-issues.html" class="active">Possible Issues</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="header">
+            <h1>Linux Stable Queue - Possible Issues</h1>
+            <p class="timestamp">Generated at: 2025-07-12 10:57:35 -04:00</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value warning">8</div>
+                <div class="stat-label">Total Issues</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value warning">5</div>
+                <div class="stat-label">Patches Without SHA</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value warning">3</div>
+                <div class="stat-label">Patches Missing From Newer</div>
+            </div>
+        </div>
+        
+        
+        <h2>Patches Without Upstream SHA</h2>
+        <div class="issue-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Queue</th>
+                        <th>Subject</th>
+                        <th>Author</th>
+                        <th>Filename</th>
+                    </tr>
+                </thead>
+                <tbody>
+            
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10">5.10</a></td>
+                        <td class="subject" title="x86/its: Fix undefined reference to cpu_wants_rethunk_at()">x86/its: Fix undefined reference to cpu_wants_rethunk_at()</td>
+                        <td class="author"><a href="mailto:pawan.kumar.gupta@linux.intel.com?subject=Re%3A%20x86%2Fits%3A%20Fix%20undefined%20reference%20to%20cpu_wants_rethunk_at%28%29" title="Pawan Gupta &lt;pawan.kumar.gupta@linux.intel.com&gt;">Pawan Gupta</a></td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/x86-its-fix-undefined-reference-to-cpu_wants_rethunk_at.patch" title="x86-its-fix-undefined-reference-to-cpu_wants_rethunk_at.patch">x86-its-fix-undefined-reference-to-cpu_wants_rethunk_at.patch</a></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15">5.15</a></td>
+                        <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
+                        <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1">6.1</a></td>
+                        <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
+                        <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6">6.6</a></td>
+                        <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
+                        <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12">6.12</a></td>
+                        <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
+                        <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
+                    </tr>
+                
+                </tbody>
+            </table>
+        </div>
+            
+        <h2>Patches Missing From Newer Kernel Versions</h2>
+        <div class="issue-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Queue</th>
+                        <th>Subject</th>
+                        <th>Author</th>
+                        <th>Missing From</th>
+                        <th>Filename</th>
+                    </tr>
+                </thead>
+                <tbody>
+            
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10">5.10</a></td>
+                        <td class="subject" title="Revert &quot;ipv6: save dontfrag in cork&quot;">Revert &quot;ipv6: save dontfrag in cork&quot;</td>
+                        <td class="author"><a href="mailto:bacs@librecast.net?subject=Re%3A%20Revert%20%22ipv6%3A%20save%20dontfrag%20in%20cork%22" title="Brett A C Sheffield (Librecast) &lt;bacs@librecast.net&gt;">Brett A C Sheffield (Librecast)</a></td>
+                        <td class="missing-versions">6.15, 6.12, 6.6, 6.1, 5.15</td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/revert-ipv6-save-dontfrag-in-cork.patch" title="revert-ipv6-save-dontfrag-in-cork.patch">revert-ipv6-save-dontfrag-in-cork.patch</a></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10">5.10</a></td>
+                        <td class="subject" title="fs/proc: do_task_stat: use __for_each_thread()">fs/proc: do_task_stat: use __for_each_thread()</td>
+                        <td class="author"><a href="mailto:oleg@redhat.com?subject=Re%3A%20fs%2Fproc%3A%20do_task_stat%3A%20use%20__for_each_thread%28%29" title="Oleg Nesterov &lt;oleg@redhat.com&gt;">Oleg Nesterov</a></td>
+                        <td class="missing-versions">6.6</td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/fs-proc-do_task_stat-use-__for_each_thread.patch" title="fs-proc-do_task_stat-use-__for_each_thread.patch">fs-proc-do_task_stat-use-__for_each_thread.patch</a></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="queue-version"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15">5.15</a></td>
+                        <td class="subject" title="fs/proc: do_task_stat: use __for_each_thread()">fs/proc: do_task_stat: use __for_each_thread()</td>
+                        <td class="author"><a href="mailto:oleg@redhat.com?subject=Re%3A%20fs%2Fproc%3A%20do_task_stat%3A%20use%20__for_each_thread%28%29" title="Oleg Nesterov &lt;oleg@redhat.com&gt;">Oleg Nesterov</a></td>
+                        <td class="missing-versions">6.6</td>
+                        <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/fs-proc-do_task_stat-use-__for_each_thread.patch" title="fs-proc-do_task_stat-use-__for_each_thread.patch">fs-proc-do_task_stat-use-__for_each_thread.patch</a></td>
+                    </tr>
+                
+                </tbody>
+            </table>
+        </div>
+            
+    </div>
+</body>
+</html>
