@@ -77,7 +77,7 @@ index 1234567..abcdefg 100644
     response_builder.add_test_result(TestResult {
         branch: "stable/linux-5.10.y".to_string(),
         patch_status: PatchStatus::Success,
-        build_status: Some(true),
+        build_passed: None,
         error: None,
     });
     
@@ -184,7 +184,7 @@ index 1234567..abcdefg 100644
     response_builder.add_test_result(TestResult {
         branch: "stable/linux-6.1.y".to_string(),
         patch_status: PatchStatus::Failed,
-        build_status: None,
+        build_passed: None,
         error: Some("Hunk #1 FAILED at 100.\n1 out of 1 hunk FAILED".to_string()),
     });
     
@@ -252,7 +252,7 @@ fn test_response_with_fixes_and_reverts() {
     builder.add_test_result(TestResult {
         branch: "stable/linux-5.10.y".to_string(),
         patch_status: PatchStatus::Success,
-        build_status: Some(true),
+        build_passed: None,
         error: None,
     });
     
@@ -278,6 +278,7 @@ fn create_test_config(test_dir: &tempfile::TempDir) -> Config {
         pending_dir: test_dir.path().join("pending"),
         worktree_dir: test_dir.path().join("worktrees"),
         output_dir: test_dir.path().join("output"),
+        tracking_file: test_dir.path().join("tracking.json"),
         ignored_authors: vec![
             "Greg Kroah-Hartman".to_string(),
             "Sasha Levin".to_string(),
@@ -289,6 +290,8 @@ fn create_test_config(test_dir: &tempfile::TempDir) -> Config {
         },
         build_command: "echo 'Build successful'".to_string(),
         debug: true,
+        dry_run: true,
+        skip_build: false,
     }
 }
 

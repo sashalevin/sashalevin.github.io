@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Stable Patch Tracking</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 15px;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        .header {
+            background-color: white;
+            padding: 12px 18px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .stat-card {
+            background-color: white;
+            padding: 12px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 2px;
+            font-size: 0.9em;
+        }
+        .section {
+            background-color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+        }
+        th {
+            background-color: #f8f9fa;
+            padding: 6px 8px;
+            text-align: left;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 1px solid #dee2e6;
+        }
+        td {
+            padding: 5px 8px;
+            border-bottom: 1px solid #eee;
+        }
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+        .subject {
+            font-weight: 500;
+            max-width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .author {
+            color: #7f8c8d;
+            font-size: 0.92em;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .sha1 {
+            font-family: monospace;
+            font-size: 0.92em;
+            color: #e74c3c;
+        }
+        .timestamp {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .state {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .state-queued {
+            background-color: #f39c12;
+            color: white;
+        }
+        .state-processing {
+            background-color: #3498db;
+            color: white;
+        }
+        .state-released {
+            background-color: #27ae60;
+            color: white;
+        }
+        .state-merged {
+            background-color: #2ecc71;
+            color: white;
+        }
+        .state-failed {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .state-rejected {
+            background-color: #c0392b;
+            color: white;
+        }
+        .state-on-mailing-list {
+            background-color: #95a5a6;
+            color: white;
+        }
+        .state-tests-passed {
+            background-color: #27ae60;
+            color: white;
+        }
+        .state-comments {
+            background-color: #e67e22;
+            color: white;
+        }
+        .nav {
+            background-color: #2c3e50;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+        .nav-links {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .nav-links a:hover {
+            background-color: #34495e;
+        }
+        .nav-links a.active {
+            background-color: #3498db;
+        }
+        .subject a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .subject a:hover {
+            text-decoration: underline;
+        }
+        .test-result {
+            font-size: 0.85em;
+        }
+        .test-passed {
+            color: #27ae60;
+        }
+        .test-failed {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-links">
+            <a href="queue-status.html">Queue Status</a>
+            <a href="possible-issues.html">Possible Issues</a>
+            <a href="patch-tracking.html" class="active">Patch Tracking</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="header">
+            <h1>Linux Stable Patch Tracking</h1>
+            <p class="timestamp">Generated at: 2025-07-14 12:54:47 -04:00</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">23</div>
+                <div class="stat-label">Total Patches Tracked</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Active Patches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">56%</div>
+                <div class="stat-label">Test Pass Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1.1</div>
+                <div class="stat-label">Avg Branches Tested</div>
+            </div>
+        </div>
+        
+        <h2>Patch State Distribution</h2>
+        <div class="section">
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div class="stat-card" style="min-width: 150px;">
+                <div class="state state-released">Released</div>
+                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">6</div>
+                <div class="stat-label" style="font-size: 0.8em;">26%</div>
+            </div><div class="stat-card" style="min-width: 150px;">
+                <div class="state state-failed">Issues Found</div>
+                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">13</div>
+                <div class="stat-label" style="font-size: 0.8em;">56%</div>
+            </div><div class="stat-card" style="min-width: 150px;">
+                <div class="state state-tests-passed">Tests Passed</div>
+                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">4</div>
+                <div class="stat-label" style="font-size: 0.8em;">17%</div>
+            </div>
+            </div>
+        </div>
+        
+        <h2>Active Patches</h2>
+        <div class="section">
+            <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Author</th>
+                <th>SHA1</th><th>State</th>
+                <th>Test Results</th>
+                <th>Reviews/Replies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701040814.21786-1-dev.jain@arm.com" target="_blank">[PATCH 5.10.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author" title="Dev Jain &lt;dev.jain@arm.com&gt;">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td class="sha1">650768c5</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701041822.21892-1-dev.jain@arm.com" target="_blank">[PATCH 5.4.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author" title="Dev Jain &lt;dev.jain@arm.com&gt;">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td class="sha1">650768c5</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702114113.2512-2-bacs@librecast.net" target="_blank">[PATCH 5.10.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author" title="Brett A C Sheffield &lt;bacs@librecast.net&gt;">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td class="sha1">a18dfa99</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10 and 5.4] staging: rtl8723bs: Avoid memset() in aes_cipher() and aes_decipher()"><a href="https://lore.kernel.org/stable/20250701152324.3571007-1-nathan@kernel.org" target="_blank">[PATCH 5.10 and 5.4] staging: rtl8723bs: Avoid memset() in aes_cipher() and aes_decipher()</a></td>
+                <td class="author" title="Nathan Chancellor &lt;nathan@kernel.org&gt;">Nathan Chancellor &lt;nathan@kernel.org&gt;</td>
+                <td class="sha1">a55bc4ff</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr></tbody></table>
+        </div>
+        
+        <h2>Recent Activity</h2>
+        <div class="section">
+            <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Author</th>
+                <th>State</th>
+                <th>Event</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="timestamp">9 min ago</td>
+                <td class="subject" title="[PATCH net] virtio-net: fix important bug"><a href="https://lore.kernel.org/stable/test-sha1-patch@example.com" target="_blank">[PATCH net] virtio-net: fix important bug</a></td>
+                <td class="author">Test User &lt;test@example.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-6.15.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: corrupt patch at line 13
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: ; origin/linux-6.12.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: corrupt patch at line 13
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: ; origin/linux-6.6.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: corrupt patch at line 13
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: ; origin/linux-6.1.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: corrupt patch at line 13
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: ; origin/linux-5.15.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: corrupt patch at line 13
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: ; origin/linux-5.10.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: corrupt patch at line 13
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: ; origin/linux-5.4.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: corrupt patch at line 13
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">13 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] arm64: Fix something important"><a href="https://lore.kernel.org/stable/test-version-patch@example.com" target="_blank">[PATCH 5.10.y] arm64: Fix something important</a></td>
+                <td class="author">Test User &lt;test@example.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-5.10.y: Failed to create worktree: Worktree error: Failed to create worktree: Preparing worktree (detached HEAD ecbc622e0f52)
+Updating files:  10% (7224/70695)Updating files:  11% (7777/70695)Updating files:  12% (8484/70695)Updating files:  13% (9191/70695)Updating files:  14% (9898/70695)Updating files:  15% (10605/70695)Updating files:  16% (11312/70695)Updating files:  17% (12019/70695)Updating files:  18% (12726/70695)Updating files:  18% (13120/70695)Updating files:  19% (13433/70695)Updating files:  20% (14139/70695)Updating files:  21% (14846/70695)Updating files:  22% (15553/70695)Updating files:  23% (16260/70695)Updating files:  24% (16967/70695)Updating files:  25% (17674/70695)Updating files:  26% (18381/70695)Updating files:  27% (19088/70695)Updating files:  27% (19261/70695)Updating files:  28% (19795/70695)Updating files:  29% (20502/70695)Updating files:  30% (21209/70695)Updating files:  31% (21916/70695)Updating files:  32% (22623/70695)Updating files:  33% (23330/70695)Updating files:  34% (24037/70695)Updating files:  34% (24173/70695)Updating files:  35% (24744/70695)Updating files:  36% (25451/70695)Updating files:  37% (26158/70695)Updating files:  38% (26865/70695)Updating files:  39% (27572/70695)Updating files:  39% (27574/70695)Updating files:  40% (28278/70695)Updating files:  40% (28433/70695)Updating files:  41% (28985/70695)Updating files:  42% (29692/70695)Updating files:  43% (30399/70695)Updating files:  43% (31103/70695)Updating files:  44% (31106/70695)Updating files:  45% (31813/70695)Updating files:  46% (32520/70695)Updating files:  47% (33227/70695)Updating files:  48% (33934/70695)Updating files:  48% (34033/70695)Updating files:  49% (34641/70695)Updating files:  50% (35348/70695)Updating files:  51% (36055/70695)Updating files:  52% (36762/70695)Updating files:  52% (37391/70695)Updating files:  53% (37469/70695)Updating files:  54% (38176/70695)Updating files:  55% (38883/70695)Updating files:  56% (39590/70695)Updating files:  56% (40084/70695)Updating files:  57% (40297/70695)Updating files:  58% (41004/70695)Updating files:  59% (41711/70695)Updating files:  60% (42417/70695)Updating files:  60% (42487/70695)error: unable to write file drivers/net/wireless/ath/ath5k/base.c
+error: unable to write file drivers/net/wireless/ath/ath5k/base.h
+error: unable to write file drivers/net/wireless/ath/ath5k/caps.c
+error: unable to write file drivers/net/wireless/ath/ath5k/debug.c
+error: unable to write file drivers/net/wireless/ath/ath5k/debug.h
+error: unable to write file drivers/net/wireless/ath/ath5k/desc.c
+error: unable to write file drivers/net/wireless/ath/ath5k/desc.h
+error: unable to write file drivers/net/wireless/ath/ath5k/dma.c
+error: unable to write file drivers/net/wireless/ath/ath5k/eeprom.c
+error: unable to write file drivers/net/wireless/ath/ath5k/eeprom.h
+error: unable to write file drivers/net/wireless/ath/ath5k/gpio.c
+error: unable to write file drivers/net/wireless/ath/ath5k/initvals.c
+error: unable to write file drivers/net/wireless/ath/ath5k/led.c
+error: unable to write file drivers/net/wireless/ath/ath5k/mac80211-ops.c
+error: unable to write file drivers/net/wireless/ath/ath5k/pci.c
+error: unable to write file drivers/net/wireless/ath/ath5k/pcu.c
+error: unable to write file drivers/net/wireless/ath/ath5k/phy.c
+error: unable to write file drivers/net/wireless/ath/ath5k/qcu.c
+error: unable to write file drivers/net/wireless/ath/ath5k/reg.h
+error: unable to write file drivers/net/wireless/ath/ath5k/reset.c
+error: unable to write file drivers/net/wireless/ath/ath5k/rfbuffer.h
+error: unable to write file drivers/net/wireless/ath/ath5k/rfgain.h
+error: unable to write file drivers/net/wireless/ath/ath5k/rfkill.c
+error: unable to write file drivers/net/wireless/ath/ath5k/sysfs.c
+error: unable to write file drivers/net/wireless/ath/ath5k/trace.h
+fatal: cannot create directory at &#39;drivers/net/wireless/ath/ath6kl&#39;: No space left on device
+</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y] jfs: fix null ptr deref in dtInsertEntry"><a href="https://lore.kernel.org/stable/20250702185936.68245-1-duttaditya18@gmail.com" target="_blank">[PATCH 5.15.y] jfs: fix null ptr deref in dtInsertEntry</a></td>
+                <td class="author">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td><span class="state state-released">Released</span></td>
+                <td>Patch released in: linux-6.12.y</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y] thermal/int340x_thermal: handle data_vault when the value is ZERO_SIZE_PTR"><a href="https://lore.kernel.org/stable/20250625154217.215744-1-larry.bassel@oracle.com" target="_blank">[PATCH 5.15.y] thermal/int340x_thermal: handle data_vault when the value is ZERO_SIZE_PTR</a></td>
+                <td class="author">Larry Bassel &lt;larry.bassel@oracle.com&gt;</td>
+                <td><span class="state state-released">Released</span></td>
+                <td>Patch released in: linux-6.12.y, linux-6.6.y, linux-6.1.y</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y] btrfs: don&#39;t drop extent_map for free space inode on write error"><a href="https://lore.kernel.org/stable/20250625154557.215947-1-larry.bassel@oracle.com" target="_blank">[PATCH 5.15.y] btrfs: don&#39;t drop extent_map for free space inode on write error</a></td>
+                <td class="author">Larry Bassel &lt;larry.bassel@oracle.com&gt;</td>
+                <td><span class="state state-released">Released</span></td>
+                <td>Patch released in: linux-6.12.y</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y v2] xen: replace xen_remap() with memremap()"><a href="https://lore.kernel.org/stable/816ab25650e06a5fb51c5a51ec0108aa2238271a.1751449523.git.teddy.astie@vates.tech" target="_blank">[PATCH 5.15.y v2] xen: replace xen_remap() with memremap()</a></td>
+                <td class="author">Teddy Astie &lt;teddy.astie@vates.tech&gt;</td>
+                <td><span class="state state-released">Released</span></td>
+                <td>Patch released in: linux-6.12.y, linux-6.6.y, linux-6.1.y</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y] aoe: avoid potential deadlock at set_capacity"><a href="https://lore.kernel.org/stable/20250625154818.215991-1-larry.bassel@oracle.com" target="_blank">[PATCH 5.15.y] aoe: avoid potential deadlock at set_capacity</a></td>
+                <td class="author">Larry Bassel &lt;larry.bassel@oracle.com&gt;</td>
+                <td><span class="state state-released">Released</span></td>
+                <td>Patch released in: linux-6.12.y</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y] xen: replace xen_remap() with memremap()"><a href="https://lore.kernel.org/stable/2398723b73ddd9923a9bb994364c2c7d3b89d21d.1751446695.git.teddy.astie@vates.tech" target="_blank">[PATCH 5.15.y] xen: replace xen_remap() with memremap()</a></td>
+                <td class="author">Teddy Astie &lt;teddy.astie@vates.tech&gt;</td>
+                <td><span class="state state-released">Released</span></td>
+                <td>Patch released in: linux-6.12.y, linux-6.6.y, linux-6.1.y</td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 6.12.y 3/3] net: phy: realtek: add RTL8125D-internal PHY"><a href="https://lore.kernel.org/stable/20250630142717.70619-4-mathieu.tortuyaux@gmail.com" target="_blank">[PATCH 6.12.y 3/3] net: phy: realtek: add RTL8125D-internal PHY</a></td>
+                <td class="author"> &lt;mathieu.tortuyaux@gmail.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 6.12.y 2/3] net: phy: realtek: merge the drivers for internal NBase-T PHY&#39;s"><a href="https://lore.kernel.org/stable/20250630142717.70619-3-mathieu.tortuyaux@gmail.com" target="_blank">[PATCH 6.12.y 2/3] net: phy: realtek: merge the drivers for internal NBase-T PHY&#39;s</a></td>
+                <td class="author"> &lt;mathieu.tortuyaux@gmail.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 6.12.y 1/3] r8169: add support for RTL8125D"><a href="https://lore.kernel.org/stable/20250630142717.70619-2-mathieu.tortuyaux@gmail.com" target="_blank">[PATCH 6.12.y 1/3] r8169: add support for RTL8125D</a></td>
+                <td class="author"> &lt;mathieu.tortuyaux@gmail.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 5.10 2/2] s390/pkey: Prevent overflow in size calculation for memdup_user()"><a href="https://lore.kernel.org/stable/20250630162446.1407811-2-pchelkin@ispras.ru" target="_blank">[PATCH 5.10 2/2] s390/pkey: Prevent overflow in size calculation for memdup_user()</a></td>
+                <td class="author">Fedor Pchelkin &lt;pchelkin@ispras.ru&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 6.12.y] mm/vma: reset VMA iterator on commit_merge() OOM failure"><a href="https://lore.kernel.org/stable/20250630175817.164918-1-lorenzo.stoakes@oracle.com" target="_blank">[PATCH 6.12.y] mm/vma: reset VMA iterator on commit_merge() OOM failure</a></td>
+                <td class="author">Lorenzo Stoakes &lt;lorenzo.stoakes@oracle.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-6.12.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: mm/vma.c:836
+error: mm/vma.c: patch does not apply
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 5.10.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701040814.21786-1-dev.jain@arm.com" target="_blank">[PATCH 5.10.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>All tests passed successfully</td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 5.4.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701041822.21892-1-dev.jain@arm.com" target="_blank">[PATCH 5.4.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>All tests passed successfully</td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701042705.22120-1-dev.jain@arm.com" target="_blank">[PATCH 5.15.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-5.15.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: arch/arm64/mm/mmu.c:1466
+error: arch/arm64/mm/mmu.c: patch does not apply
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">4 hours ago</td>
+                <td class="subject" title="[PATCH 6.1.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701043745.22336-1-dev.jain@arm.com" target="_blank">[PATCH 6.1.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-6.1.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: arch/arm64/mm/mmu.c:1503
+error: arch/arm64/mm/mmu.c: patch does not apply
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">19 hours ago</td>
+                <td class="subject" title="[PATCH 5.15.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702113849.2401-2-bacs@librecast.net" target="_blank">[PATCH 5.15.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-5.15.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: include/linux/ipv6.h:195
+error: include/linux/ipv6.h: patch does not apply
+error: patch failed: net/ipv6/ip6_output.c:1428
+error: net/ipv6/ip6_output.c: patch does not apply
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">19 hours ago</td>
+                <td class="subject" title="[PATCH 5.10.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702114113.2512-2-bacs@librecast.net" target="_blank">[PATCH 5.10.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>All tests passed successfully</td>
+            </tr>
+            <tr>
+                <td class="timestamp">19 hours ago</td>
+                <td class="subject" title="[PATCH 6.1.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702114150.2590-2-bacs@librecast.net" target="_blank">[PATCH 6.1.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-6.1.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: include/linux/ipv6.h:199
+error: include/linux/ipv6.h: patch does not apply
+error: patch failed: net/ipv6/ip6_output.c:1450
+error: net/ipv6/ip6_output.c: patch does not apply
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">19 hours ago</td>
+                <td class="subject" title="[PATCH 6.6.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702113731.2322-2-bacs@librecast.net" target="_blank">[PATCH 6.6.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-6.6.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: include/linux/ipv6.h:199
+error: include/linux/ipv6.h: patch does not apply
+error: patch failed: net/ipv6/ip6_output.c:1452
+error: net/ipv6/ip6_output.c: patch does not apply
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr>
+            <tr>
+                <td class="timestamp">20 hours ago</td>
+                <td class="subject" title="[PATCH 5.10 and 5.4] staging: rtl8723bs: Avoid memset() in aes_cipher() and aes_decipher()"><a href="https://lore.kernel.org/stable/20250701152324.3571007-1-nathan@kernel.org" target="_blank">[PATCH 5.10 and 5.4] staging: rtl8723bs: Avoid memset() in aes_cipher() and aes_decipher()</a></td>
+                <td class="author">Nathan Chancellor &lt;nathan@kernel.org&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>All tests passed successfully</td>
+            </tr>
+            <tr>
+                <td class="timestamp">20 hours ago</td>
+                <td class="subject" title="[PATCH 6.12.y] iommu/vt-d: Avoid use of NULL after WARN_ON_ONCE"><a href="https://lore.kernel.org/stable/trinity-5b3af13a-3731-4b47-80a1-8ac7af67791f-1751424444098@3c-app-mailcom-lxa07" target="_blank">[PATCH 6.12.y] iommu/vt-d: Avoid use of NULL after WARN_ON_ONCE</a></td>
+                <td class="author">Rajani kantha &lt;rajanikantha@engineer.com&gt;</td>
+                <td><span class="state state-failed">Issues Found</span></td>
+                <td>Issues found: origin/linux-6.12.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: drivers/iommu/intel/iommu.c:4306
+error: drivers/iommu/intel/iommu.c: patch does not apply
+hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
+
+Rejects: </td>
+            </tr></tbody></table>
+        </div>
+        
+        <h2>Completed Patches</h2>
+        <div class="section">
+            <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Author</th>
+                <th>SHA1</th>
+                <th>Test Results</th>
+                <th>Reviews/Replies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] jfs: fix null ptr deref in dtInsertEntry"><a href="https://lore.kernel.org/stable/20250702185936.68245-1-duttaditya18@gmail.com" target="_blank">[PATCH 5.15.y] jfs: fix null ptr deref in dtInsertEntry</a></td>
+                <td class="author" title="Aditya Dutt &lt;duttaditya18@gmail.com&gt;">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td class="sha1">ce6dede9</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] thermal/int340x_thermal: handle data_vault when the value is ZERO_SIZE_PTR"><a href="https://lore.kernel.org/stable/20250625154217.215744-1-larry.bassel@oracle.com" target="_blank">[PATCH 5.15.y] thermal/int340x_thermal: handle data_vault when the value is ZERO_SIZE_PTR</a></td>
+                <td class="author" title="Larry Bassel &lt;larry.bassel@oracle.com&gt;">Larry Bassel &lt;larry.bassel@oracle.com&gt;</td>
+                <td class="sha1">7931e280</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] btrfs: don&#39;t drop extent_map for free space inode on write error"><a href="https://lore.kernel.org/stable/20250625154557.215947-1-larry.bassel@oracle.com" target="_blank">[PATCH 5.15.y] btrfs: don&#39;t drop extent_map for free space inode on write error</a></td>
+                <td class="author" title="Larry Bassel &lt;larry.bassel@oracle.com&gt;">Larry Bassel &lt;larry.bassel@oracle.com&gt;</td>
+                <td class="sha1">5571e41e</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y v2] xen: replace xen_remap() with memremap()"><a href="https://lore.kernel.org/stable/816ab25650e06a5fb51c5a51ec0108aa2238271a.1751449523.git.teddy.astie@vates.tech" target="_blank">[PATCH 5.15.y v2] xen: replace xen_remap() with memremap()</a></td>
+                <td class="author" title="Teddy Astie &lt;teddy.astie@vates.tech&gt;">Teddy Astie &lt;teddy.astie@vates.tech&gt;</td>
+                <td class="sha1">41925b10</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] aoe: avoid potential deadlock at set_capacity"><a href="https://lore.kernel.org/stable/20250625154818.215991-1-larry.bassel@oracle.com" target="_blank">[PATCH 5.15.y] aoe: avoid potential deadlock at set_capacity</a></td>
+                <td class="author" title="Larry Bassel &lt;larry.bassel@oracle.com&gt;">Larry Bassel &lt;larry.bassel@oracle.com&gt;</td>
+                <td class="sha1">e169bd4f</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] xen: replace xen_remap() with memremap()"><a href="https://lore.kernel.org/stable/2398723b73ddd9923a9bb994364c2c7d3b89d21d.1751446695.git.teddy.astie@vates.tech" target="_blank">[PATCH 5.15.y] xen: replace xen_remap() with memremap()</a></td>
+                <td class="author" title="Teddy Astie &lt;teddy.astie@vates.tech&gt;">Teddy Astie &lt;teddy.astie@vates.tech&gt;</td>
+                <td class="sha1">41925b10</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr></tbody></table>
+        </div>
+        
+        <h2>Failed/Rejected Patches</h2>
+        <div class="section">
+            <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Author</th>
+                <th>SHA1</th>
+                <th>Test Results</th>
+                <th>Reviews/Replies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="subject" title="[PATCH net] virtio-net: fix important bug"><a href="https://lore.kernel.org/stable/test-sha1-patch@example.com" target="_blank">[PATCH net] virtio-net: fix important bug</a></td>
+                <td class="author" title="Test User &lt;test@example.com&gt;">Test User &lt;test@example.com&gt;</td>
+                <td class="sha1">315dbdd7</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] arm64: Fix something important"><a href="https://lore.kernel.org/stable/test-version-patch@example.com" target="_blank">[PATCH 5.10.y] arm64: Fix something important</a></td>
+                <td class="author" title="Test User &lt;test@example.com&gt;">Test User &lt;test@example.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y 3/3] net: phy: realtek: add RTL8125D-internal PHY"><a href="https://lore.kernel.org/stable/20250630142717.70619-4-mathieu.tortuyaux@gmail.com" target="_blank">[PATCH 6.12.y 3/3] net: phy: realtek: add RTL8125D-internal PHY</a></td>
+                <td class="author" title=" &lt;mathieu.tortuyaux@gmail.com&gt;"> &lt;mathieu.tortuyaux@gmail.com&gt;</td>
+                <td class="sha1">8989bad5</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y 2/3] net: phy: realtek: merge the drivers for internal NBase-T PHY&#39;s"><a href="https://lore.kernel.org/stable/20250630142717.70619-3-mathieu.tortuyaux@gmail.com" target="_blank">[PATCH 6.12.y 2/3] net: phy: realtek: merge the drivers for internal NBase-T PHY&#39;s</a></td>
+                <td class="author" title=" &lt;mathieu.tortuyaux@gmail.com&gt;"> &lt;mathieu.tortuyaux@gmail.com&gt;</td>
+                <td class="sha1">f87a17ed</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y 1/3] r8169: add support for RTL8125D"><a href="https://lore.kernel.org/stable/20250630142717.70619-2-mathieu.tortuyaux@gmail.com" target="_blank">[PATCH 6.12.y 1/3] r8169: add support for RTL8125D</a></td>
+                <td class="author" title=" &lt;mathieu.tortuyaux@gmail.com&gt;"> &lt;mathieu.tortuyaux@gmail.com&gt;</td>
+                <td class="sha1">f75d1fbe</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10 2/2] s390/pkey: Prevent overflow in size calculation for memdup_user()"><a href="https://lore.kernel.org/stable/20250630162446.1407811-2-pchelkin@ispras.ru" target="_blank">[PATCH 5.10 2/2] s390/pkey: Prevent overflow in size calculation for memdup_user()</a></td>
+                <td class="author" title="Fedor Pchelkin &lt;pchelkin@ispras.ru&gt;">Fedor Pchelkin &lt;pchelkin@ispras.ru&gt;</td>
+                <td class="sha1">7360ee47</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] mm/vma: reset VMA iterator on commit_merge() OOM failure"><a href="https://lore.kernel.org/stable/20250630175817.164918-1-lorenzo.stoakes@oracle.com" target="_blank">[PATCH 6.12.y] mm/vma: reset VMA iterator on commit_merge() OOM failure</a></td>
+                <td class="author" title="Lorenzo Stoakes &lt;lorenzo.stoakes@oracle.com&gt;">Lorenzo Stoakes &lt;lorenzo.stoakes@oracle.com&gt;</td>
+                <td class="sha1">0cf4b168</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701042705.22120-1-dev.jain@arm.com" target="_blank">[PATCH 5.15.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author" title="Dev Jain &lt;dev.jain@arm.com&gt;">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td class="sha1">650768c5</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y] arm64: Restrict pagetable teardown to avoid false warning"><a href="https://lore.kernel.org/stable/20250701043745.22336-1-dev.jain@arm.com" target="_blank">[PATCH 6.1.y] arm64: Restrict pagetable teardown to avoid false warning</a></td>
+                <td class="author" title="Dev Jain &lt;dev.jain@arm.com&gt;">Dev Jain &lt;dev.jain@arm.com&gt;</td>
+                <td class="sha1">650768c5</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702113849.2401-2-bacs@librecast.net" target="_blank">[PATCH 5.15.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author" title="Brett A C Sheffield &lt;bacs@librecast.net&gt;">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td class="sha1">a18dfa99</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702114150.2590-2-bacs@librecast.net" target="_blank">[PATCH 6.1.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author" title="Brett A C Sheffield &lt;bacs@librecast.net&gt;">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td class="sha1">a18dfa99</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y] Revert &quot;ipv6: save dontfrag in cork&quot;"><a href="https://lore.kernel.org/stable/20250702113731.2322-2-bacs@librecast.net" target="_blank">[PATCH 6.6.y] Revert &quot;ipv6: save dontfrag in cork&quot;</a></td>
+                <td class="author" title="Brett A C Sheffield &lt;bacs@librecast.net&gt;">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td class="sha1">a18dfa99</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] iommu/vt-d: Avoid use of NULL after WARN_ON_ONCE"><a href="https://lore.kernel.org/stable/trinity-5b3af13a-3731-4b47-80a1-8ac7af67791f-1751424444098@3c-app-mailcom-lxa07" target="_blank">[PATCH 6.12.y] iommu/vt-d: Avoid use of NULL after WARN_ON_ONCE</a></td>
+                <td class="author" title="Rajani kantha &lt;rajanikantha@engineer.com&gt;">Rajani kantha &lt;rajanikantha@engineer.com&gt;</td>
+                <td class="sha1">60f030f7</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr></tbody></table>
+        </div>
+    </div>
+</body>
+</html>

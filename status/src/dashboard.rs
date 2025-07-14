@@ -110,7 +110,7 @@ impl DashboardGenerator {
         let queues: Vec<_> = active_versions
             .par_iter()
             .map(|version| {
-                progress.set_message(format!("Processing {}", version));
+                progress.set_message(format!("Processing {version}"));
                 let result = self.scan_queue_for_version(version).ok();
                 progress.inc(1);
                 result
@@ -720,7 +720,7 @@ impl DashboardGenerator {
         let issues_per_version: Vec<_> = active_versions
             .par_iter()
             .map(|version| {
-                progress.set_message(format!("Analyzing {}", version));
+                progress.set_message(format!("Analyzing {version}"));
                 let queue_dir = self.stable_queue_dir.join(format!("queue-{}.{}", version.major, version.minor));
                 
                 if !queue_dir.exists() {

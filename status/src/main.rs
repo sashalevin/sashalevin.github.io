@@ -8,12 +8,13 @@ mod patch;
 mod response;
 mod series;
 mod dashboard;
+mod tracking;
 mod utils;
 mod error;
 
 use anyhow::Result;
 use clap::Parser;
-use tracing::{info, warn, error};
+use tracing::{info, warn, error, debug};
 use std::path::PathBuf;
 
 use crate::cli::{Args, Commands};
@@ -21,6 +22,8 @@ use crate::config::Config;
 use crate::email::LeiEmail;
 use crate::patch::PatchProcessor;
 use crate::dashboard::DashboardGenerator;
+use crate::tracking::{TrackingStore, generate_tracking_dashboard, update_tracking_status, PatchState};
+use crate::git::GitRepo;
 
 /// Parse time range string (e.g., "60", "24h", "7d") into minutes
 fn parse_time_range(time_range: &str) -> Result<u32> {
@@ -70,11 +73,10 @@ async fn main() -> Result<()> {
             skip_build,
             output_dir,
         } => {
-            // Override debug flag with skip_build or dry_run
+            // Set dry_run and skip_build flags
             let mut config = config;
-            if skip_build || dry_run {
-                config.debug = true;
-            }
+            config.dry_run = dry_run;
+            config.skip_build = skip_build;
             config.output_dir = PathBuf::from(&output_dir);
             
             // Auto-detect input type if not specified
@@ -108,6 +110,21 @@ async fn main() -> Result<()> {
         } => {
             generate_dashboards(&dashboard_type, &output_dir, &config)?;
         }
+        Commands::Query {
+            query_type,
+            value,
+            format,
+        } => {
+            query_tracking_data(&query_type, value.as_deref(), &format, &config)?;
+        }
+        Commands::ProcessEmail { path, dry_run } => {
+            // Set dry_run flag
+            let mut config = config;
+            config.dry_run = dry_run;
+            
+            // Process single email
+            process_single_email(&path, &config).await?;
+        }
     }
     
     Ok(())
@@ -119,21 +136,24 @@ async fn process_lei_json(input: &str, config: &Config) -> Result<()> {
     // Parse lei JSON email
     let email = LeiEmail::from_file(input)?;
     
-    // Check if we should ignore this email
-    if email.should_ignore(config) {
-        info!("Ignoring email from: {}", email.from);
-        return Ok(());
-    }
-    
-    // Check if this is a git patch
-    if !email.is_git_patch() {
-        info!("Email is not a git patch, skipping");
-        return Ok(());
-    }
-    
-    // Process the patch
+    // Process based on email type
     let processor = PatchProcessor::new(config.clone())?;
-    processor.process_email(email).await?;
+    
+    if email.is_git_patch() {
+        // Check if we should ignore patches from this author
+        if email.should_ignore(config) {
+            info!("Ignoring patch from: {}", email.from);
+            return Ok(());
+        }
+        // Process as a patch
+        processor.process_email(email).await?;
+    } else {
+        // Try to process as a reply/comment (including FAILED emails)
+        let processed = processor.process_reply_or_comment(email).await?;
+        if !processed {
+            info!("Email is not a patch or a reply to a tracked patch, skipping");
+        }
+    }
     
     Ok(())
 }
@@ -175,26 +195,33 @@ async fn process_lei_query(
     let mut errors = 0;
     let mut ignored = 0;
     let mut non_patches = 0;
+    let mut replies = 0;
     
     // Process each email
     for email in emails {
-        // Check if we should ignore this email
-        if email.should_ignore(config) {
-            ignored += 1;
-            continue;
-        }
-        
         // Check if this is a git patch
-        if !email.is_git_patch() {
-            non_patches += 1;
-            continue;
-        }
-        
-        match processor.process_email(email).await {
-            Ok(_) => processed += 1,
-            Err(e) => {
-                error!("Failed to process email: {}", e);
-                errors += 1;
+        if email.is_git_patch() {
+            // Check if we should ignore patches from this author
+            if email.should_ignore(config) {
+                ignored += 1;
+                continue;
+            }
+            match processor.process_email(email).await {
+                Ok(_) => processed += 1,
+                Err(e) => {
+                    error!("Failed to process email: {}", e);
+                    errors += 1;
+                }
+            }
+        } else {
+            // Check if this is a FAILED email or other reply/comment
+            match processor.process_reply_or_comment(email).await {
+                Ok(true) => replies += 1,
+                Ok(false) => non_patches += 1,
+                Err(e) => {
+                    debug!("Failed to process as reply: {}", e);
+                    non_patches += 1;
+                }
             }
         }
     }
@@ -202,10 +229,104 @@ async fn process_lei_query(
     // Print summary
     info!("Processing complete:");
     info!("  Processed: {}", processed);
+    info!("  Replies/Comments: {}", replies);
     info!("  Ignored: {}", ignored);
     info!("  Non-patches: {}", non_patches);
     if errors > 0 {
         warn!("  Errors: {}", errors);
+    }
+    
+    Ok(())
+}
+
+fn query_tracking_data(query_type: &str, value: Option<&str>, format: &str, config: &Config) -> Result<()> {
+    let tracking_path = &config.tracking_file;
+    let store = TrackingStore::load_from_file(&tracking_path)
+        .unwrap_or_else(|_| TrackingStore::new());
+    
+    match query_type {
+        "message-id" => {
+            let message_id = value.ok_or_else(|| anyhow::anyhow!("Message ID required for this query"))?;
+            if let Some(patch) = store.get_patch(message_id) {
+                if format == "json" {
+                    println!("{}", serde_json::to_string_pretty(patch)?);
+                } else {
+                    println!("Patch: {}", patch.subject);
+                    println!("Author: {}", patch.author);
+                    println!("State: {:?}", patch.state);
+                    println!("SHA1: {}", patch.sha1.as_ref().unwrap_or(&"None".to_string()));
+                    println!("First seen: {}", patch.first_seen.format("%Y-%m-%d %H:%M:%S"));
+                    println!("Last updated: {}", patch.last_updated.format("%Y-%m-%d %H:%M:%S"));
+                    println!("Test results: {}", patch.mailbot_results.len());
+                    println!("Reviews: {}", patch.mailing_list_activity.reviews.len());
+                    println!("Replies: {}", patch.mailing_list_activity.replies.len());
+                }
+            } else {
+                println!("Patch with message ID '{message_id}' not found");
+            }
+        }
+        "sha1" => {
+            let sha1 = value.ok_or_else(|| anyhow::anyhow!("SHA1 required for this query"))?;
+            let patches = store.find_by_sha1(sha1);
+            if patches.is_empty() {
+                println!("No patches found with SHA1 '{sha1}'");
+            } else if format == "json" {
+                println!("{}", serde_json::to_string_pretty(&patches)?);
+            } else {
+                println!("Found {} patches with SHA1 {}:", patches.len(), sha1);
+                for patch in patches {
+                    println!("\n- {}", patch.subject);
+                    println!("  Message ID: {}", patch.message_id);
+                    println!("  State: {:?}", patch.state);
+                    println!("  Author: {}", patch.author);
+                }
+            }
+        }
+        "state" => {
+            let state_str = value.ok_or_else(|| anyhow::anyhow!("State required for this query"))?;
+            let state = match state_str.to_lowercase().as_str() {
+                "onmailinglist" | "on-mailing-list" => PatchState::OnMailingList,
+                "processing" => PatchState::Processing,
+                "issuesfound" | "issues-found" => PatchState::IssuesFound(String::new()),
+                "testspassed" | "tests-passed" => PatchState::TestsPassed,
+                "commentsprovided" | "comments-provided" => PatchState::CommentsProvided,
+                "queued" => PatchState::Queued,
+                "released" => PatchState::Released,
+                "merged" => PatchState::Merged(vec![]),
+                "rejected" => PatchState::Rejected(String::new()),
+                "superseded" => PatchState::Superseded(String::new()),
+                "failed" => PatchState::Failed(String::new()),
+                _ => anyhow::bail!("Unknown state: {}", state_str),
+            };
+            let patches = store.get_patches_by_state(&state);
+            if format == "json" {
+                println!("{}", serde_json::to_string_pretty(&patches)?);
+            } else {
+                println!("Found {} patches in state '{}':", patches.len(), state_str);
+                for patch in patches {
+                    println!("\n- {}", patch.subject);
+                    println!("  Message ID: {}", patch.message_id);
+                    println!("  Author: {}", patch.author);
+                    println!("  Last updated: {}", patch.last_updated.format("%Y-%m-%d %H:%M:%S"));
+                }
+            }
+        }
+        "active" => {
+            let patches = store.get_active_patches();
+            if format == "json" {
+                println!("{}", serde_json::to_string_pretty(&patches)?);
+            } else {
+                println!("Found {} active patches:", patches.len());
+                for patch in patches {
+                    println!("\n- {}", patch.subject);
+                    println!("  Message ID: {}", patch.message_id);
+                    println!("  State: {:?}", patch.state);
+                    println!("  Author: {}", patch.author);
+                    println!("  Last updated: {}", patch.last_updated.format("%Y-%m-%d %H:%M:%S"));
+                }
+            }
+        }
+        _ => anyhow::bail!("Unknown query type: {}", query_type),
     }
     
     Ok(())
@@ -221,10 +342,69 @@ fn generate_dashboards(dashboard_type: &str, output_dir: &str, config: &Config) 
     );
     
     match dashboard_type {
-        "all" => generator.generate_all()?,
+        "all" => {
+            generator.generate_all()?;
+            // Also generate patch tracking dashboard
+            let tracking_path = &config.tracking_file;
+            let mut store = TrackingStore::load_from_file(&tracking_path)
+                .unwrap_or_else(|_| TrackingStore::new());
+            
+            // Update tracking status based on queue/release status
+            let git_repo = GitRepo::open(&config.linux_dir)?;
+            update_tracking_status(&mut store, &config.stable_queue_dir, &git_repo)?;
+            store.save_to_file(&tracking_path)?;
+            
+            let output_path = PathBuf::from(output_dir).join("patch-tracking.html");
+            generate_tracking_dashboard(&store, &output_path)?;
+        },
         "queue-status" => generator.generate_queue_status_dashboard()?,
         "possible-issues" => generator.generate_possible_issues_dashboard()?,
+        "patch-tracking" => {
+            let tracking_path = &config.tracking_file;
+            let mut store = TrackingStore::load_from_file(&tracking_path)
+                .unwrap_or_else(|_| TrackingStore::new());
+            
+            // Update tracking status based on queue/release status
+            let git_repo = GitRepo::open(&config.linux_dir)?;
+            update_tracking_status(&mut store, &config.stable_queue_dir, &git_repo)?;
+            store.save_to_file(&tracking_path)?;
+            
+            let output_path = PathBuf::from(output_dir).join("patch-tracking.html");
+            generate_tracking_dashboard(&store, &output_path)?;
+        },
         _ => anyhow::bail!("Unknown dashboard type: {}", dashboard_type),
+    }
+    
+    Ok(())
+}
+
+async fn process_single_email(path: &str, config: &Config) -> Result<()> {
+    info!("Processing single email from: {}", path);
+    
+    // Parse lei JSON email
+    let email = LeiEmail::from_file(path)?;
+    
+    // Process based on email type
+    let processor = PatchProcessor::new(config.clone())?;
+    
+    if email.is_git_patch() {
+        // Check if we should ignore patches from this author
+        if email.should_ignore(config) {
+            info!("Ignoring patch from: {}", email.from);
+            return Ok(());
+        }
+        // Process as a patch
+        match processor.process_email(email).await {
+            Ok(_) => info!("Email processed successfully"),
+            Err(e) => error!("Failed to process email: {}", e),
+        }
+    } else {
+        // Try to process as a reply/comment (including FAILED emails)
+        match processor.process_reply_or_comment(email).await {
+            Ok(true) => info!("Email processed as reply/comment"),
+            Ok(false) => info!("Email is not a patch or a reply to a tracked patch, skipping"),
+            Err(e) => error!("Failed to process email as reply: {}", e),
+        }
     }
     
     Ok(())

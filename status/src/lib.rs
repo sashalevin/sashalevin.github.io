@@ -9,4 +9,5 @@ pub mod patch;
 pub mod response;
 pub mod series;
 pub mod dashboard;
+pub mod tracking;
 pub mod utils;

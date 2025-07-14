@@ -226,12 +226,12 @@
     <div class="container">
         <div class="header">
             <h1>Linux Stable Queue Status</h1>
-            <p class="timestamp">Generated at: 2025-07-12 10:57:35 -04:00</p>
+            <p class="timestamp">Generated at: 2025-07-14 12:39:50 -04:00</p>
         </div>
         
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-value">630</div>
+                <div class="stat-value">686</div>
                 <div class="stat-label">Total Patches</div>
             </div>
             <div class="stat-card">
@@ -250,7 +250,7 @@
                 <div class="queue-version collapsible" id="header-6-15" onclick="toggleQueue('6-15')">
                     ▼ Linux 6.15
                 </div>
-                <div class="patch-count">97 patches</div>
+                <div class="patch-count">126 patches</div>
             </div>
             
             <div class="patch-list" id="queue-6-15">
@@ -363,6 +363,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="ASoC: Intel: sof-function-topology-lib: Print out the unsupported dmic count">ASoC: Intel: sof-function-topology-lib: Print out the unsupported dmic count</td>
+                            <td class="author"><a href="mailto:peter.ujfalusi@linux.intel.com?subject=Re%3A%20ASoC%3A%20Intel%3A%20sof-function-topology-lib%3A%20Print%20out%20the%20unsupported%20dmic%20count" title="Peter Ujfalusi &lt;peter.ujfalusi@linux.intel.com&gt;">Peter Ujfalusi</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=16ea4666bbb7f5bd1130fa2d75631ccf8b62362e" target="_blank">16ea4666</a></td>
+                            <td class="changes"><span class="additions">+2</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/asoc-intel-sof-function-topology-lib-print-out-the-unsupported-dmic-count.patch" title="asoc-intel-sof-function-topology-lib-print-out-the-unsupported-dmic-count.patch" target="_blank">asoc-intel-sof-function-topology-lib-print-out-the-unsupported-dmic-count.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="ASoC: soc-acpi: add get_function_tplg_files ops">ASoC: soc-acpi: add get_function_tplg_files ops</td>
                             <td class="author"><a href="mailto:yung-chuan.liao@linux.intel.com?subject=Re%3A%20ASoC%3A%20soc-acpi%3A%20add%20get_function_tplg_files%20ops" title="Bard Liao &lt;yung-chuan.liao@linux.intel.com&gt;">Bard Liao</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d1e70eed0b30bd2b15fc6c93b5701be564bbe353" target="_blank">d1e70eed</a></td>
@@ -440,6 +448,22 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b9fd9888a5654e59f6c6249337e36c53c1faa329" target="_blank">b9fd9888</a></td>
                             <td class="changes"><span class="additions">+4</span> <span class="deletions">-7</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/bnxt_en-eliminate-the-compile-warning-in-bnxt_reques.patch" title="bnxt_en-eliminate-the-compile-warning-in-bnxt_reques.patch" target="_blank">bnxt_en-eliminate-the-compile-warning-in-bnxt_reques.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="clk: imx: Fix an out-of-bounds access in dispmix_csr_clk_dev_data">clk: imx: Fix an out-of-bounds access in dispmix_csr_clk_dev_data</td>
+                            <td class="author"><a href="mailto:xiaolei.wang@windriver.com?subject=Re%3A%20clk%3A%20imx%3A%20Fix%20an%20out-of-bounds%20access%20in%20dispmix_csr_clk_dev_data" title="Xiaolei Wang &lt;xiaolei.wang@windriver.com&gt;">Xiaolei Wang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aacc875a448d363332b9df0621dde6d3a225ea9f" target="_blank">aacc875a</a></td>
+                            <td class="changes"><span class="additions">+8</span> <span class="deletions">-4</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/clk-imx-fix-an-out-of-bounds-access-in-dispmix_csr_clk_dev_data.patch" title="clk-imx-fix-an-out-of-bounds-access-in-dispmix_csr_clk_dev_data.patch" target="_blank">clk-imx-fix-an-out-of-bounds-access-in-dispmix_csr_clk_dev_data.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="clk: scmi: Handle case where child clocks are initialized before their parents">clk: scmi: Handle case where child clocks are initialized before their parents</td>
+                            <td class="author"><a href="mailto:s.hauer@pengutronix.de?subject=Re%3A%20clk%3A%20scmi%3A%20Handle%20case%20where%20child%20clocks%20are%20initialized%20before%20their%20parents" title="Sascha Hauer &lt;s.hauer@pengutronix.de&gt;">Sascha Hauer</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6306e0c5a0d28e9df2b5902f4a021204bee75173" target="_blank">6306e0c5</a></td>
+                            <td class="changes"><span class="additions">+10</span> <span class="deletions">-8</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/clk-scmi-handle-case-where-child-clocks-are-initialized-before-their-parents.patch" title="clk-scmi-handle-case-where-child-clocks-are-initialized-before-their-parents.patch" target="_blank">clk-scmi-handle-case-where-child-clocks-are-initialized-before-their-parents.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -555,11 +579,43 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="dt-bindings: clock: mediatek: Add #reset-cells property for MT8188">dt-bindings: clock: mediatek: Add #reset-cells property for MT8188</td>
+                            <td class="author"><a href="mailto:julien.massot@collabora.com?subject=Re%3A%20dt-bindings%3A%20clock%3A%20mediatek%3A%20Add%20%23reset-cells%20property%20for%20MT8188" title="Julien Massot &lt;julien.massot@collabora.com&gt;">Julien Massot</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a42b4dcc4f9f309a23e6de5ae57a680b9fd2ea10" target="_blank">a42b4dcc</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/dt-bindings-clock-mediatek-add-reset-cells-property-for-mt8188.patch" title="dt-bindings-clock-mediatek-add-reset-cells-property-for-mt8188.patch" target="_blank">dt-bindings-clock-mediatek-add-reset-cells-property-for-mt8188.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="EDAC: Initialize EDAC features sysfs attributes">EDAC: Initialize EDAC features sysfs attributes</td>
                             <td class="author"><a href="mailto:shiju.jose@huawei.com?subject=Re%3A%20EDAC%3A%20Initialize%20EDAC%20features%20sysfs%20attributes" title="Shiju Jose &lt;shiju.jose@huawei.com&gt;">Shiju Jose</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1e14ea901dc8d976d355ddc3e0de84ee86ef0596" target="_blank">1e14ea90</a></td>
                             <td class="changes"><span class="additions">+5</span> <span class="deletions">-2</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/edac-initialize-edac-features-sysfs-attributes.patch" title="edac-initialize-edac-features-sysfs-attributes.patch" target="_blank">edac-initialize-edac-features-sysfs-attributes.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="erofs: address D-cache aliasing">erofs: address D-cache aliasing</td>
+                            <td class="author"><a href="mailto:hsiangkao@linux.alibaba.com?subject=Re%3A%20erofs%3A%20address%20D-cache%20aliasing" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=27917e8194f91dffd8b4825350c63cb68e98ce58" target="_blank">27917e81</a></td>
+                            <td class="changes"><span class="additions">+21</span> <span class="deletions">-19</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/erofs-address-d-cache-aliasing.patch" title="erofs-address-d-cache-aliasing.patch" target="_blank">erofs-address-d-cache-aliasing.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="erofs: fix large fragment handling">erofs: fix large fragment handling</td>
+                            <td class="author"><a href="mailto:hsiangkao@linux.alibaba.com?subject=Re%3A%20erofs%3A%20fix%20large%20fragment%20handling" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b44686c8391b427fb1c85a31c35077e6947c6d90" target="_blank">b44686c8</a></td>
+                            <td class="changes"><span class="additions">+8</span> <span class="deletions">-7</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/erofs-fix-large-fragment-handling.patch" title="erofs-fix-large-fragment-handling.patch" target="_blank">erofs-fix-large-fragment-handling.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="erofs: fix to add missing tracepoint in erofs_read_folio()">erofs: fix to add missing tracepoint in erofs_read_folio()</td>
+                            <td class="author"><a href="mailto:chao@kernel.org?subject=Re%3A%20erofs%3A%20fix%20to%20add%20missing%20tracepoint%20in%20erofs_read_folio%28%29" title="Chao Yu &lt;chao@kernel.org&gt;">Chao Yu</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=99f7619a77a0a2e3e2bcae676d0f301769167754" target="_blank">99f7619a</a></td>
+                            <td class="changes"><span class="additions">+2</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch" title="erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch" target="_blank">erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -619,6 +675,30 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="kallsyms: fix build without execinfo">kallsyms: fix build without execinfo</td>
+                            <td class="author"><a href="mailto:fossdd@pwned.life?subject=Re%3A%20kallsyms%3A%20fix%20build%20without%20execinfo" title="Achill Gilgenast &lt;fossdd@pwned.life&gt;">Achill Gilgenast</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a95743b53031b015e8949e845a9f6fdfb2656347" target="_blank">a95743b5</a></td>
+                            <td class="changes"><span class="additions">+4</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/kallsyms-fix-build-without-execinfo.patch" title="kallsyms-fix-build-without-execinfo.patch" target="_blank">kallsyms-fix-build-without-execinfo.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="kasan: remove kasan_find_vm_area() to prevent possible deadlock">kasan: remove kasan_find_vm_area() to prevent possible deadlock</td>
+                            <td class="author"><a href="mailto:yeoreum.yun@arm.com?subject=Re%3A%20kasan%3A%20remove%20kasan_find_vm_area%28%29%20to%20prevent%20possible%20deadlock" title="Yeoreum Yun &lt;yeoreum.yun@arm.com&gt;">Yeoreum Yun</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6ee9b3d84775944fb8c8a447961cd01274ac671c" target="_blank">6ee9b3d8</a></td>
+                            <td class="changes"><span class="additions">+2</span> <span class="deletions">-43</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/kasan-remove-kasan_find_vm_area-to-prevent-possible-deadlock.patch" title="kasan-remove-kasan_find_vm_area-to-prevent-possible-deadlock.patch" target="_blank">kasan-remove-kasan_find_vm_area-to-prevent-possible-deadlock.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()">ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()</td>
+                            <td class="author"><a href="mailto:viro@zeniv.linux.org.uk?subject=Re%3A%20ksmbd%3A%20fix%20a%20mount%20write%20count%20leak%20in%20ksmbd_vfs_kern_path_locked%28%29" title="Al Viro &lt;viro@zeniv.linux.org.uk&gt;">Al Viro</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=277627b431a0a6401635c416a21b2a0f77a77347" target="_blank">277627b4</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" title="ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" target="_blank">ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="KVM: Allow CPU to reschedule while setting per-page memory attributes">KVM: Allow CPU to reschedule while setting per-page memory attributes</td>
                             <td class="author"><a href="mailto:liam.merwick@oracle.com?subject=Re%3A%20KVM%3A%20Allow%20CPU%20to%20reschedule%20while%20setting%20per-page%20memory%20attributes" title="Liam Merwick &lt;liam.merwick@oracle.com&gt;">Liam Merwick</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=47bb584237cc285e3a860b70c01f7bda9dcfb05b" target="_blank">47bb5842</a></td>
@@ -659,11 +739,67 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="lib/alloc_tag: do not acquire non-existent lock in alloc_tag_top_users()">lib/alloc_tag: do not acquire non-existent lock in alloc_tag_top_users()</td>
+                            <td class="author"><a href="mailto:harry.yoo@oracle.com?subject=Re%3A%20lib%2Falloc_tag%3A%20do%20not%20acquire%20non-existent%20lock%20in%20alloc_tag_top_users%28%29" title="Harry Yoo &lt;harry.yoo@oracle.com&gt;">Harry Yoo</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=99af22cd34688cc0d535a1919e0bea4cbc6c1ea1" target="_blank">99af22cd</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/lib-alloc_tag-do-not-acquire-non-existent-lock-in-alloc_tag_top_users.patch" title="lib-alloc_tag-do-not-acquire-non-existent-lock-in-alloc_tag_top_users.patch" target="_blank">lib-alloc_tag-do-not-acquire-non-existent-lock-in-alloc_tag_top_users.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="maple_tree: fix mt_destroy_walk() on root leaf node">maple_tree: fix mt_destroy_walk() on root leaf node</td>
+                            <td class="author"><a href="mailto:richard.weiyang@gmail.com?subject=Re%3A%20maple_tree%3A%20fix%20mt_destroy_walk%28%29%20on%20root%20leaf%20node" title="Wei Yang &lt;richard.weiyang@gmail.com&gt;">Wei Yang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ea9b77f98d94c4d5c1bd1ac1db078f78b40e8bf5" target="_blank">ea9b77f9</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" title="maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" target="_blank">maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="md/md-bitmap: fix GPF in bitmap_get_stats()">md/md-bitmap: fix GPF in bitmap_get_stats()</td>
                             <td class="author"><a href="mailto:haakon.bugge@oracle.com?subject=Re%3A%20md%2Fmd-bitmap%3A%20fix%20GPF%20in%20bitmap_get_stats%28%29" title="Håkon Bugge &lt;haakon.bugge@oracle.com&gt;">Håkon Bugge</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c17fb542dbd1db745c9feac15617056506dd7195" target="_blank">c17fb542</a></td>
                             <td class="changes"><span class="additions">+1</span> <span class="deletions">-2</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch" title="md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch" target="_blank">md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm/damon/core: handle damon_call_control as normal under kdmond deactivation">mm/damon/core: handle damon_call_control as normal under kdmond deactivation</td>
+                            <td class="author"><a href="mailto:sj@kernel.org?subject=Re%3A%20mm%2Fdamon%2Fcore%3A%20handle%20damon_call_control%20as%20normal%20under%20kdmond%20deactivation" title="SeongJae Park &lt;sj@kernel.org&gt;">SeongJae Park</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bb1b5929b4279b136816f95ce1e8f1fa689bf4a1" target="_blank">bb1b5929</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-4</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/mm-damon-core-handle-damon_call_control-as-normal-under-kdmond-deactivation.patch" title="mm-damon-core-handle-damon_call_control-as-normal-under-kdmond-deactivation.patch" target="_blank">mm-damon-core-handle-damon_call_control-as-normal-under-kdmond-deactivation.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm/damon: fix divide by zero in damon_get_intervals_score()">mm/damon: fix divide by zero in damon_get_intervals_score()</td>
+                            <td class="author"><a href="mailto:honggyu.kim@sk.com?subject=Re%3A%20mm%2Fdamon%3A%20fix%20divide%20by%20zero%20in%20damon_get_intervals_score%28%29" title="Honggyu Kim &lt;honggyu.kim@sk.com&gt;">Honggyu Kim</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bd225b9591442065beb876da72656f4a2d627d03" target="_blank">bd225b95</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/mm-damon-fix-divide-by-zero-in-damon_get_intervals_score.patch" title="mm-damon-fix-divide-by-zero-in-damon_get_intervals_score.patch" target="_blank">mm-damon-fix-divide-by-zero-in-damon_get_intervals_score.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm: fix the inaccurate memory statistics issue for users">mm: fix the inaccurate memory statistics issue for users</td>
+                            <td class="author"><a href="mailto:baolin.wang@linux.alibaba.com?subject=Re%3A%20mm%3A%20fix%20the%20inaccurate%20memory%20statistics%20issue%20for%20users" title="Baolin Wang &lt;baolin.wang@linux.alibaba.com&gt;">Baolin Wang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=82241a83cd15aaaf28200a40ad1a8b480012edaf" target="_blank">82241a83</a></td>
+                            <td class="changes"><span class="additions">+12</span> <span class="deletions">-7</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch" title="mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch" target="_blank">mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm/rmap: fix potential out-of-bounds page table access during batched unmap">mm/rmap: fix potential out-of-bounds page table access during batched unmap</td>
+                            <td class="author"><a href="mailto:lance.yang@linux.dev?subject=Re%3A%20mm%2Frmap%3A%20fix%20potential%20out-of-bounds%20page%20table%20access%20during%20batched%20unmap" title="Lance Yang &lt;lance.yang@linux.dev&gt;">Lance Yang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ddd05742b45b083975a0855ef6ebbf88cf1f532a" target="_blank">ddd05742</a></td>
+                            <td class="changes"><span class="additions">+28</span> <span class="deletions">-19</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/mm-rmap-fix-potential-out-of-bounds-page-table-access-during-batched-unmap.patch" title="mm-rmap-fix-potential-out-of-bounds-page-table-access-during-batched-unmap.patch" target="_blank">mm-rmap-fix-potential-out-of-bounds-page-table-access-during-batched-unmap.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm/vmalloc: leave lazy MMU mode on PTE mapping error">mm/vmalloc: leave lazy MMU mode on PTE mapping error</td>
+                            <td class="author"><a href="mailto:agordeev@linux.ibm.com?subject=Re%3A%20mm%2Fvmalloc%3A%20leave%20lazy%20MMU%20mode%20on%20PTE%20mapping%20error" title="Alexander Gordeev &lt;agordeev@linux.ibm.com&gt;">Alexander Gordeev</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fea18c686320a53fce7ad62a87a3e1d10ad02f31" target="_blank">fea18c68</a></td>
+                            <td class="changes"><span class="additions">+15</span> <span class="deletions">-7</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch" title="mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch" target="_blank">mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -755,11 +891,27 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="netlink: Fix rmem check in netlink_broadcast_deliver().">netlink: Fix rmem check in netlink_broadcast_deliver().</td>
+                            <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20rmem%20check%20in%20netlink_broadcast_deliver%28%29." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a3c4a125ec725cefb40047eb05ff9eafd57830b4" target="_blank">a3c4a125</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" title="netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" target="_blank">netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.">netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.</td>
                             <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20wraparounds%20of%20sk-%3Esk_rmem_alloc." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae8f160e7eb24240a2a79fc4c815c6a0d4ee16cc" target="_blank">ae8f160e</a></td>
                             <td class="changes"><span class="additions">+49</span> <span class="deletions">-33</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" title="netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" target="_blank">netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="netlink: make sure we allow at least one dump skb">netlink: make sure we allow at least one dump skb</td>
+                            <td class="author"><a href="mailto:kuba@kernel.org?subject=Re%3A%20netlink%3A%20make%20sure%20we%20allow%20at%20least%20one%20dump%20skb" title="Jakub Kicinski &lt;kuba@kernel.org&gt;">Jakub Kicinski</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a215b5723922f8099078478122f02100e489cb80" target="_blank">a215b572</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/netlink-make-sure-we-allow-at-least-one-dump-skb.patch" title="netlink-make-sure-we-allow-at-least-one-dump-skb.patch" target="_blank">netlink-make-sure-we-allow-at-least-one-dump-skb.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -875,6 +1027,22 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="samples/damon: fix damon sample prcl for start failure">samples/damon: fix damon sample prcl for start failure</td>
+                            <td class="author"><a href="mailto:honggyu.kim@sk.com?subject=Re%3A%20samples%2Fdamon%3A%20fix%20damon%20sample%20prcl%20for%20start%20failure" title="Honggyu Kim &lt;honggyu.kim@sk.com&gt;">Honggyu Kim</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d9e01c62b7a0c258a7481c083f84c766a8f5597c" target="_blank">d9e01c62</a></td>
+                            <td class="changes"><span class="additions">+6</span> <span class="deletions">-3</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/samples-damon-fix-damon-sample-prcl-for-start-failure.patch" title="samples-damon-fix-damon-sample-prcl-for-start-failure.patch" target="_blank">samples-damon-fix-damon-sample-prcl-for-start-failure.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="samples/damon: fix damon sample wsse for start failure">samples/damon: fix damon sample wsse for start failure</td>
+                            <td class="author"><a href="mailto:honggyu.kim@sk.com?subject=Re%3A%20samples%2Fdamon%3A%20fix%20damon%20sample%20wsse%20for%20start%20failure" title="Honggyu Kim &lt;honggyu.kim@sk.com&gt;">Honggyu Kim</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f1221c8442616a6927aff836327777144545cb29" target="_blank">f1221c84</a></td>
+                            <td class="changes"><span class="additions">+6</span> <span class="deletions">-3</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/samples-damon-fix-damon-sample-wsse-for-start-failure.patch" title="samples-damon-fix-damon-sample-wsse-for-start-failure.patch" target="_blank">samples-damon-fix-damon-sample-wsse-for-start-failure.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="sched/core: Fix migrate_swap() vs. hotplug">sched/core: Fix migrate_swap() vs. hotplug</td>
                             <td class="author"><a href="mailto:peterz@infradead.org?subject=Re%3A%20sched%2Fcore%3A%20Fix%20migrate_swap%28%29%20vs.%20hotplug" title="Peter Zijlstra &lt;peterz@infradead.org&gt;">Peter Zijlstra</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=009836b4fa52f92cba33618e773b1094affa8cd2" target="_blank">009836b4</a></td>
@@ -896,6 +1064,46 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3ebb1b6522392f64902b4e96954e35927354aa27" target="_blank">3ebb1b65</a></td>
                             <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/sched-fix-preemption-string-of-preempt_dynamic_none.patch" title="sched-fix-preemption-string-of-preempt_dynamic_none.patch" target="_blank">sched-fix-preemption-string-of-preempt_dynamic_none.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: de-reference per-CPU MCE interrupts">scripts/gdb: de-reference per-CPU MCE interrupts</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20de-reference%20per-CPU%20MCE%20interrupts" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=50f4d2ba26d5c3a4687ae0569be3bbf1c8f0cbed" target="_blank">50f4d2ba</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/scripts-gdb-de-reference-per-cpu-mce-interrupts.patch" title="scripts-gdb-de-reference-per-cpu-mce-interrupts.patch" target="_blank">scripts-gdb-de-reference-per-cpu-mce-interrupts.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: fix interrupts display after MCP on x86">scripts/gdb: fix interrupts display after MCP on x86</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20fix%20interrupts%20display%20after%20MCP%20on%20x86" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7627b459aa0737bdd62a8591a1481cda467f20e3" target="_blank">7627b459</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch" title="scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch" target="_blank">scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: fix interrupts.py after maple tree conversion">scripts/gdb: fix interrupts.py after maple tree conversion</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20fix%20interrupts.py%20after%20maple%20tree%20conversion" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a02b0cde8ee515ee0c8efd33e7fbe6830c282e69" target="_blank">a02b0cde</a></td>
+                            <td class="changes"><span class="additions">+293</span> <span class="deletions">-6</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch" title="scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch" target="_blank">scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts: gdb: vfs: support external dentry names">scripts: gdb: vfs: support external dentry names</td>
+                            <td class="author"><a href="mailto:illia@yshyn.com?subject=Re%3A%20scripts%3A%20gdb%3A%20vfs%3A%20support%20external%20dentry%20names" title="Illia Ostapyshyn &lt;illia@yshyn.com&gt;">Illia Ostapyshyn</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e6d3e653b084f003977bf2e33820cb84d2e4541f" target="_blank">e6d3e653</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/scripts-gdb-vfs-support-external-dentry-names.patch" title="scripts-gdb-vfs-support-external-dentry-names.patch" target="_blank">scripts-gdb-vfs-support-external-dentry-names.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="smb: server: make use of rdma_destroy_qp()">smb: server: make use of rdma_destroy_qp()</td>
+                            <td class="author"><a href="mailto:metze@samba.org?subject=Re%3A%20smb%3A%20server%3A%20make%20use%20of%20rdma_destroy_qp%28%29" title="Stefan Metzmacher &lt;metze@samba.org&gt;">Stefan Metzmacher</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0c2b53997e8f5e2ec9e0fbd17ac0436466b65488" target="_blank">0c2b5399</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/smb-server-make-use-of-rdma_destroy_qp.patch" title="smb-server-make-use-of-rdma_destroy_qp.patch" target="_blank">smb-server-make-use-of-rdma_destroy_qp.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -1003,6 +1211,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="x86/CPU/AMD: Disable INVLPGB on Zen2">x86/CPU/AMD: Disable INVLPGB on Zen2</td>
+                            <td class="author"><a href="mailto:me@mixaill.net?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Disable%20INVLPGB%20on%20Zen2" title="Mikhail Paulyshka &lt;me@mixaill.net&gt;">Mikhail Paulyshka</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a74bb5f202dabddfea96abc1328fcedae8aa140a" target="_blank">a74bb5f2</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/x86-cpu-amd-disable-invlpgb-on-zen2.patch" title="x86-cpu-amd-disable-invlpgb-on-zen2.patch" target="_blank">x86-cpu-amd-disable-invlpgb-on-zen2.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="x86/mce/amd: Add default names for MCA banks and blocks">x86/mce/amd: Add default names for MCA banks and blocks</td>
                             <td class="author"><a href="mailto:yazen.ghannam@amd.com?subject=Re%3A%20x86%2Fmce%2Famd%3A%20Add%20default%20names%20for%20MCA%20banks%20and%20blocks" title="Yazen Ghannam &lt;yazen.ghannam@amd.com&gt;">Yazen Ghannam</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d66e1e90b16055d2f0ee76e5384e3f119c3c2773" target="_blank">d66e1e90</a></td>
@@ -1042,6 +1258,22 @@
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch" title="x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch" target="_blank">x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch</a></td>
                         </tr>
                     
+                        <tr>
+                            <td class="subject" title="x86/mm: Disable hugetlb page table sharing on 32-bit">x86/mm: Disable hugetlb page table sharing on 32-bit</td>
+                            <td class="author"><a href="mailto:jannh@google.com?subject=Re%3A%20x86%2Fmm%3A%20Disable%20hugetlb%20page%20table%20sharing%20on%2032-bit" title="Jann Horn &lt;jannh@google.com&gt;">Jann Horn</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=76303ee8d54bff6d9a6d55997acd88a6c2ba63cf" target="_blank">76303ee8</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch" title="x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch" target="_blank">x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="x86/rdrand: Disable RDSEED on AMD Cyan Skillfish">x86/rdrand: Disable RDSEED on AMD Cyan Skillfish</td>
+                            <td class="author"><a href="mailto:me@mixaill.net?subject=Re%3A%20x86%2Frdrand%3A%20Disable%20RDSEED%20on%20AMD%20Cyan%20Skillfish" title="Mikhail Paulyshka &lt;me@mixaill.net&gt;">Mikhail Paulyshka</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b937a1ed64ebeba8876e398110a5790ad77407c" target="_blank">5b937a1e</a></td>
+                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.15/x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch" title="x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch" target="_blank">x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch</a></td>
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>
@@ -1052,7 +1284,7 @@
                 <div class="queue-version collapsible" id="header-6-12" onclick="toggleQueue('6-12')">
                     ▶ Linux 6.12
                 </div>
-                <div class="patch-count">86 patches</div>
+                <div class="patch-count">104 patches</div>
             </div>
             
             <div class="patch-list collapsed" id="queue-6-12">
@@ -1157,6 +1389,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="ASoC: Intel: sof-function-topology-lib: Print out the unsupported dmic count">ASoC: Intel: sof-function-topology-lib: Print out the unsupported dmic count</td>
+                            <td class="author"><a href="mailto:peter.ujfalusi@linux.intel.com?subject=Re%3A%20ASoC%3A%20Intel%3A%20sof-function-topology-lib%3A%20Print%20out%20the%20unsupported%20dmic%20count" title="Peter Ujfalusi &lt;peter.ujfalusi@linux.intel.com&gt;">Peter Ujfalusi</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=16ea4666bbb7f5bd1130fa2d75631ccf8b62362e" target="_blank">16ea4666</a></td>
+                            <td class="changes"><span class="additions">+2</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/asoc-intel-sof-function-topology-lib-print-out-the-unsupported-dmic-count.patch" title="asoc-intel-sof-function-topology-lib-print-out-the-unsupported-dmic-count.patch" target="_blank">asoc-intel-sof-function-topology-lib-print-out-the-unsupported-dmic-count.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="ASoC: soc-acpi: add get_function_tplg_files ops">ASoC: soc-acpi: add get_function_tplg_files ops</td>
                             <td class="author"><a href="mailto:yung-chuan.liao@linux.intel.com?subject=Re%3A%20ASoC%3A%20soc-acpi%3A%20add%20get_function_tplg_files%20ops" title="Bard Liao &lt;yung-chuan.liao@linux.intel.com&gt;">Bard Liao</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d1e70eed0b30bd2b15fc6c93b5701be564bbe353" target="_blank">d1e70eed</a></td>
@@ -1218,6 +1458,22 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b9fd9888a5654e59f6c6249337e36c53c1faa329" target="_blank">b9fd9888</a></td>
                             <td class="changes"><span class="additions">+4</span> <span class="deletions">-7</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/bnxt_en-eliminate-the-compile-warning-in-bnxt_reques.patch" title="bnxt_en-eliminate-the-compile-warning-in-bnxt_reques.patch" target="_blank">bnxt_en-eliminate-the-compile-warning-in-bnxt_reques.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="clk: imx: Fix an out-of-bounds access in dispmix_csr_clk_dev_data">clk: imx: Fix an out-of-bounds access in dispmix_csr_clk_dev_data</td>
+                            <td class="author"><a href="mailto:xiaolei.wang@windriver.com?subject=Re%3A%20clk%3A%20imx%3A%20Fix%20an%20out-of-bounds%20access%20in%20dispmix_csr_clk_dev_data" title="Xiaolei Wang &lt;xiaolei.wang@windriver.com&gt;">Xiaolei Wang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aacc875a448d363332b9df0621dde6d3a225ea9f" target="_blank">aacc875a</a></td>
+                            <td class="changes"><span class="additions">+8</span> <span class="deletions">-5</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/clk-imx-fix-an-out-of-bounds-access-in-dispmix_csr_clk_dev_data.patch" title="clk-imx-fix-an-out-of-bounds-access-in-dispmix_csr_clk_dev_data.patch" target="_blank">clk-imx-fix-an-out-of-bounds-access-in-dispmix_csr_clk_dev_data.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="clk: scmi: Handle case where child clocks are initialized before their parents">clk: scmi: Handle case where child clocks are initialized before their parents</td>
+                            <td class="author"><a href="mailto:s.hauer@pengutronix.de?subject=Re%3A%20clk%3A%20scmi%3A%20Handle%20case%20where%20child%20clocks%20are%20initialized%20before%20their%20parents" title="Sascha Hauer &lt;s.hauer@pengutronix.de&gt;">Sascha Hauer</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6306e0c5a0d28e9df2b5902f4a021204bee75173" target="_blank">6306e0c5</a></td>
+                            <td class="changes"><span class="additions">+10</span> <span class="deletions">-8</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/clk-scmi-handle-case-where-child-clocks-are-initialized-before-their-parents.patch" title="clk-scmi-handle-case-where-child-clocks-are-initialized-before-their-parents.patch" target="_blank">clk-scmi-handle-case-where-child-clocks-are-initialized-before-their-parents.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -1333,6 +1589,22 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="erofs: address D-cache aliasing">erofs: address D-cache aliasing</td>
+                            <td class="author"><a href="mailto:hsiangkao@linux.alibaba.com?subject=Re%3A%20erofs%3A%20address%20D-cache%20aliasing" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=27917e8194f91dffd8b4825350c63cb68e98ce58" target="_blank">27917e81</a></td>
+                            <td class="changes"><span class="additions">+21</span> <span class="deletions">-19</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/erofs-address-d-cache-aliasing.patch" title="erofs-address-d-cache-aliasing.patch" target="_blank">erofs-address-d-cache-aliasing.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="erofs: fix to add missing tracepoint in erofs_read_folio()">erofs: fix to add missing tracepoint in erofs_read_folio()</td>
+                            <td class="author"><a href="mailto:chao@kernel.org?subject=Re%3A%20erofs%3A%20fix%20to%20add%20missing%20tracepoint%20in%20erofs_read_folio%28%29" title="Chao Yu &lt;chao@kernel.org&gt;">Chao Yu</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=99f7619a77a0a2e3e2bcae676d0f301769167754" target="_blank">99f7619a</a></td>
+                            <td class="changes"><span class="additions">+2</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch" title="erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch" target="_blank">erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="eventpoll: don&#39;t decrement ep refcount while still holding the ep mutex">eventpoll: don&#39;t decrement ep refcount while still holding the ep mutex</td>
                             <td class="author"><a href="mailto:torvalds@linux-foundation.org?subject=Re%3A%20eventpoll%3A%20don%27t%20decrement%20ep%20refcount%20while%20still%20holding%20the%20ep%20mutex" title="Linus Torvalds &lt;torvalds@linux-foundation.org&gt;">Linus Torvalds</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8c2e52ebbe885c7eeaabd3b7ddcdc1246fc400d2" target="_blank">8c2e52eb</a></td>
@@ -1373,6 +1645,22 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="kallsyms: fix build without execinfo">kallsyms: fix build without execinfo</td>
+                            <td class="author"><a href="mailto:fossdd@pwned.life?subject=Re%3A%20kallsyms%3A%20fix%20build%20without%20execinfo" title="Achill Gilgenast &lt;fossdd@pwned.life&gt;">Achill Gilgenast</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a95743b53031b015e8949e845a9f6fdfb2656347" target="_blank">a95743b5</a></td>
+                            <td class="changes"><span class="additions">+4</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/kallsyms-fix-build-without-execinfo.patch" title="kallsyms-fix-build-without-execinfo.patch" target="_blank">kallsyms-fix-build-without-execinfo.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()">ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()</td>
+                            <td class="author"><a href="mailto:viro@zeniv.linux.org.uk?subject=Re%3A%20ksmbd%3A%20fix%20a%20mount%20write%20count%20leak%20in%20ksmbd_vfs_kern_path_locked%28%29" title="Al Viro &lt;viro@zeniv.linux.org.uk&gt;">Al Viro</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=277627b431a0a6401635c416a21b2a0f77a77347" target="_blank">277627b4</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" title="ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" target="_blank">ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="KVM: Allow CPU to reschedule while setting per-page memory attributes">KVM: Allow CPU to reschedule while setting per-page memory attributes</td>
                             <td class="author"><a href="mailto:liam.merwick@oracle.com?subject=Re%3A%20KVM%3A%20Allow%20CPU%20to%20reschedule%20while%20setting%20per-page%20memory%20attributes" title="Liam Merwick &lt;liam.merwick@oracle.com&gt;">Liam Merwick</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=47bb584237cc285e3a860b70c01f7bda9dcfb05b" target="_blank">47bb5842</a></td>
@@ -1405,11 +1693,43 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="lib/alloc_tag: do not acquire non-existent lock in alloc_tag_top_users()">lib/alloc_tag: do not acquire non-existent lock in alloc_tag_top_users()</td>
+                            <td class="author"><a href="mailto:harry.yoo@oracle.com?subject=Re%3A%20lib%2Falloc_tag%3A%20do%20not%20acquire%20non-existent%20lock%20in%20alloc_tag_top_users%28%29" title="Harry Yoo &lt;harry.yoo@oracle.com&gt;">Harry Yoo</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=99af22cd34688cc0d535a1919e0bea4cbc6c1ea1" target="_blank">99af22cd</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/lib-alloc_tag-do-not-acquire-non-existent-lock-in-alloc_tag_top_users.patch" title="lib-alloc_tag-do-not-acquire-non-existent-lock-in-alloc_tag_top_users.patch" target="_blank">lib-alloc_tag-do-not-acquire-non-existent-lock-in-alloc_tag_top_users.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="maple_tree: fix mt_destroy_walk() on root leaf node">maple_tree: fix mt_destroy_walk() on root leaf node</td>
+                            <td class="author"><a href="mailto:richard.weiyang@gmail.com?subject=Re%3A%20maple_tree%3A%20fix%20mt_destroy_walk%28%29%20on%20root%20leaf%20node" title="Wei Yang &lt;richard.weiyang@gmail.com&gt;">Wei Yang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ea9b77f98d94c4d5c1bd1ac1db078f78b40e8bf5" target="_blank">ea9b77f9</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" title="maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" target="_blank">maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="md/md-bitmap: fix GPF in bitmap_get_stats()">md/md-bitmap: fix GPF in bitmap_get_stats()</td>
                             <td class="author"><a href="mailto:haakon.bugge@oracle.com?subject=Re%3A%20md%2Fmd-bitmap%3A%20fix%20GPF%20in%20bitmap_get_stats%28%29" title="Håkon Bugge &lt;haakon.bugge@oracle.com&gt;">Håkon Bugge</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c17fb542dbd1db745c9feac15617056506dd7195" target="_blank">c17fb542</a></td>
                             <td class="changes"><span class="additions">+1</span> <span class="deletions">-2</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch" title="md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch" target="_blank">md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm: fix the inaccurate memory statistics issue for users">mm: fix the inaccurate memory statistics issue for users</td>
+                            <td class="author"><a href="mailto:baolin.wang@linux.alibaba.com?subject=Re%3A%20mm%3A%20fix%20the%20inaccurate%20memory%20statistics%20issue%20for%20users" title="Baolin Wang &lt;baolin.wang@linux.alibaba.com&gt;">Baolin Wang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=82241a83cd15aaaf28200a40ad1a8b480012edaf" target="_blank">82241a83</a></td>
+                            <td class="changes"><span class="additions">+12</span> <span class="deletions">-7</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch" title="mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch" target="_blank">mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm/vmalloc: leave lazy MMU mode on PTE mapping error">mm/vmalloc: leave lazy MMU mode on PTE mapping error</td>
+                            <td class="author"><a href="mailto:agordeev@linux.ibm.com?subject=Re%3A%20mm%2Fvmalloc%3A%20leave%20lazy%20MMU%20mode%20on%20PTE%20mapping%20error" title="Alexander Gordeev &lt;agordeev@linux.ibm.com&gt;">Alexander Gordeev</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fea18c686320a53fce7ad62a87a3e1d10ad02f31" target="_blank">fea18c68</a></td>
+                            <td class="changes"><span class="additions">+15</span> <span class="deletions">-7</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch" title="mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch" target="_blank">mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -1485,11 +1805,27 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="netlink: Fix rmem check in netlink_broadcast_deliver().">netlink: Fix rmem check in netlink_broadcast_deliver().</td>
+                            <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20rmem%20check%20in%20netlink_broadcast_deliver%28%29." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a3c4a125ec725cefb40047eb05ff9eafd57830b4" target="_blank">a3c4a125</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" title="netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" target="_blank">netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.">netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.</td>
                             <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20wraparounds%20of%20sk-%3Esk_rmem_alloc." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae8f160e7eb24240a2a79fc4c815c6a0d4ee16cc" target="_blank">ae8f160e</a></td>
                             <td class="changes"><span class="additions">+49</span> <span class="deletions">-33</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" title="netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" target="_blank">netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="netlink: make sure we allow at least one dump skb">netlink: make sure we allow at least one dump skb</td>
+                            <td class="author"><a href="mailto:kuba@kernel.org?subject=Re%3A%20netlink%3A%20make%20sure%20we%20allow%20at%20least%20one%20dump%20skb" title="Jakub Kicinski &lt;kuba@kernel.org&gt;">Jakub Kicinski</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a215b5723922f8099078478122f02100e489cb80" target="_blank">a215b572</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/netlink-make-sure-we-allow-at-least-one-dump-skb.patch" title="netlink-make-sure-we-allow-at-least-one-dump-skb.patch" target="_blank">netlink-make-sure-we-allow-at-least-one-dump-skb.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -1605,6 +1941,38 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="scripts/gdb: de-reference per-CPU MCE interrupts">scripts/gdb: de-reference per-CPU MCE interrupts</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20de-reference%20per-CPU%20MCE%20interrupts" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=50f4d2ba26d5c3a4687ae0569be3bbf1c8f0cbed" target="_blank">50f4d2ba</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/scripts-gdb-de-reference-per-cpu-mce-interrupts.patch" title="scripts-gdb-de-reference-per-cpu-mce-interrupts.patch" target="_blank">scripts-gdb-de-reference-per-cpu-mce-interrupts.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: fix interrupts display after MCP on x86">scripts/gdb: fix interrupts display after MCP on x86</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20fix%20interrupts%20display%20after%20MCP%20on%20x86" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7627b459aa0737bdd62a8591a1481cda467f20e3" target="_blank">7627b459</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch" title="scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch" target="_blank">scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: fix interrupts.py after maple tree conversion">scripts/gdb: fix interrupts.py after maple tree conversion</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20fix%20interrupts.py%20after%20maple%20tree%20conversion" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a02b0cde8ee515ee0c8efd33e7fbe6830c282e69" target="_blank">a02b0cde</a></td>
+                            <td class="changes"><span class="additions">+293</span> <span class="deletions">-6</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch" title="scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch" target="_blank">scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="smb: server: make use of rdma_destroy_qp()">smb: server: make use of rdma_destroy_qp()</td>
+                            <td class="author"><a href="mailto:metze@samba.org?subject=Re%3A%20smb%3A%20server%3A%20make%20use%20of%20rdma_destroy_qp%28%29" title="Stefan Metzmacher &lt;metze@samba.org&gt;">Stefan Metzmacher</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0c2b53997e8f5e2ec9e0fbd17ac0436466b65488" target="_blank">0c2b5399</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/smb-server-make-use-of-rdma_destroy_qp.patch" title="smb-server-make-use-of-rdma_destroy_qp.patch" target="_blank">smb-server-make-use-of-rdma_destroy_qp.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="tcp: Correct signedness in skb remaining space calculation">tcp: Correct signedness in skb remaining space calculation</td>
                             <td class="author"><a href="mailto:jiayuan.chen@linux.dev?subject=Re%3A%20tcp%3A%20Correct%20signedness%20in%20skb%20remaining%20space%20calculation" title="Jiayuan Chen &lt;jiayuan.chen@linux.dev&gt;">Jiayuan Chen</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d3a5f2871adc0c61c61869f37f3e697d97f03d8c" target="_blank">d3a5f287</a></td>
@@ -1709,14 +2077,6 @@
                         </tr>
                     
                         <tr>
-                            <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
-                            <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
-                            <td class="commit-sha">-</td>
-                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch" target="_blank">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
-                        </tr>
-                    
-                        <tr>
                             <td class="subject" title="x86/mce/amd: Add default names for MCA banks and blocks">x86/mce/amd: Add default names for MCA banks and blocks</td>
                             <td class="author"><a href="mailto:yazen.ghannam@amd.com?subject=Re%3A%20x86%2Fmce%2Famd%3A%20Add%20default%20names%20for%20MCA%20banks%20and%20blocks" title="Yazen Ghannam &lt;yazen.ghannam@amd.com&gt;">Yazen Ghannam</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d66e1e90b16055d2f0ee76e5384e3f119c3c2773" target="_blank">d66e1e90</a></td>
@@ -1756,6 +2116,22 @@
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch" title="x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch" target="_blank">x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch</a></td>
                         </tr>
                     
+                        <tr>
+                            <td class="subject" title="x86/mm: Disable hugetlb page table sharing on 32-bit">x86/mm: Disable hugetlb page table sharing on 32-bit</td>
+                            <td class="author"><a href="mailto:jannh@google.com?subject=Re%3A%20x86%2Fmm%3A%20Disable%20hugetlb%20page%20table%20sharing%20on%2032-bit" title="Jann Horn &lt;jannh@google.com&gt;">Jann Horn</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=76303ee8d54bff6d9a6d55997acd88a6c2ba63cf" target="_blank">76303ee8</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch" title="x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch" target="_blank">x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="x86/rdrand: Disable RDSEED on AMD Cyan Skillfish">x86/rdrand: Disable RDSEED on AMD Cyan Skillfish</td>
+                            <td class="author"><a href="mailto:me@mixaill.net?subject=Re%3A%20x86%2Frdrand%3A%20Disable%20RDSEED%20on%20AMD%20Cyan%20Skillfish" title="Mikhail Paulyshka &lt;me@mixaill.net&gt;">Mikhail Paulyshka</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b937a1ed64ebeba8876e398110a5790ad77407c" target="_blank">5b937a1e</a></td>
+                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.12/x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch" title="x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch" target="_blank">x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch</a></td>
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>
@@ -1766,7 +2142,7 @@
                 <div class="queue-version collapsible" id="header-6-6" onclick="toggleQueue('6-6')">
                     ▶ Linux 6.6
                 </div>
-                <div class="patch-count">51 patches</div>
+                <div class="patch-count">65 patches</div>
             </div>
             
             <div class="patch-list collapsed" id="queue-6-6">
@@ -1903,6 +2279,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="erofs: fix to add missing tracepoint in erofs_read_folio()">erofs: fix to add missing tracepoint in erofs_read_folio()</td>
+                            <td class="author"><a href="mailto:chao@kernel.org?subject=Re%3A%20erofs%3A%20fix%20to%20add%20missing%20tracepoint%20in%20erofs_read_folio%28%29" title="Chao Yu &lt;chao@kernel.org&gt;">Chao Yu</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=99f7619a77a0a2e3e2bcae676d0f301769167754" target="_blank">99f7619a</a></td>
+                            <td class="changes"><span class="additions">+2</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch" title="erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch" target="_blank">erofs-fix-to-add-missing-tracepoint-in-erofs_read_folio.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="eventpoll: don&#39;t decrement ep refcount while still holding the ep mutex">eventpoll: don&#39;t decrement ep refcount while still holding the ep mutex</td>
                             <td class="author"><a href="mailto:torvalds@linux-foundation.org?subject=Re%3A%20eventpoll%3A%20don%27t%20decrement%20ep%20refcount%20while%20still%20holding%20the%20ep%20mutex" title="Linus Torvalds &lt;torvalds@linux-foundation.org&gt;">Linus Torvalds</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8c2e52ebbe885c7eeaabd3b7ddcdc1246fc400d2" target="_blank">8c2e52eb</a></td>
@@ -1935,6 +2319,22 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="kallsyms: fix build without execinfo">kallsyms: fix build without execinfo</td>
+                            <td class="author"><a href="mailto:fossdd@pwned.life?subject=Re%3A%20kallsyms%3A%20fix%20build%20without%20execinfo" title="Achill Gilgenast &lt;fossdd@pwned.life&gt;">Achill Gilgenast</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a95743b53031b015e8949e845a9f6fdfb2656347" target="_blank">a95743b5</a></td>
+                            <td class="changes"><span class="additions">+4</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/kallsyms-fix-build-without-execinfo.patch" title="kallsyms-fix-build-without-execinfo.patch" target="_blank">kallsyms-fix-build-without-execinfo.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()">ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()</td>
+                            <td class="author"><a href="mailto:viro@zeniv.linux.org.uk?subject=Re%3A%20ksmbd%3A%20fix%20a%20mount%20write%20count%20leak%20in%20ksmbd_vfs_kern_path_locked%28%29" title="Al Viro &lt;viro@zeniv.linux.org.uk&gt;">Al Viro</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=277627b431a0a6401635c416a21b2a0f77a77347" target="_blank">277627b4</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" title="ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" target="_blank">ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="KVM: SVM: Reject SEV{-ES} intra host migration if vCPU creation is in-flight">KVM: SVM: Reject SEV{-ES} intra host migration if vCPU creation is in-flight</td>
                             <td class="author"><a href="mailto:seanjc@google.com?subject=Re%3A%20KVM%3A%20SVM%3A%20Reject%20SEV%7B-ES%7D%20intra%20host%20migration%20if%20vCPU%20creation%20is%20in-flight" title="Sean Christopherson &lt;seanjc@google.com&gt;">Sean Christopherson</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ecf371f8b02d5e31b9aa1da7f159f1b2107bdb01" target="_blank">ecf371f8</a></td>
@@ -1959,11 +2359,35 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="maple_tree: fix mt_destroy_walk() on root leaf node">maple_tree: fix mt_destroy_walk() on root leaf node</td>
+                            <td class="author"><a href="mailto:richard.weiyang@gmail.com?subject=Re%3A%20maple_tree%3A%20fix%20mt_destroy_walk%28%29%20on%20root%20leaf%20node" title="Wei Yang &lt;richard.weiyang@gmail.com&gt;">Wei Yang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ea9b77f98d94c4d5c1bd1ac1db078f78b40e8bf5" target="_blank">ea9b77f9</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" title="maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" target="_blank">maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="md/md-bitmap: fix GPF in bitmap_get_stats()">md/md-bitmap: fix GPF in bitmap_get_stats()</td>
                             <td class="author"><a href="mailto:haakon.bugge@oracle.com?subject=Re%3A%20md%2Fmd-bitmap%3A%20fix%20GPF%20in%20bitmap_get_stats%28%29" title="Håkon Bugge &lt;haakon.bugge@oracle.com&gt;">Håkon Bugge</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c17fb542dbd1db745c9feac15617056506dd7195" target="_blank">c17fb542</a></td>
                             <td class="changes"><span class="additions">+1</span> <span class="deletions">-2</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch" title="md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch" target="_blank">md-md-bitmap-fix-gpf-in-bitmap_get_stats.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm: fix the inaccurate memory statistics issue for users">mm: fix the inaccurate memory statistics issue for users</td>
+                            <td class="author"><a href="mailto:baolin.wang@linux.alibaba.com?subject=Re%3A%20mm%3A%20fix%20the%20inaccurate%20memory%20statistics%20issue%20for%20users" title="Baolin Wang &lt;baolin.wang@linux.alibaba.com&gt;">Baolin Wang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=82241a83cd15aaaf28200a40ad1a8b480012edaf" target="_blank">82241a83</a></td>
+                            <td class="changes"><span class="additions">+12</span> <span class="deletions">-7</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch" title="mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch" target="_blank">mm-fix-the-inaccurate-memory-statistics-issue-for-users.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="mm/vmalloc: leave lazy MMU mode on PTE mapping error">mm/vmalloc: leave lazy MMU mode on PTE mapping error</td>
+                            <td class="author"><a href="mailto:agordeev@linux.ibm.com?subject=Re%3A%20mm%2Fvmalloc%3A%20leave%20lazy%20MMU%20mode%20on%20PTE%20mapping%20error" title="Alexander Gordeev &lt;agordeev@linux.ibm.com&gt;">Alexander Gordeev</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fea18c686320a53fce7ad62a87a3e1d10ad02f31" target="_blank">fea18c68</a></td>
+                            <td class="changes"><span class="additions">+15</span> <span class="deletions">-7</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch" title="mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch" target="_blank">mm-vmalloc-leave-lazy-mmu-mode-on-pte-mapping-error.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2007,11 +2431,27 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="netlink: Fix rmem check in netlink_broadcast_deliver().">netlink: Fix rmem check in netlink_broadcast_deliver().</td>
+                            <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20rmem%20check%20in%20netlink_broadcast_deliver%28%29." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a3c4a125ec725cefb40047eb05ff9eafd57830b4" target="_blank">a3c4a125</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" title="netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" target="_blank">netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.">netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.</td>
                             <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20wraparounds%20of%20sk-%3Esk_rmem_alloc." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae8f160e7eb24240a2a79fc4c815c6a0d4ee16cc" target="_blank">ae8f160e</a></td>
                             <td class="changes"><span class="additions">+49</span> <span class="deletions">-33</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" title="netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" target="_blank">netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="netlink: make sure we allow at least one dump skb">netlink: make sure we allow at least one dump skb</td>
+                            <td class="author"><a href="mailto:kuba@kernel.org?subject=Re%3A%20netlink%3A%20make%20sure%20we%20allow%20at%20least%20one%20dump%20skb" title="Jakub Kicinski &lt;kuba@kernel.org&gt;">Jakub Kicinski</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a215b5723922f8099078478122f02100e489cb80" target="_blank">a215b572</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/netlink-make-sure-we-allow-at-least-one-dump-skb.patch" title="netlink-make-sure-we-allow-at-least-one-dump-skb.patch" target="_blank">netlink-make-sure-we-allow-at-least-one-dump-skb.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2055,6 +2495,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="pwm: mediatek: Ensure to disable clocks in error path">pwm: mediatek: Ensure to disable clocks in error path</td>
+                            <td class="author"><a href="mailto:u.kleine-koenig@baylibre.com?subject=Re%3A%20pwm%3A%20mediatek%3A%20Ensure%20to%20disable%20clocks%20in%20error%20path" title="Uwe Kleine-König &lt;u.kleine-koenig@baylibre.com&gt;">Uwe Kleine-König</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=505b730ede7f5c4083ff212aa955155b5b92e574" target="_blank">505b730e</a></td>
+                            <td class="changes"><span class="additions">+8</span> <span class="deletions">-5</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" title="pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" target="_blank">pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="Revert &quot;ACPI: battery: negate current when discharging&quot;">Revert &quot;ACPI: battery: negate current when discharging&quot;</td>
                             <td class="author"><a href="mailto:rafael.j.wysocki@intel.com?subject=Re%3A%20Revert%20%22ACPI%3A%20battery%3A%20negate%20current%20when%20discharging%22" title="Rafael J. Wysocki &lt;rafael.j.wysocki@intel.com&gt;">Rafael J. Wysocki</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=de1675de39aa945bad5937d1fde4df3682670639" target="_blank">de1675de</a></td>
@@ -2084,6 +2532,38 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=880a88f318cf1d2a0f4c0a7ff7b07e2062b434a4" target="_blank">880a88f3</a></td>
                             <td class="changes"><span class="additions">+3</span> <span class="deletions">-0</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/rxrpc-fix-oops-due-to-non-existence-of-prealloc-backlog-struct.patch" title="rxrpc-fix-oops-due-to-non-existence-of-prealloc-backlog-struct.patch" target="_blank">rxrpc-fix-oops-due-to-non-existence-of-prealloc-backlog-struct.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: de-reference per-CPU MCE interrupts">scripts/gdb: de-reference per-CPU MCE interrupts</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20de-reference%20per-CPU%20MCE%20interrupts" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=50f4d2ba26d5c3a4687ae0569be3bbf1c8f0cbed" target="_blank">50f4d2ba</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/scripts-gdb-de-reference-per-cpu-mce-interrupts.patch" title="scripts-gdb-de-reference-per-cpu-mce-interrupts.patch" target="_blank">scripts-gdb-de-reference-per-cpu-mce-interrupts.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: fix interrupts display after MCP on x86">scripts/gdb: fix interrupts display after MCP on x86</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20fix%20interrupts%20display%20after%20MCP%20on%20x86" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7627b459aa0737bdd62a8591a1481cda467f20e3" target="_blank">7627b459</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch" title="scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch" target="_blank">scripts-gdb-fix-interrupts-display-after-mcp-on-x86.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="scripts/gdb: fix interrupts.py after maple tree conversion">scripts/gdb: fix interrupts.py after maple tree conversion</td>
+                            <td class="author"><a href="mailto:florian.fainelli@broadcom.com?subject=Re%3A%20scripts%2Fgdb%3A%20fix%20interrupts.py%20after%20maple%20tree%20conversion" title="Florian Fainelli &lt;florian.fainelli@broadcom.com&gt;">Florian Fainelli</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a02b0cde8ee515ee0c8efd33e7fbe6830c282e69" target="_blank">a02b0cde</a></td>
+                            <td class="changes"><span class="additions">+293</span> <span class="deletions">-6</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch" title="scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch" target="_blank">scripts-gdb-fix-interrupts.py-after-maple-tree-conversion.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="smb: server: make use of rdma_destroy_qp()">smb: server: make use of rdma_destroy_qp()</td>
+                            <td class="author"><a href="mailto:metze@samba.org?subject=Re%3A%20smb%3A%20server%3A%20make%20use%20of%20rdma_destroy_qp%28%29" title="Stefan Metzmacher &lt;metze@samba.org&gt;">Stefan Metzmacher</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0c2b53997e8f5e2ec9e0fbd17ac0436466b65488" target="_blank">0c2b5399</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/smb-server-make-use-of-rdma_destroy_qp.patch" title="smb-server-make-use-of-rdma_destroy_qp.patch" target="_blank">smb-server-make-use-of-rdma_destroy_qp.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2151,14 +2631,6 @@
                         </tr>
                     
                         <tr>
-                            <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
-                            <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
-                            <td class="commit-sha">-</td>
-                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch" target="_blank">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
-                        </tr>
-                    
-                        <tr>
                             <td class="subject" title="x86/mce/amd: Add default names for MCA banks and blocks">x86/mce/amd: Add default names for MCA banks and blocks</td>
                             <td class="author"><a href="mailto:yazen.ghannam@amd.com?subject=Re%3A%20x86%2Fmce%2Famd%3A%20Add%20default%20names%20for%20MCA%20banks%20and%20blocks" title="Yazen Ghannam &lt;yazen.ghannam@amd.com&gt;">Yazen Ghannam</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d66e1e90b16055d2f0ee76e5384e3f119c3c2773" target="_blank">d66e1e90</a></td>
@@ -2190,6 +2662,22 @@
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch" title="x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch" target="_blank">x86-mce-make-sure-cmci-banks-are-cleared-during-shutdown-on-intel.patch</a></td>
                         </tr>
                     
+                        <tr>
+                            <td class="subject" title="x86/mm: Disable hugetlb page table sharing on 32-bit">x86/mm: Disable hugetlb page table sharing on 32-bit</td>
+                            <td class="author"><a href="mailto:jannh@google.com?subject=Re%3A%20x86%2Fmm%3A%20Disable%20hugetlb%20page%20table%20sharing%20on%2032-bit" title="Jann Horn &lt;jannh@google.com&gt;">Jann Horn</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=76303ee8d54bff6d9a6d55997acd88a6c2ba63cf" target="_blank">76303ee8</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch" title="x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch" target="_blank">x86-mm-disable-hugetlb-page-table-sharing-on-32-bit.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="x86/rdrand: Disable RDSEED on AMD Cyan Skillfish">x86/rdrand: Disable RDSEED on AMD Cyan Skillfish</td>
+                            <td class="author"><a href="mailto:me@mixaill.net?subject=Re%3A%20x86%2Frdrand%3A%20Disable%20RDSEED%20on%20AMD%20Cyan%20Skillfish" title="Mikhail Paulyshka &lt;me@mixaill.net&gt;">Mikhail Paulyshka</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b937a1ed64ebeba8876e398110a5790ad77407c" target="_blank">5b937a1e</a></td>
+                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.6/x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch" title="x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch" target="_blank">x86-rdrand-disable-rdseed-on-amd-cyan-skillfish.patch</a></td>
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>
@@ -2200,7 +2688,7 @@
                 <div class="queue-version collapsible" id="header-6-1" onclick="toggleQueue('6-1')">
                     ▶ Linux 6.1
                 </div>
-                <div class="patch-count">37 patches</div>
+                <div class="patch-count">43 patches</div>
             </div>
             
             <div class="patch-list collapsed" id="queue-6-1">
@@ -2321,6 +2809,22 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="kallsyms: fix build without execinfo">kallsyms: fix build without execinfo</td>
+                            <td class="author"><a href="mailto:fossdd@pwned.life?subject=Re%3A%20kallsyms%3A%20fix%20build%20without%20execinfo" title="Achill Gilgenast &lt;fossdd@pwned.life&gt;">Achill Gilgenast</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a95743b53031b015e8949e845a9f6fdfb2656347" target="_blank">a95743b5</a></td>
+                            <td class="changes"><span class="additions">+4</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/kallsyms-fix-build-without-execinfo.patch" title="kallsyms-fix-build-without-execinfo.patch" target="_blank">kallsyms-fix-build-without-execinfo.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()">ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()</td>
+                            <td class="author"><a href="mailto:viro@zeniv.linux.org.uk?subject=Re%3A%20ksmbd%3A%20fix%20a%20mount%20write%20count%20leak%20in%20ksmbd_vfs_kern_path_locked%28%29" title="Al Viro &lt;viro@zeniv.linux.org.uk&gt;">Al Viro</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=277627b431a0a6401635c416a21b2a0f77a77347" target="_blank">277627b4</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" title="ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch" target="_blank">ksmbd-fix-a-mount-write-count-leak-in-ksmbd_vfs_kern_path_locked.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="KVM: SVM: Reject SEV{-ES} intra host migration if vCPU creation is in-flight">KVM: SVM: Reject SEV{-ES} intra host migration if vCPU creation is in-flight</td>
                             <td class="author"><a href="mailto:seanjc@google.com?subject=Re%3A%20KVM%3A%20SVM%3A%20Reject%20SEV%7B-ES%7D%20intra%20host%20migration%20if%20vCPU%20creation%20is%20in-flight" title="Sean Christopherson &lt;seanjc@google.com&gt;">Sean Christopherson</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ecf371f8b02d5e31b9aa1da7f159f1b2107bdb01" target="_blank">ecf371f8</a></td>
@@ -2342,6 +2846,14 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fba46a5d83ca8decb338722fb4899026d8d9ead2" target="_blank">fba46a5d</a></td>
                             <td class="changes"><span class="additions">+4</span> <span class="deletions">-2</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/maple_tree-fix-ma_state_prealloc-flag-in-mas_preallocate.patch" title="maple_tree-fix-ma_state_prealloc-flag-in-mas_preallocate.patch" target="_blank">maple_tree-fix-ma_state_prealloc-flag-in-mas_preallocate.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="maple_tree: fix mt_destroy_walk() on root leaf node">maple_tree: fix mt_destroy_walk() on root leaf node</td>
+                            <td class="author"><a href="mailto:richard.weiyang@gmail.com?subject=Re%3A%20maple_tree%3A%20fix%20mt_destroy_walk%28%29%20on%20root%20leaf%20node" title="Wei Yang &lt;richard.weiyang@gmail.com&gt;">Wei Yang</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ea9b77f98d94c4d5c1bd1ac1db078f78b40e8bf5" target="_blank">ea9b77f9</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" title="maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch" target="_blank">maple_tree-fix-mt_destroy_walk-on-root-leaf-node.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2377,11 +2889,27 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="netlink: Fix rmem check in netlink_broadcast_deliver().">netlink: Fix rmem check in netlink_broadcast_deliver().</td>
+                            <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20rmem%20check%20in%20netlink_broadcast_deliver%28%29." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a3c4a125ec725cefb40047eb05ff9eafd57830b4" target="_blank">a3c4a125</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" title="netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" target="_blank">netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.">netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.</td>
                             <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20wraparounds%20of%20sk-%3Esk_rmem_alloc." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae8f160e7eb24240a2a79fc4c815c6a0d4ee16cc" target="_blank">ae8f160e</a></td>
                             <td class="changes"><span class="additions">+49</span> <span class="deletions">-33</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" title="netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" target="_blank">netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="netlink: make sure we allow at least one dump skb">netlink: make sure we allow at least one dump skb</td>
+                            <td class="author"><a href="mailto:kuba@kernel.org?subject=Re%3A%20netlink%3A%20make%20sure%20we%20allow%20at%20least%20one%20dump%20skb" title="Jakub Kicinski &lt;kuba@kernel.org&gt;">Jakub Kicinski</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a215b5723922f8099078478122f02100e489cb80" target="_blank">a215b572</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/netlink-make-sure-we-allow-at-least-one-dump-skb.patch" title="netlink-make-sure-we-allow-at-least-one-dump-skb.patch" target="_blank">netlink-make-sure-we-allow-at-least-one-dump-skb.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2409,6 +2937,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="pwm: mediatek: Ensure to disable clocks in error path">pwm: mediatek: Ensure to disable clocks in error path</td>
+                            <td class="author"><a href="mailto:u.kleine-koenig@baylibre.com?subject=Re%3A%20pwm%3A%20mediatek%3A%20Ensure%20to%20disable%20clocks%20in%20error%20path" title="Uwe Kleine-König &lt;u.kleine-koenig@baylibre.com&gt;">Uwe Kleine-König</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=505b730ede7f5c4083ff212aa955155b5b92e574" target="_blank">505b730e</a></td>
+                            <td class="changes"><span class="additions">+8</span> <span class="deletions">-5</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" title="pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" target="_blank">pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="Revert &quot;ACPI: battery: negate current when discharging&quot;">Revert &quot;ACPI: battery: negate current when discharging&quot;</td>
                             <td class="author"><a href="mailto:rafael.j.wysocki@intel.com?subject=Re%3A%20Revert%20%22ACPI%3A%20battery%3A%20negate%20current%20when%20discharging%22" title="Rafael J. Wysocki &lt;rafael.j.wysocki@intel.com&gt;">Rafael J. Wysocki</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=de1675de39aa945bad5937d1fde4df3682670639" target="_blank">de1675de</a></td>
@@ -2422,6 +2958,14 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=880a88f318cf1d2a0f4c0a7ff7b07e2062b434a4" target="_blank">880a88f3</a></td>
                             <td class="changes"><span class="additions">+3</span> <span class="deletions">-0</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/rxrpc-fix-oops-due-to-non-existence-of-prealloc-backlog-struct.patch" title="rxrpc-fix-oops-due-to-non-existence-of-prealloc-backlog-struct.patch" target="_blank">rxrpc-fix-oops-due-to-non-existence-of-prealloc-backlog-struct.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="smb: server: make use of rdma_destroy_qp()">smb: server: make use of rdma_destroy_qp()</td>
+                            <td class="author"><a href="mailto:metze@samba.org?subject=Re%3A%20smb%3A%20server%3A%20make%20use%20of%20rdma_destroy_qp%28%29" title="Stefan Metzmacher &lt;metze@samba.org&gt;">Stefan Metzmacher</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0c2b53997e8f5e2ec9e0fbd17ac0436466b65488" target="_blank">0c2b5399</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/smb-server-make-use-of-rdma_destroy_qp.patch" title="smb-server-make-use-of-rdma_destroy_qp.patch" target="_blank">smb-server-make-use-of-rdma_destroy_qp.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2481,14 +3025,6 @@
                         </tr>
                     
                         <tr>
-                            <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
-                            <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
-                            <td class="commit-sha">-</td>
-                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.1/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch" target="_blank">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
-                        </tr>
-                    
-                        <tr>
                             <td class="subject" title="x86/mce/amd: Fix threshold limit reset">x86/mce/amd: Fix threshold limit reset</td>
                             <td class="author"><a href="mailto:yazen.ghannam@amd.com?subject=Re%3A%20x86%2Fmce%2Famd%3A%20Fix%20threshold%20limit%20reset" title="Yazen Ghannam &lt;yazen.ghannam@amd.com&gt;">Yazen Ghannam</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f6e3b720694ad771911f637a51930f511427ce1" target="_blank">5f6e3b72</a></td>
@@ -2522,7 +3058,7 @@
                 <div class="queue-version collapsible" id="header-5-15" onclick="toggleQueue('5-15')">
                     ▶ Linux 5.15
                 </div>
-                <div class="patch-count">43 patches</div>
+                <div class="patch-count">40 patches</div>
             </div>
             
             <div class="patch-list collapsed" id="queue-5-15">
@@ -2544,30 +3080,6 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e169bd4fb2b36c4b2bee63c35c740c85daeb2e86" target="_blank">e169bd4f</a></td>
                             <td class="changes"><span class="additions">+4</span> <span class="deletions">-1</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/aoe-avoid-potential-deadlock-at-set_capacity.patch" title="aoe-avoid-potential-deadlock-at-set_capacity.patch" target="_blank">aoe-avoid-potential-deadlock-at-set_capacity.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codec: wcd9335: Convert to GPIO descriptors">ASoC: codec: wcd9335: Convert to GPIO descriptors</td>
-                            <td class="author"><a href="mailto:peng.fan@nxp.com?subject=Re%3A%20ASoC%3A%20codec%3A%20wcd9335%3A%20Convert%20to%20GPIO%20descriptors" title="Peng Fan &lt;peng.fan@nxp.com&gt;">Peng Fan</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d5099bc1b56417733f4cccf10c61ee74dadd5562" target="_blank">d5099bc1</a></td>
-                            <td class="changes"><span class="additions">+7</span> <span class="deletions">-9</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/asoc-codec-wcd9335-convert-to-gpio-descriptors.patch" title="asoc-codec-wcd9335-convert-to-gpio-descriptors.patch" target="_blank">asoc-codec-wcd9335-convert-to-gpio-descriptors.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codecs: wcd9335: Fix missing free of regulator supplies">ASoC: codecs: wcd9335: Fix missing free of regulator supplies</td>
-                            <td class="author"><a href="mailto:krzysztof.kozlowski@linaro.org?subject=Re%3A%20ASoC%3A%20codecs%3A%20wcd9335%3A%20Fix%20missing%20free%20of%20regulator%20supplies" title="Krzysztof Kozlowski &lt;krzysztof.kozlowski@linaro.org&gt;">Krzysztof Kozlowski</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9079db287fc3e38e040b0edeb0a25770bb679c8e" target="_blank">9079db28</a></td>
-                            <td class="changes"><span class="additions">+7</span> <span class="deletions">-19</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch" title="asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch" target="_blank">asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codecs: wcd9335: Handle nicer probe deferral and simplify with">ASoC: codecs: wcd9335: Handle nicer probe deferral and simplify with</td>
-                            <td class="author"><a href="mailto:krzysztof.kozlowski@linaro.org?subject=Re%3A%20ASoC%3A%20codecs%3A%20wcd9335%3A%20Handle%20nicer%20probe%20deferral%20and%20simplify%20with" title="Krzysztof Kozlowski &lt;krzysztof.kozlowski@linaro.org&gt;">Krzysztof Kozlowski</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4a03b5dbad466c902d522f3405daa4e5d80578c5" target="_blank">4a03b5db</a></td>
-                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-20</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch" title="asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch" target="_blank">asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2731,11 +3243,27 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="netlink: Fix rmem check in netlink_broadcast_deliver().">netlink: Fix rmem check in netlink_broadcast_deliver().</td>
+                            <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20rmem%20check%20in%20netlink_broadcast_deliver%28%29." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a3c4a125ec725cefb40047eb05ff9eafd57830b4" target="_blank">a3c4a125</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" title="netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" target="_blank">netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.">netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.</td>
                             <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20wraparounds%20of%20sk-%3Esk_rmem_alloc." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae8f160e7eb24240a2a79fc4c815c6a0d4ee16cc" target="_blank">ae8f160e</a></td>
                             <td class="changes"><span class="additions">+49</span> <span class="deletions">-33</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" title="netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" target="_blank">netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="netlink: make sure we allow at least one dump skb">netlink: make sure we allow at least one dump skb</td>
+                            <td class="author"><a href="mailto:kuba@kernel.org?subject=Re%3A%20netlink%3A%20make%20sure%20we%20allow%20at%20least%20one%20dump%20skb" title="Jakub Kicinski &lt;kuba@kernel.org&gt;">Jakub Kicinski</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a215b5723922f8099078478122f02100e489cb80" target="_blank">a215b572</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/netlink-make-sure-we-allow-at-least-one-dump-skb.patch" title="netlink-make-sure-we-allow-at-least-one-dump-skb.patch" target="_blank">netlink-make-sure-we-allow-at-least-one-dump-skb.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2755,27 +3283,19 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="pwm: mediatek: Ensure to disable clocks in error path">pwm: mediatek: Ensure to disable clocks in error path</td>
+                            <td class="author"><a href="mailto:u.kleine-koenig@baylibre.com?subject=Re%3A%20pwm%3A%20mediatek%3A%20Ensure%20to%20disable%20clocks%20in%20error%20path" title="Uwe Kleine-König &lt;u.kleine-koenig@baylibre.com&gt;">Uwe Kleine-König</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=505b730ede7f5c4083ff212aa955155b5b92e574" target="_blank">505b730e</a></td>
+                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-6</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" title="pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" target="_blank">pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="RDMA/mlx5: Fix vport loopback for MPV device">RDMA/mlx5: Fix vport loopback for MPV device</td>
                             <td class="author"><a href="mailto:phaddad@nvidia.com?subject=Re%3A%20RDMA%2Fmlx5%3A%20Fix%20vport%20loopback%20for%20MPV%20device" title="Patrisious Haddad &lt;phaddad@nvidia.com&gt;">Patrisious Haddad</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a9a9e68954f29b1e197663f76289db4879fd51bb" target="_blank">a9a9e689</a></td>
                             <td class="changes"><span class="additions">+33</span> <span class="deletions">-1</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/rdma-mlx5-fix-vport-loopback-for-mpv-device.patch" title="rdma-mlx5-fix-vport-loopback-for-mpv-device.patch" target="_blank">rdma-mlx5-fix-vport-loopback-for-mpv-device.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="regulator: Add devm helpers for get and enable">regulator: Add devm helpers for get and enable</td>
-                            <td class="author"><a href="mailto:mazziesaccount@gmail.com?subject=Re%3A%20regulator%3A%20Add%20devm%20helpers%20for%20get%20and%20enable" title="Matti Vaittinen &lt;mazziesaccount@gmail.com&gt;">Matti Vaittinen</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da279e6965b3838e99e5c0ab8f76b87bf86b31a5" target="_blank">da279e69</a></td>
-                            <td class="changes"><span class="additions">+191</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/regulator-add-devm-helpers-for-get-and-enable.patch" title="regulator-add-devm-helpers-for-get-and-enable.patch" target="_blank">regulator-add-devm-helpers-for-get-and-enable.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="regulator: core: Allow drivers to define their init data as const">regulator: core: Allow drivers to define their init data as const</td>
-                            <td class="author"><a href="mailto:dianders@chromium.org?subject=Re%3A%20regulator%3A%20core%3A%20Allow%20drivers%20to%20define%20their%20init%20data%20as%20const" title="Douglas Anderson &lt;dianders@chromium.org&gt;">Douglas Anderson</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1de452a0edda26f1483d1d934f692eab13ba669a" target="_blank">1de452a0</a></td>
-                            <td class="changes"><span class="additions">+32</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/regulator-core-allow-drivers-to-define-their-init-da.patch" title="regulator-core-allow-drivers-to-define-their-init-da.patch" target="_blank">regulator-core-allow-drivers-to-define-their-init-da.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -2843,14 +3363,6 @@
                         </tr>
                     
                         <tr>
-                            <td class="subject" title="x86/CPU/AMD: Properly check the TSA microcode">x86/CPU/AMD: Properly check the TSA microcode</td>
-                            <td class="author"><a href="mailto:bp@alien8.de?subject=Re%3A%20x86%2FCPU%2FAMD%3A%20Properly%20check%20the%20TSA%20microcode" title="&quot;Borislav Petkov (AMD)&quot; &lt;bp@alien8.de&gt;">&quot;Borislav Petkov (AMD)&quot;</a></td>
-                            <td class="commit-sha">-</td>
-                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.15/x86-cpu-amd-properly-check-the-tsa-microcode.patch" title="x86-cpu-amd-properly-check-the-tsa-microcode.patch" target="_blank">x86-cpu-amd-properly-check-the-tsa-microcode.patch</a></td>
-                        </tr>
-                    
-                        <tr>
                             <td class="subject" title="x86/mce/amd: Fix threshold limit reset">x86/mce/amd: Fix threshold limit reset</td>
                             <td class="author"><a href="mailto:yazen.ghannam@amd.com?subject=Re%3A%20x86%2Fmce%2Famd%3A%20Fix%20threshold%20limit%20reset" title="Yazen Ghannam &lt;yazen.ghannam@amd.com&gt;">Yazen Ghannam</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5f6e3b720694ad771911f637a51930f511427ce1" target="_blank">5f6e3b72</a></td>
@@ -2892,7 +3404,7 @@
                 <div class="queue-version collapsible" id="header-5-10" onclick="toggleQueue('5-10')">
                     ▶ Linux 5.10
                 </div>
-                <div class="patch-count">187 patches</div>
+                <div class="patch-count">182 patches</div>
             </div>
             
             <div class="patch-list collapsed" id="queue-5-10">
@@ -2986,30 +3498,6 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=650768c512faba8070bf4cfbb28c95eb5cd203f3" target="_blank">650768c5</a></td>
                             <td class="changes"><span class="additions">+2</span> <span class="deletions">-1</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/arm64-restrict-pagetable-teardown-to-avoid-false-warning.patch" title="arm64-restrict-pagetable-teardown-to-avoid-false-warning.patch" target="_blank">arm64-restrict-pagetable-teardown-to-avoid-false-warning.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codec: wcd9335: Convert to GPIO descriptors">ASoC: codec: wcd9335: Convert to GPIO descriptors</td>
-                            <td class="author"><a href="mailto:peng.fan@nxp.com?subject=Re%3A%20ASoC%3A%20codec%3A%20wcd9335%3A%20Convert%20to%20GPIO%20descriptors" title="Peng Fan &lt;peng.fan@nxp.com&gt;">Peng Fan</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d5099bc1b56417733f4cccf10c61ee74dadd5562" target="_blank">d5099bc1</a></td>
-                            <td class="changes"><span class="additions">+7</span> <span class="deletions">-9</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/asoc-codec-wcd9335-convert-to-gpio-descriptors.patch" title="asoc-codec-wcd9335-convert-to-gpio-descriptors.patch" target="_blank">asoc-codec-wcd9335-convert-to-gpio-descriptors.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codecs: wcd9335: Fix missing free of regulator supplies">ASoC: codecs: wcd9335: Fix missing free of regulator supplies</td>
-                            <td class="author"><a href="mailto:krzysztof.kozlowski@linaro.org?subject=Re%3A%20ASoC%3A%20codecs%3A%20wcd9335%3A%20Fix%20missing%20free%20of%20regulator%20supplies" title="Krzysztof Kozlowski &lt;krzysztof.kozlowski@linaro.org&gt;">Krzysztof Kozlowski</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9079db287fc3e38e040b0edeb0a25770bb679c8e" target="_blank">9079db28</a></td>
-                            <td class="changes"><span class="additions">+7</span> <span class="deletions">-19</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch" title="asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch" target="_blank">asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codecs: wcd9335: Handle nicer probe deferral and simplify with">ASoC: codecs: wcd9335: Handle nicer probe deferral and simplify with</td>
-                            <td class="author"><a href="mailto:krzysztof.kozlowski@linaro.org?subject=Re%3A%20ASoC%3A%20codecs%3A%20wcd9335%3A%20Handle%20nicer%20probe%20deferral%20and%20simplify%20with" title="Krzysztof Kozlowski &lt;krzysztof.kozlowski@linaro.org&gt;">Krzysztof Kozlowski</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4a03b5dbad466c902d522f3405daa4e5d80578c5" target="_blank">4a03b5db</a></td>
-                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-20</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch" title="asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch" target="_blank">asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -3461,38 +3949,6 @@
                         </tr>
                     
                         <tr>
-                            <td class="subject" title="igc: Add new device ID">igc: Add new device ID</td>
-                            <td class="author"><a href="mailto:sasha.neftin@intel.com?subject=Re%3A%20igc%3A%20Add%20new%20device%20ID" title="Sasha Neftin &lt;sasha.neftin@intel.com&gt;">Sasha Neftin</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bfa5e98c9de466bfe25a9b4bf6ef9122aee2d06a" target="_blank">bfa5e98c</a></td>
-                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/igc-add-new-device-id.patch" title="igc-add-new-device-id.patch" target="_blank">igc-add-new-device-id.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="igc: disable L1.2 PCI-E link substate to avoid performance issue">igc: disable L1.2 PCI-E link substate to avoid performance issue</td>
-                            <td class="author"><a href="mailto:vitaly.lifshits@intel.com?subject=Re%3A%20igc%3A%20disable%20L1.2%20PCI-E%20link%20substate%20to%20avoid%20performance%20issue" title="Vitaly Lifshits &lt;vitaly.lifshits@intel.com&gt;">Vitaly Lifshits</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0325143b59c6c6d79987afc57d2456e7a20d13b7" target="_blank">0325143b</a></td>
-                            <td class="changes"><span class="additions">+10</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/igc-disable-l1.2-pci-e-link-substate-to-avoid-perfor.patch" title="igc-disable-l1.2-pci-e-link-substate-to-avoid-perfor.patch" target="_blank">igc-disable-l1.2-pci-e-link-substate-to-avoid-perfor.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="igc: remove I226 Qbv BaseTime restriction">igc: remove I226 Qbv BaseTime restriction</td>
-                            <td class="author"><a href="mailto:muhammad.husaini.zulkifli@intel.com?subject=Re%3A%20igc%3A%20remove%20I226%20Qbv%20BaseTime%20restriction" title="Muhammad Husaini Zulkifli &lt;muhammad.husaini.zulkifli@intel.com&gt;">Muhammad Husaini Zulkifli</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8897dc54e3bc9d25281bbb42a7d730782ff4588" target="_blank">b8897dc5</a></td>
-                            <td class="changes"><span class="additions">+65</span> <span class="deletions">-17</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/igc-remove-i226-qbv-basetime-restriction.patch" title="igc-remove-i226-qbv-basetime-restriction.patch" target="_blank">igc-remove-i226-qbv-basetime-restriction.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="igc: Simplify TSN flags handling">igc: Simplify TSN flags handling</td>
-                            <td class="author"><a href="mailto:vinicius.gomes@intel.com?subject=Re%3A%20igc%3A%20Simplify%20TSN%20flags%20handling" title="Vinicius Costa Gomes &lt;vinicius.gomes@intel.com&gt;">Vinicius Costa Gomes</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=61572d5f8f91d8603d8db028e1ec9e18fc0ca245" target="_blank">61572d5f</a></td>
-                            <td class="changes"><span class="additions">+43</span> <span class="deletions">-28</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/igc-simplify-tsn-flags-handling.patch" title="igc-simplify-tsn-flags-handling.patch" target="_blank">igc-simplify-tsn-flags-handling.patch</a></td>
-                        </tr>
-                    
-                        <tr>
                             <td class="subject" title="iio: pressure: zpa2326: Use aligned_s64 for the timestamp">iio: pressure: zpa2326: Use aligned_s64 for the timestamp</td>
                             <td class="author"><a href="mailto:Jonathan.Cameron@huawei.com?subject=Re%3A%20iio%3A%20pressure%3A%20zpa2326%3A%20Use%20aligned_s64%20for%20the%20timestamp" title="Jonathan Cameron &lt;Jonathan.Cameron@huawei.com&gt;">Jonathan Cameron</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=886a446b76afddfad307488e95e87f23a08ffd51" target="_blank">886a446b</a></td>
@@ -3701,11 +4157,27 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="netlink: Fix rmem check in netlink_broadcast_deliver().">netlink: Fix rmem check in netlink_broadcast_deliver().</td>
+                            <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20rmem%20check%20in%20netlink_broadcast_deliver%28%29." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a3c4a125ec725cefb40047eb05ff9eafd57830b4" target="_blank">a3c4a125</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" title="netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" target="_blank">netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.">netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.</td>
                             <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20wraparounds%20of%20sk-%3Esk_rmem_alloc." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae8f160e7eb24240a2a79fc4c815c6a0d4ee16cc" target="_blank">ae8f160e</a></td>
                             <td class="changes"><span class="additions">+49</span> <span class="deletions">-33</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" title="netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" target="_blank">netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="netlink: make sure we allow at least one dump skb">netlink: make sure we allow at least one dump skb</td>
+                            <td class="author"><a href="mailto:kuba@kernel.org?subject=Re%3A%20netlink%3A%20make%20sure%20we%20allow%20at%20least%20one%20dump%20skb" title="Jakub Kicinski &lt;kuba@kernel.org&gt;">Jakub Kicinski</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a215b5723922f8099078478122f02100e489cb80" target="_blank">a215b572</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/netlink-make-sure-we-allow-at-least-one-dump-skb.patch" title="netlink-make-sure-we-allow-at-least-one-dump-skb.patch" target="_blank">netlink-make-sure-we-allow-at-least-one-dump-skb.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -3805,6 +4277,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="pwm: mediatek: Ensure to disable clocks in error path">pwm: mediatek: Ensure to disable clocks in error path</td>
+                            <td class="author"><a href="mailto:u.kleine-koenig@baylibre.com?subject=Re%3A%20pwm%3A%20mediatek%3A%20Ensure%20to%20disable%20clocks%20in%20error%20path" title="Uwe Kleine-König &lt;u.kleine-koenig@baylibre.com&gt;">Uwe Kleine-König</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=505b730ede7f5c4083ff212aa955155b5b92e574" target="_blank">505b730e</a></td>
+                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-6</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" title="pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" target="_blank">pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="rcu: Return early if callback is not specified">rcu: Return early if callback is not specified</td>
                             <td class="author"><a href="mailto:urezki@gmail.com?subject=Re%3A%20rcu%3A%20Return%20early%20if%20callback%20is%20not%20specified" title="Uladzislau Rezki (Sony) &lt;urezki@gmail.com&gt;">Uladzislau Rezki (Sony)</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=33b6a1f155d627f5bd80c7485c598ce45428f74f" target="_blank">33b6a1f1</a></td>
@@ -3853,22 +4333,6 @@
                         </tr>
                     
                         <tr>
-                            <td class="subject" title="regulator: Add devm helpers for get and enable">regulator: Add devm helpers for get and enable</td>
-                            <td class="author"><a href="mailto:mazziesaccount@gmail.com?subject=Re%3A%20regulator%3A%20Add%20devm%20helpers%20for%20get%20and%20enable" title="Matti Vaittinen &lt;mazziesaccount@gmail.com&gt;">Matti Vaittinen</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da279e6965b3838e99e5c0ab8f76b87bf86b31a5" target="_blank">da279e69</a></td>
-                            <td class="changes"><span class="additions">+191</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/regulator-add-devm-helpers-for-get-and-enable.patch" title="regulator-add-devm-helpers-for-get-and-enable.patch" target="_blank">regulator-add-devm-helpers-for-get-and-enable.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="regulator: core: Allow drivers to define their init data as const">regulator: core: Allow drivers to define their init data as const</td>
-                            <td class="author"><a href="mailto:dianders@chromium.org?subject=Re%3A%20regulator%3A%20core%3A%20Allow%20drivers%20to%20define%20their%20init%20data%20as%20const" title="Douglas Anderson &lt;dianders@chromium.org&gt;">Douglas Anderson</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1de452a0edda26f1483d1d934f692eab13ba669a" target="_blank">1de452a0</a></td>
-                            <td class="changes"><span class="additions">+32</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/regulator-core-allow-drivers-to-define-their-init-da.patch" title="regulator-core-allow-drivers-to-define-their-init-da.patch" target="_blank">regulator-core-allow-drivers-to-define-their-init-da.patch</a></td>
-                        </tr>
-                    
-                        <tr>
                             <td class="subject" title="regulator: gpio: Fix the out-of-bounds access to drvdata::gpiods">regulator: gpio: Fix the out-of-bounds access to drvdata::gpiods</td>
                             <td class="author"><a href="mailto:mani@kernel.org?subject=Re%3A%20regulator%3A%20gpio%3A%20Fix%20the%20out-of-bounds%20access%20to%20drvdata%3A%3Agpiods" title="Manivannan Sadhasivam &lt;mani@kernel.org&gt;">Manivannan Sadhasivam</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=c9764fd88bc744592b0604ccb6b6fc1a5f76b4e3" target="_blank">c9764fd8</a></td>
@@ -3914,6 +4378,14 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=00a39d8652ff9088de07a6fe6e9e1893452fe0dd" target="_blank">00a39d86</a></td>
                             <td class="changes"><span class="additions">+6</span> <span class="deletions">-4</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/rtc-cmos-use-spin_lock_irqsave-in-cmos_interrupt.patch" title="rtc-cmos-use-spin_lock_irqsave-in-cmos_interrupt.patch" target="_blank">rtc-cmos-use-spin_lock_irqsave-in-cmos_interrupt.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="rtc: lib_test: add MODULE_LICENSE">rtc: lib_test: add MODULE_LICENSE</td>
+                            <td class="author"><a href="mailto:alexandre.belloni@bootlin.com?subject=Re%3A%20rtc%3A%20lib_test%3A%20add%20MODULE_LICENSE" title="Alexandre Belloni &lt;alexandre.belloni@bootlin.com&gt;">Alexandre Belloni</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5546e3dfb65a4389e747766ac455a50c3675fb0f" target="_blank">5546e3df</a></td>
+                            <td class="changes"><span class="additions">+2</span> <span class="deletions">-0</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.10/rtc-lib_test-add-module_license.patch" title="rtc-lib_test-add-module_license.patch" target="_blank">rtc-lib_test-add-module_license.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -4414,7 +4886,7 @@
                 <div class="queue-version collapsible" id="header-5-4" onclick="toggleQueue('5-4')">
                     ▶ Linux 5.4
                 </div>
-                <div class="patch-count">129 patches</div>
+                <div class="patch-count">126 patches</div>
             </div>
             
             <div class="patch-list collapsed" id="queue-5-4">
@@ -4484,30 +4956,6 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=650768c512faba8070bf4cfbb28c95eb5cd203f3" target="_blank">650768c5</a></td>
                             <td class="changes"><span class="additions">+2</span> <span class="deletions">-1</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/arm64-restrict-pagetable-teardown-to-avoid-false-warning.patch" title="arm64-restrict-pagetable-teardown-to-avoid-false-warning.patch" target="_blank">arm64-restrict-pagetable-teardown-to-avoid-false-warning.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codec: wcd9335: Convert to GPIO descriptors">ASoC: codec: wcd9335: Convert to GPIO descriptors</td>
-                            <td class="author"><a href="mailto:peng.fan@nxp.com?subject=Re%3A%20ASoC%3A%20codec%3A%20wcd9335%3A%20Convert%20to%20GPIO%20descriptors" title="Peng Fan &lt;peng.fan@nxp.com&gt;">Peng Fan</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d5099bc1b56417733f4cccf10c61ee74dadd5562" target="_blank">d5099bc1</a></td>
-                            <td class="changes"><span class="additions">+7</span> <span class="deletions">-9</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/asoc-codec-wcd9335-convert-to-gpio-descriptors.patch" title="asoc-codec-wcd9335-convert-to-gpio-descriptors.patch" target="_blank">asoc-codec-wcd9335-convert-to-gpio-descriptors.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codecs: wcd9335: Fix missing free of regulator supplies">ASoC: codecs: wcd9335: Fix missing free of regulator supplies</td>
-                            <td class="author"><a href="mailto:krzysztof.kozlowski@linaro.org?subject=Re%3A%20ASoC%3A%20codecs%3A%20wcd9335%3A%20Fix%20missing%20free%20of%20regulator%20supplies" title="Krzysztof Kozlowski &lt;krzysztof.kozlowski@linaro.org&gt;">Krzysztof Kozlowski</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=9079db287fc3e38e040b0edeb0a25770bb679c8e" target="_blank">9079db28</a></td>
-                            <td class="changes"><span class="additions">+7</span> <span class="deletions">-19</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch" title="asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch" target="_blank">asoc-codecs-wcd9335-fix-missing-free-of-regulator-su.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="ASoC: codecs: wcd9335: Handle nicer probe deferral and simplify with">ASoC: codecs: wcd9335: Handle nicer probe deferral and simplify with</td>
-                            <td class="author"><a href="mailto:krzysztof.kozlowski@linaro.org?subject=Re%3A%20ASoC%3A%20codecs%3A%20wcd9335%3A%20Handle%20nicer%20probe%20deferral%20and%20simplify%20with" title="Krzysztof Kozlowski &lt;krzysztof.kozlowski@linaro.org&gt;">Krzysztof Kozlowski</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=4a03b5dbad466c902d522f3405daa4e5d80578c5" target="_blank">4a03b5db</a></td>
-                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-20</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch" title="asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch" target="_blank">asoc-codecs-wcd9335-handle-nicer-probe-deferral-and-.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -5023,11 +5471,27 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="netlink: Fix rmem check in netlink_broadcast_deliver().">netlink: Fix rmem check in netlink_broadcast_deliver().</td>
+                            <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20rmem%20check%20in%20netlink_broadcast_deliver%28%29." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a3c4a125ec725cefb40047eb05ff9eafd57830b4" target="_blank">a3c4a125</a></td>
+                            <td class="changes"><span class="additions">+1</span> <span class="deletions">-1</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" title="netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch" target="_blank">netlink-fix-rmem-check-in-netlink_broadcast_deliver.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.">netlink: Fix wraparounds of sk-&gt;sk_rmem_alloc.</td>
                             <td class="author"><a href="mailto:kuniyu@google.com?subject=Re%3A%20netlink%3A%20Fix%20wraparounds%20of%20sk-%3Esk_rmem_alloc." title="Kuniyuki Iwashima &lt;kuniyu@google.com&gt;">Kuniyuki Iwashima</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ae8f160e7eb24240a2a79fc4c815c6a0d4ee16cc" target="_blank">ae8f160e</a></td>
                             <td class="changes"><span class="additions">+49</span> <span class="deletions">-33</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" title="netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch" target="_blank">netlink-fix-wraparounds-of-sk-sk_rmem_alloc.patch</a></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="subject" title="netlink: make sure we allow at least one dump skb">netlink: make sure we allow at least one dump skb</td>
+                            <td class="author"><a href="mailto:kuba@kernel.org?subject=Re%3A%20netlink%3A%20make%20sure%20we%20allow%20at%20least%20one%20dump%20skb" title="Jakub Kicinski &lt;kuba@kernel.org&gt;">Jakub Kicinski</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a215b5723922f8099078478122f02100e489cb80" target="_blank">a215b572</a></td>
+                            <td class="changes"><span class="additions">+3</span> <span class="deletions">-2</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/netlink-make-sure-we-allow-at-least-one-dump-skb.patch" title="netlink-make-sure-we-allow-at-least-one-dump-skb.patch" target="_blank">netlink-make-sure-we-allow-at-least-one-dump-skb.patch</a></td>
                         </tr>
                     
                         <tr>
@@ -5103,6 +5567,14 @@
                         </tr>
                     
                         <tr>
+                            <td class="subject" title="pwm: mediatek: Ensure to disable clocks in error path">pwm: mediatek: Ensure to disable clocks in error path</td>
+                            <td class="author"><a href="mailto:u.kleine-koenig@baylibre.com?subject=Re%3A%20pwm%3A%20mediatek%3A%20Ensure%20to%20disable%20clocks%20in%20error%20path" title="Uwe Kleine-König &lt;u.kleine-koenig@baylibre.com&gt;">Uwe Kleine-König</a></td>
+                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=505b730ede7f5c4083ff212aa955155b5b92e574" target="_blank">505b730e</a></td>
+                            <td class="changes"><span class="additions">+9</span> <span class="deletions">-6</span></td>
+                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" title="pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch" target="_blank">pwm-mediatek-ensure-to-disable-clocks-in-error-path.patch</a></td>
+                        </tr>
+                    
+                        <tr>
                             <td class="subject" title="rcu: Return early if callback is not specified">rcu: Return early if callback is not specified</td>
                             <td class="author"><a href="mailto:urezki@gmail.com?subject=Re%3A%20rcu%3A%20Return%20early%20if%20callback%20is%20not%20specified" title="Uladzislau Rezki (Sony) &lt;urezki@gmail.com&gt;">Uladzislau Rezki (Sony)</a></td>
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=33b6a1f155d627f5bd80c7485c598ce45428f74f" target="_blank">33b6a1f1</a></td>
@@ -5148,30 +5620,6 @@
                             <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=8edab8a72d67742f87e9dc2e2b0cdfddda5dc29a" target="_blank">8edab8a7</a></td>
                             <td class="changes"><span class="additions">+1</span> <span class="deletions">-2</span></td>
                             <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/rdma-mlx5-initialize-obj_event-obj_sub_list-before-x.patch" title="rdma-mlx5-initialize-obj_event-obj_sub_list-before-x.patch" target="_blank">rdma-mlx5-initialize-obj_event-obj_sub_list-before-x.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="regulator: Add devm helpers for get and enable">regulator: Add devm helpers for get and enable</td>
-                            <td class="author"><a href="mailto:mazziesaccount@gmail.com?subject=Re%3A%20regulator%3A%20Add%20devm%20helpers%20for%20get%20and%20enable" title="Matti Vaittinen &lt;mazziesaccount@gmail.com&gt;">Matti Vaittinen</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=da279e6965b3838e99e5c0ab8f76b87bf86b31a5" target="_blank">da279e69</a></td>
-                            <td class="changes"><span class="additions">+191</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/regulator-add-devm-helpers-for-get-and-enable.patch" title="regulator-add-devm-helpers-for-get-and-enable.patch" target="_blank">regulator-add-devm-helpers-for-get-and-enable.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="regulator: consumer: Add missing stubs to regulator/consumer.h">regulator: consumer: Add missing stubs to regulator/consumer.h</td>
-                            <td class="author"><a href="mailto:digetx@gmail.com?subject=Re%3A%20regulator%3A%20consumer%3A%20Add%20missing%20stubs%20to%20regulator%2Fconsumer.h" title="Dmitry Osipenko &lt;digetx@gmail.com&gt;">Dmitry Osipenko</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=51dfb6ca3728bd0a0a3c23776a12d2a15a1d2457" target="_blank">51dfb6ca</a></td>
-                            <td class="changes"><span class="additions">+30</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/regulator-consumer-add-missing-stubs-to-regulator-co.patch" title="regulator-consumer-add-missing-stubs-to-regulator-co.patch" target="_blank">regulator-consumer-add-missing-stubs-to-regulator-co.patch</a></td>
-                        </tr>
-                    
-                        <tr>
-                            <td class="subject" title="regulator: core: Allow drivers to define their init data as const">regulator: core: Allow drivers to define their init data as const</td>
-                            <td class="author"><a href="mailto:dianders@chromium.org?subject=Re%3A%20regulator%3A%20core%3A%20Allow%20drivers%20to%20define%20their%20init%20data%20as%20const" title="Douglas Anderson &lt;dianders@chromium.org&gt;">Douglas Anderson</a></td>
-                            <td class="commit-sha"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=1de452a0edda26f1483d1d934f692eab13ba669a" target="_blank">1de452a0</a></td>
-                            <td class="changes"><span class="additions">+32</span> <span class="deletions">-1</span></td>
-                            <td class="filename"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-5.4/regulator-core-allow-drivers-to-define-their-init-da.patch" title="regulator-core-allow-drivers-to-define-their-init-da.patch" target="_blank">regulator-core-allow-drivers-to-define-their-init-da.patch</a></td>
                         </tr>
                     
                         <tr>

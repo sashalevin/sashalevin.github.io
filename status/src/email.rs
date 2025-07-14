@@ -9,10 +9,13 @@ use crate::error::{MailbotError, Result as MailbotResult};
 
 lazy_static! {
     static ref PATCH_PATTERN: Regex = Regex::new(r"\[PATCH[^\]]*\]").unwrap();
+    static ref BACKPORT_PATTERN: Regex = Regex::new(r"(?i)\[(PATCH|BACKPORT|STABLE|5\.\d+|6\.\d+)[^\]]*\]").unwrap();
     static ref SERIES_PATTERN: Regex = Regex::new(r"\[PATCH[^\]]*\s+(\d+)/(\d+)\]").unwrap();
     static ref DIFF_PATTERN: Regex = Regex::new(r"(?m)^diff --git").unwrap();
     static ref INDEX_PATTERN: Regex = Regex::new(r"(?m)^index [0-9a-f]").unwrap();
     static ref UTF8_PATTERN: Regex = Regex::new(r"=\?UTF-8\?[BQ]\?[^?]+\?=").unwrap();
+    static ref BRACKET_PATTERN: Regex = Regex::new(r"\[[^\]]*\]").unwrap();
+    static ref COMMIT_PATTERN: Regex = Regex::new(r"(?m)^commit [0-9a-f]{40}").unwrap();
 }
 
 /// Lei JSON email structure
@@ -151,6 +154,8 @@ impl LeiEmail {
     }
     
     /// Check if we should ignore this email based on sender
+    /// Note: This should only be used for filtering out patches from ignored authors,
+    /// not for filtering all emails (e.g., FAILED notifications should still be processed)
     pub fn should_ignore(&self, config: &Config) -> bool {
         for ignored in &config.ignored_authors {
             if self.from.contains(ignored) {
@@ -162,8 +167,14 @@ impl LeiEmail {
     
     /// Check if this email contains a git patch
     pub fn is_git_patch(&self) -> bool {
-        // Check for [PATCH] in subject
-        if !PATCH_PATTERN.is_match(&self.subject) {
+        use tracing::debug;
+        
+        // Check for patch-related patterns in subject
+        let has_patch_pattern = PATCH_PATTERN.is_match(&self.subject);
+        let has_backport_pattern = BACKPORT_PATTERN.is_match(&self.subject);
+        
+        if !has_patch_pattern && !has_backport_pattern {
+            debug!("Email '{}' rejected: no patch-related pattern in subject", self.subject);
             return false;
         }
         
@@ -171,8 +182,30 @@ impl LeiEmail {
         let has_separator = self.body.contains("\n---\n");
         let has_diff = DIFF_PATTERN.is_match(&self.body);
         let has_index = INDEX_PATTERN.is_match(&self.body);
+        let has_commit = COMMIT_PATTERN.is_match(&self.body);
         
-        has_separator && (has_diff || has_index)
+        // For backports, be more lenient - they might not have the standard separator
+        if has_backport_pattern && !has_patch_pattern {
+            // Backports might just have diff/index/commit patterns
+            if has_diff || has_index || has_commit {
+                debug!("Email '{}' accepted as backport patch", self.subject);
+                return true;
+            }
+        }
+        
+        // For standard patches, require separator
+        if !has_separator {
+            debug!("Email '{}' rejected: no '---' separator found", self.subject);
+            return false;
+        }
+        
+        if !has_diff && !has_index {
+            debug!("Email '{}' rejected: no diff or index patterns found", self.subject);
+            return false;
+        }
+        
+        debug!("Email '{}' accepted as git patch", self.subject);
+        true
     }
     
     /// Extract series information from subject if present
@@ -212,12 +245,20 @@ impl LeiEmail {
             }
         }
         
-        // Remove [PATCH] tags and similar
-        subject = PATCH_PATTERN.replace_all(&subject, "").to_string();
+        // Remove all bracket tags (matching mailbot.sh's sed -E 's/\[[^]]*\]//g')
+        subject = BRACKET_PATTERN.replace_all(&subject, "").to_string();
+        
+        // Normalize whitespace (tr '\n' ' ' | tr -s ' ')
+        subject = subject.replace('\n', " ");
+        let mut prev = String::new();
+        while prev != subject {
+            prev = subject.clone();
+            subject = subject.replace("  ", " ");
+        }
         
         // Remove Re: prefix
-        if subject.starts_with("Re:") {
-            subject = subject[3..].trim().to_string();
+        if subject.starts_with("Re:") || subject.starts_with("Re: ") {
+            subject = subject.trim_start_matches("Re:").trim_start_matches("Re: ").trim().to_string();
         }
         
         subject.trim().to_string()
@@ -428,6 +469,36 @@ mod tests {
             to: None,
         };
         assert_eq!(email2.clean_subject(), "drm/i915: Fix crash");
+        
+        // Test multiple brackets
+        let email3 = LeiEmail {
+            subject: "[PATCH 5.10] [RFC] [v3]  mm:  Fix  memory  leak".to_string(),
+            from: "test@example.com".to_string(),
+            message_id: "<123@example.com>".to_string(),
+            in_reply_to: None,
+            date: "2024-01-01".to_string(),
+            body: "".to_string(),
+            headers: None,
+            references: None,
+            cc: None,
+            to: None,
+        };
+        assert_eq!(email3.clean_subject(), "mm: Fix memory leak");
+        
+        // Test Re: prefix
+        let email4 = LeiEmail {
+            subject: "Re: [PATCH] Fix issue".to_string(),
+            from: "test@example.com".to_string(),
+            message_id: "<123@example.com>".to_string(),
+            in_reply_to: None,
+            date: "2024-01-01".to_string(),
+            body: "".to_string(),
+            headers: None,
+            references: None,
+            cc: None,
+            to: None,
+        };
+        assert_eq!(email4.clean_subject(), "Fix issue");
     }
     
     #[test]

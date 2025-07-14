@@ -24,6 +24,9 @@ pub struct Config {
     /// Path to output directory for responses
     pub output_dir: PathBuf,
     
+    /// Path to tracking JSON file
+    pub tracking_file: PathBuf,
+    
     /// Authors to ignore (email addresses)
     pub ignored_authors: Vec<String>,
     
@@ -35,6 +38,12 @@ pub struct Config {
     
     /// Enable debug mode
     pub debug: bool,
+    
+    /// Skip sending emails (dry run mode)
+    pub dry_run: bool,
+    
+    /// Skip build tests
+    pub skip_build: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -83,6 +92,7 @@ impl Config {
             config.pending_dir = expand_tilde(&config.pending_dir);
             config.worktree_dir = expand_tilde(&config.worktree_dir);
             config.output_dir = expand_tilde(&config.output_dir);
+            config.tracking_file = expand_tilde(&config.tracking_file);
             
             config
         } else {
@@ -153,6 +163,7 @@ impl Default for Config {
             pending_dir: PathBuf::from("./pending/series"),
             worktree_dir: PathBuf::from("./worktrees"),
             output_dir: PathBuf::from("./output"),
+            tracking_file: PathBuf::from("./status/patch_tracking.json"),
             ignored_authors: vec![
                 "Sasha Levin".to_string(),
                 "Linux Kernel Distribution System".to_string(),
@@ -165,6 +176,8 @@ impl Default for Config {
             },
             build_command: "stable build log".to_string(),
             debug: false,
+            dry_run: false,
+            skip_build: false,
         }
     }
 }
@@ -196,6 +209,7 @@ mod tests {
             pending_dir: dir.join("pending/series"),
             worktree_dir: dir.join("worktrees"),
             output_dir: dir.join("output"),
+            tracking_file: dir.join("status/patch_tracking.json"),
             ignored_authors: vec![
                 "Test Author".to_string(),
             ],
@@ -206,6 +220,8 @@ mod tests {
             },
             build_command: "echo test".to_string(),
             debug: true,
+            dry_run: false,
+            skip_build: false,
         }
     }
     
@@ -227,6 +243,7 @@ mod tests {
             "pending_dir": "/custom/pending",
             "worktree_dir": "/custom/worktrees",
             "output_dir": "/custom/output",
+            "tracking_file": "/custom/patch_tracking.json",
             "ignored_authors": ["Test Author"],
             "email": {
                 "from": "test@example.com",
@@ -234,7 +251,9 @@ mod tests {
                 "smtp": null
             },
             "build_command": "make test",
-            "debug": true
+            "debug": true,
+            "dry_run": true,
+            "skip_build": false
         }
         "#;
         fs::write(&config_path, json).unwrap();

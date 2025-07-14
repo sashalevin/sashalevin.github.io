@@ -29,7 +29,7 @@ fn test_lei_query_integration() {
     let client = LeiClient::new(state_file.to_str().unwrap().to_string());
     
     // Query recent patches (5 minutes)
-    let emails = client.query_recent_patches(5).unwrap();
+    let emails = client.query_recent_patches(5, &[]).unwrap();
     
     println!("Found {} emails in the last 5 minutes", emails.len());
     

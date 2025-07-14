@@ -16,6 +16,10 @@ pub struct Args {
     /// Enable verbose output
     #[arg(short, long, global = true)]
     pub verbose: bool,
+    
+    /// Enable debug output
+    #[arg(long, global = true)]
+    pub debug: bool,
 }
 
 #[derive(Subcommand, Debug)]
@@ -53,12 +57,37 @@ pub enum Commands {
     
     /// Generate HTML dashboards
     Dashboard {
-        /// Type of dashboard to generate (all, queue-status, possible-issues)
+        /// Type of dashboard to generate (all, queue-status, possible-issues, patch-tracking)
         #[arg(short = 't', long, default_value = "all")]
         dashboard_type: String,
         
         /// Output directory for HTML files
         #[arg(short, long, default_value = "./dashboard")]
         output_dir: String,
+    },
+    
+    /// Query patch tracking information
+    Query {
+        /// Query type: "message-id", "sha1", "state", or "active"
+        #[arg(short = 't', long)]
+        query_type: String,
+        
+        /// Query value (not needed for "active" query)
+        #[arg(long)]
+        value: Option<String>,
+        
+        /// Output format: "json" or "summary"
+        #[arg(short = 'f', long, default_value = "summary")]
+        format: String,
+    },
+    
+    /// Process a single email (for testing)
+    ProcessEmail {
+        /// Path to email file (lei JSON format)
+        path: String,
+        
+        /// Enable dry run mode (don't send emails)
+        #[arg(short, long)]
+        dry_run: bool,
     },
 }

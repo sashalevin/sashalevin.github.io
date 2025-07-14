@@ -107,7 +107,7 @@ impl GitRepo {
             .arg(&self.path)
             .arg("show-ref")
             .arg("--verify")
-            .arg(format!("refs/remotes/{}", branch))
+            .arg(format!("refs/remotes/{branch}"))
             .output()?;
         
         if check_output.status.success() {
@@ -128,7 +128,7 @@ impl GitRepo {
                 .arg(&self.path)
                 .arg("fetch")
                 .arg(remote)
-                .arg(format!("{}:refs/remotes/{}/{}", branch_name, remote, branch_name))
+                .arg(format!("{branch_name}:refs/remotes/{remote}/{branch_name}"))
                 .output()?;
             
             if !output.status.success() {

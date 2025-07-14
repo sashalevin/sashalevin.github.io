@@ -32,6 +32,21 @@ pub enum MailbotError {
     
     #[error("External command error: {0}")]
     External(String),
+    
+    #[error("Tracking error: {0}")]
+    TrackingError(String),
+    
+    #[error("File read error: {0}: {1}")]
+    FileReadError(std::path::PathBuf, std::io::Error),
+    
+    #[error("File write error: {0}: {1}")]
+    FileWriteError(std::path::PathBuf, std::io::Error),
+    
+    #[error("JSON parse error: {0}")]
+    JsonParseError(serde_json::Error),
+    
+    #[error("JSON serialize error: {0}")]
+    JsonSerializeError(serde_json::Error),
 }
 
 pub type Result<T> = std::result::Result<T, MailbotError>;

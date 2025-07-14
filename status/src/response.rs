@@ -16,7 +16,7 @@ pub enum PatchStatus {
 pub struct TestResult {
     pub branch: String,
     pub patch_status: PatchStatus,
-    pub build_status: Option<bool>,
+    pub build_passed: Option<bool>,
     pub error: Option<String>,
 }
 
@@ -90,6 +90,28 @@ impl ResponseBuilder {
         self.diff_output = Some(diff);
     }
     
+    pub fn all_tests_passed(&self) -> bool {
+        !self.test_results.is_empty() && 
+        self.test_results.iter().all(|r| 
+            matches!(r.patch_status, PatchStatus::Success) && 
+            !matches!(r.build_passed, Some(false))
+        )
+    }
+    
+    pub fn get_test_errors(&self) -> Vec<String> {
+        let mut errors = Vec::new();
+        
+        for result in &self.test_results {
+            if let Some(ref error) = result.error {
+                errors.push(format!("{}: {}", result.branch, error));
+            } else if matches!(result.patch_status, PatchStatus::Failed) {
+                errors.push(format!("{}: Patch failed to apply", result.branch));
+            }
+        }
+        
+        errors
+    }
+    
     pub fn build(&self) -> MailbotResult<EmailResponse> {
         let has_issues = self.has_issues();
         let (to, cc) = self.determine_recipients(has_issues)?;
@@ -109,10 +131,13 @@ impl ResponseBuilder {
     }
     
     fn has_issues(&self) -> bool {
+        // Check for patch failures
+        let has_patch_failures = self.test_results.iter()
+            .any(|r| matches!(r.patch_status, PatchStatus::Failed));
+        
         // Check for build failures
         let has_build_failures = self.test_results.iter()
-            .any(|r| matches!(r.patch_status, PatchStatus::Failed) || 
-                     r.build_status == Some(false));
+            .any(|r| matches!(r.build_passed, Some(false)));
         
         // Check for missing or incorrect commit
         let has_commit_issues = self.found_sha1.is_none() ||
@@ -122,7 +147,7 @@ impl ResponseBuilder {
         let has_fixes = !self.fixes.is_empty();
         let has_reverts = !self.reverts.is_empty();
         
-        has_build_failures || has_commit_issues || has_fixes || has_reverts
+        has_patch_failures || has_build_failures || has_commit_issues || has_fixes || has_reverts
     }
     
     fn determine_recipients(&self, has_issues: bool) -> MailbotResult<(Vec<String>, Vec<String>)> {
@@ -166,8 +191,11 @@ impl ResponseBuilder {
                 }
             }
             
-            if self.test_results.iter().any(|r| matches!(r.patch_status, PatchStatus::Failed) || 
-                                     r.build_status == Some(false)) {
+            if self.test_results.iter().any(|r| matches!(r.patch_status, PatchStatus::Failed)) {
+                body.push_str("❌ Patch application failures detected\n");
+            }
+            
+            if self.test_results.iter().any(|r| matches!(r.build_passed, Some(false))) {
                 body.push_str("❌ Build failures detected\n");
             }
             
@@ -282,27 +310,27 @@ impl ResponseBuilder {
                 PatchStatus::Failed => "Failed",
             };
             
-            let build_status = match result.build_status {
-                Some(true) => "Success",
-                Some(false) => "Failed",
-                None => "N/A",
+            let build_status = match (result.patch_status.clone(), result.build_passed) {
+                (PatchStatus::Failed, _) => "N/A",
+                (PatchStatus::Success, Some(true)) => "Success",
+                (PatchStatus::Success, Some(false)) => "Failed",
+                (PatchStatus::Success, None) => "Skipped",
             };
             
             body.push_str(&format!("| {:<25} | {:<11} | {:<10} |\n", 
                 result.branch, patch_status, build_status));
         }
         
-        // Build errors
-        let build_errors: Vec<&TestResult> = self.test_results.iter()
+        // Patch and build errors
+        let errors: Vec<&TestResult> = self.test_results.iter()
             .filter(|r| r.error.is_some())
             .collect();
         
-        if !build_errors.is_empty() {
-            body.push_str("\nBuild Errors:\n");
-            for result in build_errors {
+        if !errors.is_empty() {
+            body.push_str("\nTest Errors:\n");
+            for result in errors {
                 if let Some(ref error) = result.error {
-                    body.push_str(error);
-                    body.push('\n');
+                    body.push_str(&format!("{}: {}\n", result.branch, error));
                 }
             }
         }
@@ -413,7 +441,7 @@ mod tests {
         builder.add_test_result(TestResult {
             branch: "stable/linux-6.1.y".to_string(),
             patch_status: PatchStatus::Success,
-            build_status: Some(true),
+            build_passed: None,
             error: None,
         });
         
@@ -444,12 +472,12 @@ mod tests {
         builder.add_test_result(TestResult {
             branch: "stable/linux-6.1.y".to_string(),
             patch_status: PatchStatus::Failed,
-            build_status: None,
+            build_passed: None,
             error: Some("Patch failed to apply".to_string()),
         });
         
         let response = builder.build().unwrap();
-        assert!(response.body.contains("❌ Build failures detected"));
+        assert!(response.body.contains("❌ Patch application failures detected"));
         assert!(response.body.contains("Patch failed to apply"));
         
         // Check recipients - should send to author when there are issues
@@ -479,7 +507,7 @@ mod tests {
         builder.add_test_result(TestResult {
             branch: "stable/linux-6.1.y".to_string(),
             patch_status: PatchStatus::Success,
-            build_status: Some(true),
+            build_passed: None,
             error: None,
         });
         
@@ -550,7 +578,7 @@ mod tests {
         builder.add_test_result(TestResult {
             branch: "stable/linux-6.1.y".to_string(),
             patch_status: PatchStatus::Success,
-            build_status: Some(true),
+            build_passed: None,
             error: None,
         });
         

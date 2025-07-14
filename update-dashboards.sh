@@ -31,11 +31,12 @@ cd ..
 # Generate dashboards
 echo "5. Generating dashboards..."
 cd status
-time ./target/release/mailbot dashboard -t all -o ./dashboard -c ./dashboard-config.json
+time ./target/release/mailbot dashboard -t all -o ./dashboard
 cd ..
 
 echo
 echo "✓ Dashboards updated successfully!"
 echo "  - Queue Status: status/dashboard/queue-status.html"
 echo "  - Possible Issues: status/dashboard/possible-issues.html"
+echo "  - Patch Tracking: status/dashboard/patch-tracking.html"
 echo "  - Index: index.html"
