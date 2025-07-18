@@ -78,7 +78,6 @@ index 1234567..abcdefg 100644
         },
         build_command: "echo 'Build successful'".to_string(),
         debug: true,
-        dry_run: true,
         skip_build: false,
     };
     
@@ -271,7 +270,7 @@ async fn test_failed_emails_from_ignored_authors_are_processed() {
     // Initialize git repo
     use std::process::Command;
     Command::new("git")
-        .args(&["init"])
+        .args(["init"])
         .current_dir(&linux_dir)
         .output()
         .expect("Failed to init git repo");
@@ -282,7 +281,6 @@ async fn test_failed_emails_from_ignored_authors_are_processed() {
         tracking_file: tracking_file.clone(),
         linux_dir: linux_dir.clone(),
         stable_queue_dir: stable_queue_dir.clone(),
-        dry_run: true,
         skip_build: true,
         ..Default::default()
     };
@@ -383,7 +381,7 @@ async fn test_patches_from_ignored_authors_are_ignored() {
     // Initialize git repo
     use std::process::Command;
     Command::new("git")
-        .args(&["init"])
+        .args(["init"])
         .current_dir(&linux_dir)
         .output()
         .expect("Failed to init git repo");
@@ -394,7 +392,6 @@ async fn test_patches_from_ignored_authors_are_ignored() {
         tracking_file: tracking_file.clone(),
         linux_dir: linux_dir.clone(),
         stable_queue_dir: stable_queue_dir.clone(),
-        dry_run: true,
         skip_build: true,
         ..Default::default()
     };

@@ -24,6 +24,30 @@ use crate::patch::PatchProcessor;
 use crate::dashboard::DashboardGenerator;
 use crate::tracking::{TrackingStore, generate_tracking_dashboard, update_tracking_status, PatchState};
 use crate::git::GitRepo;
+use chrono::{DateTime, Utc};
+use std::fs;
+
+/// Read timestamp from file
+fn read_timestamp(path: &PathBuf) -> Result<Option<DateTime<Utc>>> {
+    if !path.exists() {
+        return Ok(None);
+    }
+    
+    let content = fs::read_to_string(path)?;
+    let timestamp = content.trim().parse::<DateTime<Utc>>()?;
+    Ok(Some(timestamp))
+}
+
+/// Write timestamp to file
+fn write_timestamp(path: &PathBuf, timestamp: DateTime<Utc>) -> Result<()> {
+    // Ensure parent directory exists
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent)?;
+    }
+    
+    fs::write(path, timestamp.to_rfc3339())?;
+    Ok(())
+}
 
 /// Parse time range string (e.g., "60", "24h", "7d") into minutes
 fn parse_time_range(time_range: &str) -> Result<u32> {
@@ -69,13 +93,11 @@ async fn main() -> Result<()> {
             input_type,
             time_range,
             state_file,
-            dry_run,
             skip_build,
             output_dir,
         } => {
-            // Set dry_run and skip_build flags
+            // Set skip_build flag
             let mut config = config;
-            config.dry_run = dry_run;
             config.skip_build = skip_build;
             config.output_dir = PathBuf::from(&output_dir);
             
@@ -97,7 +119,11 @@ async fn main() -> Result<()> {
                 "lei-json" => process_lei_json(&input, &config).await?,
                 "mbox" => process_mbox(&input, &config).await?,
                 "lei" | "lei-query" => {
-                    let minutes = parse_time_range(&time_range)?;
+                    let minutes = if let Some(range) = time_range {
+                        Some(parse_time_range(&range)?)
+                    } else {
+                        None
+                    };
                     process_lei_query(&input, minutes, &state_file, &config).await?
                 },
                 "maildir" => process_maildir(&input, &config).await?,
@@ -117,10 +143,7 @@ async fn main() -> Result<()> {
         } => {
             query_tracking_data(&query_type, value.as_deref(), &format, &config)?;
         }
-        Commands::ProcessEmail { path, dry_run } => {
-            // Set dry_run flag
-            let mut config = config;
-            config.dry_run = dry_run;
+        Commands::ProcessEmail { path } => {
             
             // Process single email
             process_single_email(&path, &config).await?;
@@ -168,18 +191,44 @@ async fn process_maildir(_input: &str, _config: &Config) -> Result<()> {
 
 async fn process_lei_query(
     _input: &str,
-    lookback_minutes: u32,
-    state_file: &str,
+    lookback_minutes: Option<u32>,
+    _state_file: &str,
     config: &Config
 ) -> Result<()> {
     use crate::lei::{LeiClient, ensure_stable_external};
     
+    // Capture the start time of this processing run
+    let processing_start_time = Utc::now();
+    
     info!("Ensuring lore.kernel.org/stable is configured");
     ensure_stable_external()?;
     
+    // Determine lookback time
+    let actual_lookback_minutes = if let Some(minutes) = lookback_minutes {
+        // Explicit time range provided
+        info!("Using explicit time range: {} minutes", minutes);
+        minutes
+    } else {
+        // Check timestamp file
+        let timestamp_path = &config.timestamp_file;
+        if let Some(last_timestamp) = read_timestamp(timestamp_path)? {
+            let now = Utc::now();
+            let duration = now.signed_duration_since(last_timestamp);
+            let minutes = duration.num_minutes() as u32;
+            // Add a small buffer to ensure no emails are missed
+            let buffered_minutes = minutes + 5;
+            info!("Using time since last run: {} minutes (from {})", buffered_minutes, last_timestamp.format("%Y-%m-%d %H:%M:%S UTC"));
+            buffered_minutes
+        } else {
+            // First run, default to 60 minutes
+            info!("No previous timestamp found, using default: 60 minutes");
+            60
+        }
+    };
+    
     info!("Querying recent patches from lore.kernel.org/stable");
-    let client = LeiClient::new(state_file.to_string());
-    let emails = client.query_recent_patches(lookback_minutes, &config.ignored_authors)?;
+    let client = LeiClient::new();
+    let emails = client.query_recent_patches(actual_lookback_minutes, &config.ignored_authors)?;
     
     if emails.is_empty() {
         info!("No new emails found");
@@ -236,12 +285,18 @@ async fn process_lei_query(
         warn!("  Errors: {}", errors);
     }
     
+    // Update timestamp file with the start time of this processing run
+    write_timestamp(&config.timestamp_file, processing_start_time)?;
+    info!("Updated timestamp file: {} with start time: {}", 
+          config.timestamp_file.display(), 
+          processing_start_time.format("%Y-%m-%d %H:%M:%S UTC"));
+    
     Ok(())
 }
 
 fn query_tracking_data(query_type: &str, value: Option<&str>, format: &str, config: &Config) -> Result<()> {
     let tracking_path = &config.tracking_file;
-    let store = TrackingStore::load_from_file(&tracking_path)
+    let store = TrackingStore::load_from_file(tracking_path)
         .unwrap_or_else(|_| TrackingStore::new());
     
     match query_type {
@@ -346,13 +401,13 @@ fn generate_dashboards(dashboard_type: &str, output_dir: &str, config: &Config) 
             generator.generate_all()?;
             // Also generate patch tracking dashboard
             let tracking_path = &config.tracking_file;
-            let mut store = TrackingStore::load_from_file(&tracking_path)
+            let mut store = TrackingStore::load_from_file(tracking_path)
                 .unwrap_or_else(|_| TrackingStore::new());
             
             // Update tracking status based on queue/release status
             let git_repo = GitRepo::open(&config.linux_dir)?;
             update_tracking_status(&mut store, &config.stable_queue_dir, &git_repo)?;
-            store.save_to_file(&tracking_path)?;
+            store.save_to_file(tracking_path)?;
             
             let output_path = PathBuf::from(output_dir).join("patch-tracking.html");
             generate_tracking_dashboard(&store, &output_path)?;
@@ -361,13 +416,13 @@ fn generate_dashboards(dashboard_type: &str, output_dir: &str, config: &Config) 
         "possible-issues" => generator.generate_possible_issues_dashboard()?,
         "patch-tracking" => {
             let tracking_path = &config.tracking_file;
-            let mut store = TrackingStore::load_from_file(&tracking_path)
+            let mut store = TrackingStore::load_from_file(tracking_path)
                 .unwrap_or_else(|_| TrackingStore::new());
             
             // Update tracking status based on queue/release status
             let git_repo = GitRepo::open(&config.linux_dir)?;
             update_tracking_status(&mut store, &config.stable_queue_dir, &git_repo)?;
-            store.save_to_file(&tracking_path)?;
+            store.save_to_file(tracking_path)?;
             
             let output_path = PathBuf::from(output_dir).join("patch-tracking.html");
             generate_tracking_dashboard(&store, &output_path)?;

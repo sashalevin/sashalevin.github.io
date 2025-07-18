@@ -290,7 +290,6 @@ fn create_test_config(test_dir: &tempfile::TempDir) -> Config {
         },
         build_command: "echo 'Build successful'".to_string(),
         debug: true,
-        dry_run: true,
         skip_build: false,
     }
 }

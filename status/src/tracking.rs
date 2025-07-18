@@ -9,7 +9,7 @@ use crate::error::{MailbotError as Error, Result};
 pub fn message_id_to_lore_url(message_id: &str) -> String {
     // Remove angle brackets if present
     let clean_id = message_id.trim_start_matches('<').trim_end_matches('>');
-    format!("https://lore.kernel.org/stable/{}", clean_id)
+    format!("https://lore.kernel.org/stable/{clean_id}")
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -161,6 +161,25 @@ impl TrackingStore {
         self.patches.insert(tracking.message_id.clone(), tracking);
     }
 
+    pub fn remove_patch(&mut self, message_id: &str) -> Result<()> {
+        // Remove from patches map
+        if let Some(patch) = self.patches.remove(message_id) {
+            // Update sha1_index
+            if let Some(sha1) = &patch.sha1 {
+                if let Some(ids) = self.sha1_index.get_mut(sha1) {
+                    ids.retain(|id| id != message_id);
+                    if ids.is_empty() {
+                        self.sha1_index.remove(sha1);
+                    }
+                }
+            }
+            self.last_updated = Utc::now();
+            Ok(())
+        } else {
+            Err(Error::TrackingError(format!("Patch {message_id} not found")))
+        }
+    }
+
     pub fn get_patch(&self, message_id: &str) -> Option<&PatchTracking> {
         self.patches.get(message_id)
     }
@@ -206,6 +225,7 @@ impl TrackingStore {
         Ok(())
     }
 
+    #[allow(dead_code)]
     pub fn add_mailbot_result(&mut self, message_id: &str, result: MailbotResult) -> Result<()> {
         let patch = self.get_patch_mut(message_id)
             .ok_or_else(|| Error::TrackingError(format!("Patch {message_id} not found")))?;
@@ -321,6 +341,7 @@ pub struct TestSummary {
 
 /// Update tracking status based on queue and release status
 pub fn update_tracking_status(store: &mut TrackingStore, stable_queue_dir: &Path, git_repo: &crate::git::GitRepo) -> Result<()> {
+    use std::collections::HashMap;
     
     // Get all active patches (not yet released or rejected)
     let active_patches: Vec<_> = store.patches.values()
@@ -334,6 +355,9 @@ pub fn update_tracking_status(store: &mut TrackingStore, stable_queue_dir: &Path
         .cloned()
         .collect();
     
+    // Cache for SHA1 release checks to avoid redundant git operations
+    let mut release_cache: HashMap<String, Option<Vec<String>>> = HashMap::new();
+    
     for patch in active_patches {
         if let Some(sha1) = &patch.sha1 {
             // Check if patch is in stable queue
@@ -345,17 +369,27 @@ pub fn update_tracking_status(store: &mut TrackingStore, stable_queue_dir: &Path
                     details: "Patch found in stable queue".to_string(),
                 })?;
             }
-            // Check if patch has been released
-            else if let Some(branches) = is_patch_released(sha1, git_repo)? {
-                if branches.is_empty() {
-                    continue;
+            // Check if patch has been released (with caching)
+            else {
+                let cache_key = format!("{}-{}", sha1, patch.target_versions.join(","));
+                let branches = if let Some(cached) = release_cache.get(&cache_key) {
+                    cached.clone()
+                } else {
+                    let result = is_patch_released(sha1, &patch.target_versions, git_repo)?;
+                    release_cache.insert(cache_key, result.clone());
+                    result
+                };
+                
+                if let Some(branches) = branches {
+                    if !branches.is_empty() {
+                        store.update_state(&patch.message_id, PatchState::Released)?;
+                        store.add_processing_event(&patch.message_id, ProcessingEvent {
+                            timestamp: Utc::now(),
+                            event_type: ProcessingEventType::Released,
+                            details: format!("Patch released in: {}", branches.join(", ")),
+                        })?;
+                    }
                 }
-                store.update_state(&patch.message_id, PatchState::Released)?;
-                store.add_processing_event(&patch.message_id, ProcessingEvent {
-                    timestamp: Utc::now(),
-                    event_type: ProcessingEventType::Released,
-                    details: format!("Patch released in: {}", branches.join(", ")),
-                })?;
             }
         }
     }
@@ -392,32 +426,31 @@ fn is_patch_in_queue(sha1: &str, subject: &str, stable_queue_dir: &Path) -> Resu
 }
 
 /// Check if a patch has been released in stable branches
-fn is_patch_released(sha1: &str, git_repo: &crate::git::GitRepo) -> Result<Option<Vec<String>>> {
-    let mut released_branches = Vec::new();
+fn is_patch_released(sha1: &str, target_versions: &[String], git_repo: &crate::git::GitRepo) -> Result<Option<Vec<String>>> {
+    let mut released_tags = Vec::new();
     
-    // Check common stable branches
-    let stable_branches = vec![
-        "linux-6.12.y",
-        "linux-6.11.y", 
-        "linux-6.10.y",
-        "linux-6.6.y",
-        "linux-6.1.y",
-        "linux-5.15.y",
-        "linux-5.10.y",
-        "linux-5.4.y",
-        "linux-4.19.y",
-    ];
-    
-    for branch in stable_branches {
-        if git_repo.is_ancestor(sha1, &format!("origin/{}", branch)).unwrap_or(false) {
-            released_branches.push(branch.to_string());
+    // Only check branches that match the patch's target versions
+    for version in target_versions {
+        let branch = format!("origin/linux-{version}.y");
+        // Skip if branch doesn't exist
+        if !git_repo.branch_exists(&branch) {
+            continue;
+        }
+        
+        // Find the earliest tag containing this commit on this branch
+        if let Ok(Some(tag)) = git_repo.find_earliest_tag_containing(sha1, &branch) {
+            // Only include tags that match the target version
+            // e.g., for a 5.4 patch, only include tags like v5.4.123
+            if tag.starts_with(&format!("v{version}.")) {
+                released_tags.push(tag);
+            }
         }
     }
     
-    if released_branches.is_empty() {
+    if released_tags.is_empty() {
         Ok(None)
     } else {
-        Ok(Some(released_branches))
+        Ok(Some(released_tags))
     }
 }
 
@@ -560,6 +593,17 @@ pub fn generate_tracking_dashboard(store: &TrackingStore, output_path: &Path) ->
 }
 
 fn render_tracking_dashboard_html(data: &TrackingDashboardData) -> Result<String> {
+    // Pre-compute formatted values to avoid format! within format!
+    let avg_branches = format!("{:.1}", data.mailbot_summary.average_branches_tested);
+    let failed_section = if !data.failed_patches.is_empty() {
+        format!(r#"<h2>Failed/Rejected Patches</h2>
+        <div class="section">
+            {}
+        </div>"#, render_patches_table(&data.failed_patches, false))
+    } else {
+        String::new()
+    };
+    
     let html = format!(r#"<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -803,6 +847,8 @@ fn render_tracking_dashboard_html(data: &TrackingDashboardData) -> Result<String
             {active_patches_table}
         </div>
         
+        {failed_section}
+        
         <h2>Recent Activity</h2>
         <div class="section">
             {recent_activity_table}
@@ -812,8 +858,6 @@ fn render_tracking_dashboard_html(data: &TrackingDashboardData) -> Result<String
         <div class="section">
             {completed_patches_table}
         </div>
-        
-        {failed_section}
     </div>
 </body>
 </html>"#,
@@ -823,19 +867,12 @@ fn render_tracking_dashboard_html(data: &TrackingDashboardData) -> Result<String
         test_pass_rate = if data.mailbot_summary.total_tests_run > 0 {
             (data.mailbot_summary.tests_passed * 100) / data.mailbot_summary.total_tests_run
         } else { 0 },
-        avg_branches = format!("{:.1}", data.mailbot_summary.average_branches_tested),
+        avg_branches = avg_branches,
         state_distribution = render_state_distribution(&data.patches_by_state),
         active_patches_table = render_patches_table(&data.active_patches, true),
         recent_activity_table = render_recent_activity_table(&data.recent_activity),
         completed_patches_table = render_patches_table(&data.completed_patches, false),
-        failed_section = if !data.failed_patches.is_empty() {
-            format!(r#"<h2>Failed/Rejected Patches</h2>
-        <div class="section">
-            {}
-        </div>"#, render_patches_table(&data.failed_patches, false))
-        } else {
-            String::new()
-        }
+        failed_section = failed_section
     );
     
     Ok(html)

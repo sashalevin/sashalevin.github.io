@@ -31,7 +31,6 @@ async fn test_failed_email_processing() {
         },
         build_command: "true".to_string(),
         debug: true,
-        dry_run: true,
         skip_build: true,
     };
     
@@ -136,7 +135,6 @@ async fn test_failed_email_with_in_reply_to() {
         },
         build_command: "true".to_string(),
         debug: true,
-        dry_run: true,
         skip_build: true,
     };
     

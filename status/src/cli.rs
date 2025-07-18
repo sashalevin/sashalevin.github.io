@@ -35,16 +35,13 @@ pub enum Commands {
         input_type: Option<String>,
         
         /// Time range for lei queries (e.g., "60" for minutes, "24h" for hours, "7d" for days)
-        #[arg(long, default_value = "60")]
-        time_range: String,
+        /// If not specified, uses timestamp from previous run
+        #[arg(long)]
+        time_range: Option<String>,
         
         /// State file to track last run timestamp
         #[arg(long, default_value = "~/.mailbot_last_run")]
         state_file: String,
-        
-        /// Enable dry run mode (don't send emails)
-        #[arg(short, long)]
-        dry_run: bool,
         
         /// Skip build tests
         #[arg(long)]
@@ -85,9 +82,5 @@ pub enum Commands {
     ProcessEmail {
         /// Path to email file (lei JSON format)
         path: String,
-        
-        /// Enable dry run mode (don't send emails)
-        #[arg(short, long)]
-        dry_run: bool,
     },
 }

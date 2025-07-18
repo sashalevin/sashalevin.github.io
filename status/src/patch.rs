@@ -35,6 +35,7 @@ pub struct PatchInfo {
     pub author_mismatch: Option<String>,
     pub series_info: Option<(u32, u32)>,
     pub target_versions: Vec<KernelVersion>,
+    pub has_specific_versions: bool,
 }
 
 impl PatchProcessor {
@@ -80,18 +81,24 @@ impl PatchProcessor {
         info!("Processing email: {}", email.subject);
         
         // Extract patch information first
-        let patch_info = self.extract_patch_info(email)?;
+        let mut patch_info = self.extract_patch_info(email)?;
         
         // Check if there are specific kernel versions in the subject
         let has_specific_versions = !patch_info.target_versions.is_empty() && 
             patch_info.target_versions != self.kernel_manager.default_versions();
+        patch_info.has_specific_versions = has_specific_versions;
         
         // Skip if no SHA1 and no specific kernel versions (matching mailbot.sh behavior)
         // This matches mailbot.sh lines 1520-1524
         if patch_info.found_sha1.is_none() && patch_info.claimed_sha1.is_none() && !has_specific_versions {
-            info!("No commit SHA1 found and no specific kernel versions in subject. Skipping patch.");
+            info!("No commit SHA1 found and no specific kernel versions in subject. Skipping patch: {}", patch_info.email.subject);
             return Ok(());
         }
+        
+        info!("Processing patch with SHA1: {:?}, specific versions: {}, subject: {}", 
+            patch_info.found_sha1.as_ref().or(patch_info.claimed_sha1.as_ref()), 
+            has_specific_versions,
+            patch_info.email.subject);
         
         // Create or update tracking entry now that we know we'll process it
         {
@@ -128,18 +135,9 @@ impl PatchProcessor {
                 };
                 store.add_or_update_patch(tracking);
             }
-            
-            // Update state to processing
-            store.update_state(&patch_info.email.message_id, PatchState::Processing).ok();
-            store.add_processing_event(&patch_info.email.message_id, ProcessingEvent {
-                timestamp: Utc::now(),
-                event_type: ProcessingEventType::ProcessingStarted,
-                details: "Starting patch processing".to_string(),
-            }).ok();
         }
         
         // If we have no specific versions but have a SHA1, use all active versions
-        let mut patch_info = patch_info;
         if patch_info.target_versions.is_empty() && (patch_info.found_sha1.is_some() || patch_info.claimed_sha1.is_some()) {
             patch_info.target_versions = self.kernel_manager.default_versions();
         }
@@ -156,15 +154,35 @@ impl PatchProcessor {
             
             // Check if series is complete
             if self.series_manager.is_series_complete(&patch_info.email, total)? {
+                // Check if we already processed this series
+                // We can check this by seeing if a response already exists for patch 1
+                let first_patch = self.series_manager.get_first_patch(&patch_info.email)?;
+                if self.response_already_exists(&first_patch.message_id) {
+                    info!("Series already processed, skipping patch {}/{}", current, total);
+                    return Ok(());
+                }
+                
                 info!("Series complete, processing all {} patches", total);
                 return self.process_complete_series(&patch_info.email, total).await;
             } else {
-                info!("Series incomplete, waiting for remaining patches");
+                info!("Series incomplete ({}/{}), waiting for remaining patches", current, total);
+                
+                // For incomplete series, we should NOT generate any response
+                // The original mailbot.sh doesn't respond until all patches are received
                 return Ok(());
             }
         }
         
-        // Processing has already started, no need to update state again
+        // For non-series patches, update state to processing
+        {
+            let mut store = self.tracking_store.lock().unwrap();
+            store.update_state(&patch_info.email.message_id, PatchState::Processing).ok();
+            store.add_processing_event(&patch_info.email.message_id, ProcessingEvent {
+                timestamp: Utc::now(),
+                event_type: ProcessingEventType::ProcessingStarted,
+                details: "Starting patch processing".to_string(),
+            }).ok();
+        }
         
         // Process single patch
         let result = self.process_single_patch(patch_info).await;
@@ -214,6 +232,7 @@ impl PatchProcessor {
             author_mismatch,
             series_info,
             target_versions,
+            has_specific_versions: false, // Will be set in process_email
         })
     }
     
@@ -230,6 +249,26 @@ impl PatchProcessor {
         
         // Test patch on each target version
         let results = self.test_patch_on_versions(&patch_info).await?;
+        
+        // Check if patch failed to apply to all versions
+        let all_failed = results.iter().all(|r| matches!(r.patch_status, PatchStatus::Failed));
+        
+        // If upstream patch with no specific versions failed everywhere, handle appropriately
+        if all_failed && !patch_info.has_specific_versions && patch_info.found_sha1.is_some() {
+            // Don't remove patches that are part of a series - they might be needed by later patches
+            if patch_info.series_info.is_some() {
+                warn!("Series patch {} doesn't apply to any stable version but keeping in tracking", 
+                     patch_info.email.subject);
+                // Continue processing to generate warning response
+            } else {
+                // For standalone patches, remove from tracking
+                let mut store = self.tracking_store.lock().unwrap();
+                store.remove_patch(&patch_info.email.message_id)?;
+                info!("Removed upstream patch that doesn't apply to any stable version: {}", 
+                     patch_info.email.subject);
+                return Ok(());
+            }
+        }
         
         // Create mailbot result for tracking
         let test_branches: Vec<String> = results.iter().map(|r| r.branch.clone()).collect();
@@ -285,8 +324,11 @@ impl PatchProcessor {
         }
         
         // Generate and save response
+        info!("Generating response for patch: {}", patch_info.email.subject);
         let response = response_builder.build()?;
+        info!("Saving response for patch: {}", patch_info.email.subject);
         response.save(&self.config.output_dir)?;
+        info!("Response saved successfully for patch: {}", patch_info.email.subject);
         
         // Update tracking with response info
         {
@@ -319,14 +361,9 @@ impl PatchProcessor {
                 store.add_processing_event(&patch_info.email.message_id, ProcessingEvent {
                     timestamp: Utc::now(),
                     event_type: ProcessingEventType::TestCompleted,
-                    details: format!("Issues found: {}", error_msg),
+                    details: format!("Issues found: {error_msg}"),
                 }).ok();
             }
-        }
-        
-        // Send email if not in dry-run mode
-        if !self.config.dry_run {
-            response.send(&self.config.email)?;
         }
         
         Ok(())
@@ -456,16 +493,298 @@ impl PatchProcessor {
         info!("Processing complete series of {} patches", total);
         
         // Get all patches in the series
-        let patches = self.series_manager.get_series_patches(first_email, total)?;
+        let patch_emails = self.series_manager.get_series_patches(first_email, total)?;
         
-        // Test the series on each target version
-        for patch in patches {
-            self.process_single_patch(patch).await?;
+        // Extract patch info for each email
+        let mut patches = Vec::new();
+        for email in patch_emails {
+            let patch_info = self.extract_patch_info(email)?;
+            patches.push(patch_info);
         }
+        
+        // Update all patches in the series to Processing state
+        {
+            let mut store = self.tracking_store.lock().unwrap();
+            for patch_info in &patches {
+                store.update_state(&patch_info.email.message_id, PatchState::Processing).ok();
+                store.add_processing_event(&patch_info.email.message_id, ProcessingEvent {
+                    timestamp: Utc::now(),
+                    event_type: ProcessingEventType::ProcessingStarted,
+                    details: format!("Starting series processing ({}/{})", 
+                        patch_info.series_info.map(|(n, _)| n).unwrap_or(0), total),
+                }).ok();
+            }
+        }
+        
+        // Test the series cumulatively on each target version
+        self.test_series_on_versions(&patches).await?;
         
         // Clean up series directory
         self.series_manager.cleanup_series(first_email)?;
         
+        Ok(())
+    }
+    
+    /// Test a series of patches cumulatively on each target version
+    async fn test_series_on_versions(&self, patches: &[PatchInfo]) -> MailbotResult<()> {
+        // Collect all unique target versions from all patches
+        let mut all_versions = Vec::new();
+        let mut seen = std::collections::HashSet::new();
+        for patch in patches {
+            for version in &patch.target_versions {
+                let key = format!("{}.{}.{}", version.major, version.minor, version.patch.unwrap_or(0));
+                if seen.insert(key) {
+                    all_versions.push(version.clone());
+                }
+            }
+        }
+        
+        // Sort by version (newest to oldest)
+        all_versions.sort_by(|a, b| {
+            b.major.cmp(&a.major)
+                .then_with(|| b.minor.cmp(&a.minor))
+                .then_with(|| b.patch.cmp(&a.patch))
+        });
+        let target_versions = all_versions;
+        
+        info!("Testing series on {} target versions", target_versions.len());
+        
+        // Store all results for each patch
+        let mut patch_results: std::collections::HashMap<String, Vec<TestResult>> = std::collections::HashMap::new();
+        
+        // Test the series on each target version
+        for version in &target_versions {
+            info!("Testing series on version {}", version);
+            
+            // Create a fresh worktree for this version
+            let worktree_dir = self.config.worktree_dir.join(format!("series-{version}"));
+            if worktree_dir.exists() {
+                std::fs::remove_dir_all(&worktree_dir)?;
+            }
+            
+            // Add worktree
+            let output = std::process::Command::new("git")
+                .arg("-C")
+                .arg(&self.config.linux_dir)
+                .args(["worktree", "add", 
+                    &worktree_dir.to_string_lossy(), 
+                    &version.stable_branch()])
+                .output()?;
+                
+            if !output.status.success() {
+                return Err(crate::error::MailbotError::Series(format!("Failed to create worktree: {}", 
+                    String::from_utf8_lossy(&output.stderr))));
+            }
+            
+            let mut series_failed = false;
+            
+            // Apply patches cumulatively
+            for (i, patch) in patches.iter().enumerate() {
+                let patch_num = i + 1;
+                info!("Applying patch {}/{} on version {}", patch_num, patches.len(), version);
+                
+                let test_result = if !series_failed {
+                    // Format patch content
+                    let patch_content = Self::format_patch_content(&patch.email);
+                    
+                    // Try to apply the patch using git am
+                    let mut child = std::process::Command::new("git")
+                        .arg("-C")
+                        .arg(&worktree_dir)
+                        .args(["am", "-3"])
+                        .stdin(std::process::Stdio::piped())
+                        .stdout(std::process::Stdio::piped())
+                        .stderr(std::process::Stdio::piped())
+                        .spawn()?;
+                    
+                    // Write patch content to stdin
+                    if let Some(mut stdin) = child.stdin.take() {
+                        use std::io::Write;
+                        stdin.write_all(patch_content.as_bytes())?;
+                    }
+                    
+                    // Wait for command to complete
+                    let apply_result = child.wait_with_output();
+                    
+                    if let Ok(output) = apply_result {
+                        if output.status.success() {
+                            // Patch applied successfully, run build test
+                            let build_passed = {
+                                // Run build test using the test script
+                                let test_output = std::process::Command::new("sh")
+                                    .arg("-c")
+                                    .arg(&self.config.build_command)
+                                    .current_dir(&worktree_dir)
+                                    .env("KERNEL_DIR", &worktree_dir)
+                                    .output();
+                                
+                                match test_output {
+                                    Ok(output) => Some(output.status.success()),
+                                    Err(e) => {
+                                        error!("Build test error: {}", e);
+                                        Some(false)
+                                    }
+                                }
+                            };
+                            
+                            TestResult {
+                                branch: version.to_string(),
+                                patch_status: PatchStatus::Success,
+                                build_passed,
+                                error: None,
+                            }
+                        } else {
+                            // Patch failed to apply
+                            series_failed = true;
+                            TestResult {
+                                branch: version.to_string(),
+                                patch_status: PatchStatus::Failed,
+                                build_passed: None,
+                                error: Some(format!("Failed to apply patch {}/{}: {}", 
+                                    patch_num, patches.len(), String::from_utf8_lossy(&output.stderr))),
+                            }
+                        }
+                    } else {
+                        // Error running git am
+                        series_failed = true;
+                        TestResult {
+                            branch: version.to_string(),
+                            patch_status: PatchStatus::Failed,
+                            build_passed: None,
+                            error: Some(format!("Failed to run git am for patch {}/{}", patch_num, patches.len())),
+                        }
+                    }
+                } else {
+                    // This patch is skipped because a previous one failed
+                    TestResult {
+                        branch: version.to_string(),
+                        patch_status: PatchStatus::Failed,
+                        build_passed: None,
+                        error: Some("Skipped - earlier patch in series failed to apply".to_string()),
+                    }
+                };
+                
+                // Store result for this patch
+                patch_results.entry(patch.email.message_id.clone())
+                    .or_default()
+                    .push(test_result);
+            }
+            
+            // Remove worktree
+            let output = std::process::Command::new("git")
+                .arg("-C")
+                .arg(&self.config.linux_dir)
+                .args(["worktree", "remove", "--force", &worktree_dir.to_string_lossy()])
+                .output()?;
+                
+            if !output.status.success() {
+                error!("Failed to remove worktree: {}", String::from_utf8_lossy(&output.stderr));
+            }
+        }
+        
+        // Now generate responses for all patches with their accumulated results
+        for patch in patches {
+            // Ensure patch is in tracking store before generating response
+            {
+                let mut store = self.tracking_store.lock().unwrap();
+                if store.get_patch(&patch.email.message_id).is_none() {
+                    // Add patch to tracking store
+                    let tracking = crate::tracking::PatchTracking {
+                        message_id: patch.email.message_id.clone(),
+                        sha1: patch.found_sha1.clone(),
+                        subject: patch.email.subject.clone(),
+                        author: patch.email.from.clone(),
+                        from_email: patch.email.from.clone(),
+                        first_seen: Utc::now(),
+                        last_updated: Utc::now(),
+                        state: PatchState::Processing,
+                        processing_history: vec![],
+                        mailbot_results: vec![],
+                        mailing_list_activity: crate::tracking::MailingListActivity {
+                            replies: vec![],
+                            reviews: vec![],
+                            related_patches: vec![],
+                            fixes_commit: None,
+                            fixes_cve: None,
+                        },
+                        target_versions: patch.target_versions.iter()
+                            .map(|v| v.to_string())
+                            .collect(),
+                        lore_url: None,
+                    };
+                    store.add_or_update_patch(tracking);
+                }
+            }
+            
+            let results = patch_results.get(&patch.email.message_id)
+                .cloned()
+                .unwrap_or_default();
+            self.generate_series_patch_response_with_results(patch, results).await?;
+        }
+        
+        Ok(())
+    }
+    
+    /// Generate response for a series patch with given test results
+    async fn generate_series_patch_response_with_results(&self, patch: &PatchInfo, results: Vec<TestResult>) -> MailbotResult<()> {
+        let mut response_builder = ResponseBuilder::new(&patch.email, &self.config);
+        
+        // Add patch validation info
+        response_builder.set_commit_info(
+            patch.claimed_sha1.clone(),
+            patch.found_sha1.clone(),
+            patch.author_mismatch.clone(),
+        );
+        
+        // Use the results passed as parameter
+        
+        // Create mailbot result for tracking
+        let test_branches: Vec<String> = results.iter().map(|r| r.branch.clone()).collect();
+        let test_passed = results.iter().all(|r| matches!(r.patch_status, PatchStatus::Success));
+        let build_passed = results.iter().all(|r| !matches!(r.build_passed, Some(false)));
+        let errors: Vec<String> = results.iter()
+            .filter_map(|r| r.error.as_ref().map(|e| format!("{}: {}", r.branch, e)))
+            .collect();
+        
+        // Store final mailbot result
+        {
+            let mut store = self.tracking_store.lock().unwrap();
+            let mailbot_result = crate::tracking::MailbotResult {
+                timestamp: Utc::now(),
+                test_branches,
+                test_passed,
+                build_passed,
+                errors,
+                response_sent: false,
+                response_message_id: None,
+            };
+            
+            if let Some(tracking) = store.get_patch_mut(&patch.email.message_id) {
+                tracking.mailbot_results.push(mailbot_result);
+            }
+        }
+        
+        // Add test results to response
+        for result in results {
+            response_builder.add_test_result(result);
+        }
+        
+        // Generate and save response
+        let response = response_builder.build()?;
+        response.save(&self.config.output_dir)?;
+        
+        // Update patch state
+        {
+            let mut store = self.tracking_store.lock().unwrap();
+            store.update_state(&patch.email.message_id, PatchState::TestsPassed)?;
+            store.add_processing_event(&patch.email.message_id, ProcessingEvent {
+                timestamp: Utc::now(),
+                event_type: ProcessingEventType::ResponseGenerated,
+                details: "Response generated for series patch".to_string(),
+            })?;
+        }
+        
+        info!("Generated response for series patch: {} ({})", patch.email.subject, patch.email.message_id);
         Ok(())
     }
     
@@ -552,11 +871,11 @@ impl PatchProcessor {
                         }
                         Err(e) => {
                             result.build_passed = Some(false);
-                            let build_error = format!("Build failed: {}", e);
+                            let build_error = format!("Build failed: {e}");
                             error!("{}", build_error);
                             // Append build error to existing error or set it
                             result.error = Some(match result.error {
-                                Some(existing) => format!("{}\n{}", existing, build_error),
+                                Some(existing) => format!("{existing}\n{build_error}"),
                                 None => build_error,
                             });
                         }
@@ -1157,6 +1476,7 @@ mod tests {
             worktree_dir: test_dir.path().join("worktrees"),
             output_dir: test_dir.path().join("output"),
             tracking_file: test_dir.path().join("tracking.json"),
+            timestamp_file: test_dir.path().join("last_timestamp"),
             ignored_authors: vec![],
             email: crate::config::EmailConfig {
                 from: "Bot <bot@test.com>".to_string(),
@@ -1165,7 +1485,6 @@ mod tests {
             },
             build_command: "true".to_string(),
             debug: true,
-            dry_run: false,
             skip_build: true,
         }
     }

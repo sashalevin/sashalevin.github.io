@@ -74,12 +74,16 @@ impl GitRepo {
         }
     }
     
-    /// Check if a commit exists in the repository
-    pub fn commit_exists(&self, sha1: &str) -> bool {
-        if let Ok(oid) = Oid::from_str(sha1) {
-            self.repo.find_commit(oid).is_ok()
+    
+    /// Check if a branch exists
+    pub fn branch_exists(&self, branch_name: &str) -> bool {
+        if branch_name.starts_with("origin/") {
+            // For remote branches, check if the reference exists
+            let ref_name = format!("refs/remotes/{branch_name}");
+            self.repo.find_reference(&ref_name).is_ok()
         } else {
-            false
+            // For local branches
+            self.repo.find_branch(branch_name, git2::BranchType::Local).is_ok()
         }
     }
     
@@ -95,6 +99,45 @@ impl GitRepo {
             .output()?;
         
         Ok(output.status.success())
+    }
+    
+    /// Find the earliest tag containing a commit on a specific branch
+    pub fn find_earliest_tag_containing(&self, commit_sha: &str, branch: &str) -> MailbotResult<Option<String>> {
+        // First check if commit is in branch
+        if !self.is_ancestor(commit_sha, branch)? {
+            return Ok(None);
+        }
+        
+        // Extract version from branch name (e.g., "origin/linux-6.15.y" -> "6.15")
+        let version = branch
+            .strip_prefix("origin/linux-")
+            .and_then(|s| s.strip_suffix(".y"))
+            .ok_or_else(|| MailbotError::Git(git2::Error::from_str(&format!("Invalid branch name: {branch}"))))?;
+        
+        // Use git tag to find all tags containing the commit that match the version pattern
+        let output = Command::new("git")
+            .arg("-C")
+            .arg(&self.path)
+            .arg("tag")
+            .arg("--contains")
+            .arg(commit_sha)
+            .arg("--sort=version:refname")
+            .arg(format!("v{version}.*"))
+            .output()?;
+        
+        if !output.status.success() {
+            return Ok(None);
+        }
+        
+        // Parse the output to get the first tag
+        let tags = String::from_utf8_lossy(&output.stdout);
+        if let Some(first_tag) = tags.lines().next() {
+            // Strip the 'v' prefix if present (e.g., "v6.15.3" -> "6.15.3")
+            let tag = first_tag.strip_prefix('v').unwrap_or(first_tag);
+            Ok(Some(tag.to_string()))
+        } else {
+            Ok(None)
+        }
     }
     
     /// Ensure a remote tracking branch exists locally
@@ -398,7 +441,18 @@ impl Worktree {
         if output.status.success() {
             Ok(String::from_utf8_lossy(&output.stdout).to_string())
         } else {
-            Err(MailbotError::Build(String::from_utf8_lossy(&output.stderr).to_string()))
+            // For stable build log, the output is on stdout even when it fails
+            let stdout = String::from_utf8_lossy(&output.stdout);
+            let stderr = String::from_utf8_lossy(&output.stderr);
+            
+            // Prefer stdout if it contains build results, otherwise use stderr
+            let error_output = if !stdout.trim().is_empty() {
+                stdout.to_string()
+            } else {
+                stderr.to_string()
+            };
+            
+            Err(MailbotError::Build(error_output))
         }
     }
     
@@ -514,10 +568,10 @@ mod tests {
         
         let sha = String::from_utf8_lossy(&output.stdout).trim().to_string();
         
-        // Test commit exists
+        // Test commit exists by trying to find it
         let repo = GitRepo::open(&dir).unwrap();
-        assert!(repo.commit_exists(&sha));
-        assert!(!repo.commit_exists("0000000000000000000000000000000000000000"));
+        assert!(repo.find_commit(&sha).is_ok());
+        assert!(repo.find_commit("0000000000000000000000000000000000000000").is_err());
     }
     
     #[test]

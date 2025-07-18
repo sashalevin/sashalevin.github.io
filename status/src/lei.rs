@@ -1,18 +1,14 @@
 use std::process::Command;
-use std::fs;
-use std::path::Path;
 use chrono::{DateTime, Utc, Duration};
 use crate::error::{MailbotError, Result};
 use tracing::{info, debug};
 
-pub struct LeiClient {
-    pub(crate) state_file: String,
-}
+#[derive(Default)]
+pub struct LeiClient {}
 
 impl LeiClient {
-    pub fn new(state_file: String) -> Self {
-        let expanded = shellexpand::tilde(&state_file).to_string();
-        Self { state_file: expanded }
+    pub fn new() -> Self {
+        Self::default()
     }
     
     
@@ -22,17 +18,14 @@ impl LeiClient {
         
         info!("Querying emails from {} to {}", start_time, end_time);
         
-        // Build the query using lei's relative time format
-        // Convert minutes to hours if appropriate
-        let time_spec = if lookback_minutes >= 60 && lookback_minutes % 60 == 0 {
-            format!("rt:last.{}.hours", lookback_minutes / 60)
-        } else {
-            format!("rt:last.{lookback_minutes}.minutes")
-        };
+        // Build the query using absolute timestamps since lei's relative time format is broken
+        // Convert to epoch seconds
+        let start_epoch = start_time.timestamp();
+        let end_epoch = end_time.timestamp();
         
         // Query for various patch-related keywords in stable mailing list
         // Include PATCH, BACKPORT, STABLE, and kernel version patterns
-        let query = format!("l:stable (s:PATCH OR s:BACKPORT OR s:STABLE OR s:5. OR s:6.) {time_spec}");
+        let query = format!("l:stable (s:PATCH OR s:BACKPORT OR s:STABLE OR s:5. OR s:6.) AND rt:{start_epoch}..{end_epoch}");
         
         debug!("Lei query: {}", query);
         
@@ -62,8 +55,8 @@ impl LeiClient {
         
         info!("Found {} emails after filtering", emails.len());
         
-        // Update state file with current time
-        self.save_timestamp(end_time)?;
+        // State file functionality disabled - always using explicit time range
+        // self.save_timestamp(end_time)?;
         
         Ok(emails)
     }
@@ -72,40 +65,12 @@ impl LeiClient {
     pub(crate) fn get_time_range(&self, lookback_minutes: u32) -> Result<(DateTime<Utc>, DateTime<Utc>)> {
         let end_time = Utc::now();
         
-        let start_time = if Path::new(&self.state_file).exists() {
-            // Read last run timestamp
-            let timestamp_str = fs::read_to_string(&self.state_file)
-                .map_err(MailbotError::Io)?;
-            
-            let timestamp_str = timestamp_str.trim();
-            
-            // Parse timestamp (format: YYYYMMDDHHmmss)
-            DateTime::parse_from_str(&format!("{timestamp_str}+0000"), "%Y%m%d%H%M%S%z")
-                .map_err(|e| MailbotError::External(format!("Failed to parse timestamp: {e}")))?
-                .with_timezone(&Utc)
-        } else {
-            // First run - look back N minutes
-            end_time - Duration::minutes(lookback_minutes as i64)
-        };
+        // Always look back N minutes from now, ignoring state file
+        let start_time = end_time - Duration::minutes(lookback_minutes as i64);
         
         Ok((start_time, end_time))
     }
     
-    /// Save current timestamp to state file
-    pub(crate) fn save_timestamp(&self, time: DateTime<Utc>) -> Result<()> {
-        let timestamp = time.format("%Y%m%d%H%M%S").to_string();
-        
-        // Ensure directory exists
-        if let Some(parent) = Path::new(&self.state_file).parent() {
-            fs::create_dir_all(parent).map_err(MailbotError::Io)?;
-        }
-        
-        fs::write(&self.state_file, timestamp)
-            .map_err(MailbotError::Io)?;
-        
-        info!("Updated last run timestamp to: {}", time);
-        Ok(())
-    }
     
     /// Parse lei JSON output
     pub(crate) fn parse_lei_output(&self, output: &str, ignored_authors: &[String]) -> Result<Vec<crate::email::LeiEmail>> {
@@ -395,62 +360,38 @@ pub fn ensure_stable_external() -> Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use tempfile::TempDir;
     
     #[test]
     fn test_lei_client_creation() {
-        let client = LeiClient::new("~/.test_mailbot_state".to_string());
-        // Should expand tilde
-        assert!(client.state_file.contains(std::env::var("HOME").unwrap().as_str()));
+        let client = LeiClient::new();
+        // Client should be created successfully
+        let _ = client; // Just verify it can be created
     }
     
     #[test]
     fn test_time_range_first_run() {
-        let temp_dir = TempDir::new().unwrap();
-        let state_file = temp_dir.path().join("state");
-        
-        let client = LeiClient::new(state_file.to_str().unwrap().to_string());
+        let client = LeiClient::new();
         let (start, end) = client.get_time_range(60).unwrap();
         
-        // First run should look back 60 minutes
+        // Should look back 60 minutes
         let duration = end.signed_duration_since(start);
         assert!(duration.num_minutes() >= 59 && duration.num_minutes() <= 61);
     }
     
     #[test]
     fn test_time_range_subsequent_run() {
-        let temp_dir = TempDir::new().unwrap();
-        let state_file = temp_dir.path().join("state");
+        let client = LeiClient::new();
+        let (start, end) = client.get_time_range(30).unwrap();
         
-        // Write a timestamp
-        fs::write(&state_file, "20250101120000").unwrap();
-        
-        let client = LeiClient::new(state_file.to_str().unwrap().to_string());
-        let (start, _end) = client.get_time_range(60).unwrap();
-        
-        // Should use the saved timestamp
-        assert_eq!(start.format("%Y%m%d%H%M%S").to_string(), "20250101120000");
+        // Should always look back N minutes from now
+        let duration = end.signed_duration_since(start);
+        assert!(duration.num_minutes() >= 29 && duration.num_minutes() <= 31);
     }
     
-    #[test]
-    fn test_save_timestamp() {
-        let temp_dir = TempDir::new().unwrap();
-        let state_file = temp_dir.path().join("subdir/state");
-        
-        let client = LeiClient::new(state_file.to_str().unwrap().to_string());
-        let now = Utc::now();
-        
-        client.save_timestamp(now).unwrap();
-        
-        // Check file was created with correct content
-        assert!(state_file.exists());
-        let content = fs::read_to_string(&state_file).unwrap();
-        assert_eq!(content, now.format("%Y%m%d%H%M%S").to_string());
-    }
     
     #[test]
     fn test_parse_lei_json_array() {
-        let client = LeiClient::new("test".to_string());
+        let client = LeiClient::new();
         
         let json = r#"[
             {
@@ -486,7 +427,7 @@ mod tests {
     
     #[test]
     fn test_parse_lei_json_single_lines() {
-        let client = LeiClient::new("test".to_string());
+        let client = LeiClient::new();
         
         let json = r#"{"blob": "abc123", "s": "[PATCH] Test patch", "f": [["Test Author", "test@example.com"]], "m": "test123@example.com", "dt": "2025-01-01T12:00:00Z"}
 {"blob": "def456", "s": "Re: [PATCH] Reply", "f": [["Another Author", "another@example.com"]], "m": "reply123@example.com", "dt": "2025-01-01T13:00:00Z", "refs": ["test123@example.com"]}
@@ -503,7 +444,7 @@ null"#;
     
     #[test]
     fn test_parse_lei_email_from_value() {
-        let client = LeiClient::new("test".to_string());
+        let client = LeiClient::new();
         
         let value = serde_json::json!({
             "blob": "abc123",
@@ -533,7 +474,7 @@ null"#;
     
     #[test]
     fn test_parse_lei_email_minimal() {
-        let client = LeiClient::new("test".to_string());
+        let client = LeiClient::new();
         
         let value = serde_json::json!({
             "s": "Some subject",
@@ -552,7 +493,7 @@ null"#;
     
     #[test]
     fn test_no_reply_filtering() {
-        let client = LeiClient::new("test".to_string());
+        let client = LeiClient::new();
         
         let json = r#"[
             {"blob": "1", "s": "Re: [PATCH] Reply", "f": [["A", "a@ex.com"]], "m": "1"},
@@ -575,7 +516,7 @@ null"#;
     
     #[test]
     fn test_empty_and_null_handling() {
-        let client = LeiClient::new("test".to_string());
+        let client = LeiClient::new();
         
         assert_eq!(client.parse_lei_output("", &[]).unwrap().len(), 0);
         assert_eq!(client.parse_lei_output("null", &[]).unwrap().len(), 0);

@@ -21,9 +21,9 @@ fn test_git_repo_operations() {
     
     let master_sha = String::from_utf8_lossy(&output.stdout).trim().to_string();
     
-    // Test commit exists
-    assert!(repo.commit_exists(&master_sha));
-    assert!(!repo.commit_exists("0000000000000000000000000000000000000000"));
+    // Test commit exists by trying to find it
+    assert!(repo.find_commit(&master_sha).is_ok());
+    assert!(repo.find_commit("0000000000000000000000000000000000000000").is_err());
     
     // Test find commit
     let commit = repo.find_commit(&master_sha).unwrap();
@@ -288,8 +288,8 @@ fn test_stable_queue_repository() {
         if let Ok(Some(sha)) = result {
             assert!(!sha.is_empty());
             
-            // Verify the commit exists
-            assert!(repo.commit_exists(&sha));
+            // Verify the commit exists by trying to find it
+            assert!(repo.find_commit(&sha).is_ok());
             
             // Get commit author
             let author = repo.get_commit_author(&sha).unwrap();
@@ -332,7 +332,7 @@ fn test_linux_stable_rc_repository() {
             let sha = String::from_utf8_lossy(&output.stdout).trim().to_string();
             
             // Verify we can work with this commit
-            assert!(repo.commit_exists(&sha));
+            assert!(repo.find_commit(&sha).is_ok());
             
             let commit = repo.find_commit(&sha).unwrap();
             assert_eq!(commit.id().to_string(), sha);

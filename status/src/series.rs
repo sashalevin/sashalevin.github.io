@@ -4,7 +4,6 @@ use tracing::{debug, info};
 
 use crate::email::LeiEmail;
 use crate::error::{MailbotError, Result as MailbotResult};
-use crate::patch::PatchInfo;
 
 pub struct SeriesManager {
     pending_dir: PathBuf,
@@ -82,7 +81,7 @@ impl SeriesManager {
     }
     
     /// Get all patches in a series
-    pub fn get_series_patches(&self, email: &LeiEmail, total: u32) -> MailbotResult<Vec<PatchInfo>> {
+    pub fn get_series_patches(&self, email: &LeiEmail, total: u32) -> MailbotResult<Vec<LeiEmail>> {
         let series_info = self.get_series_info(email)?;
         let mut patches = Vec::new();
         
@@ -91,19 +90,19 @@ impl SeriesManager {
             let content = fs::read_to_string(&patch_path)?;
             let patch_email: LeiEmail = serde_json::from_str(&content)?;
             
-            // Create PatchInfo for each patch
-            // This is simplified - in real implementation, we'd extract full patch info
-            patches.push(PatchInfo {
-                email: patch_email,
-                claimed_sha1: None,
-                found_sha1: None,
-                author_mismatch: None,
-                series_info: Some((i, total)),
-                target_versions: vec![],
-            });
+            patches.push(patch_email);
         }
         
         Ok(patches)
+    }
+    
+    /// Get the first patch in a series
+    pub fn get_first_patch(&self, email: &LeiEmail) -> MailbotResult<LeiEmail> {
+        let series_info = self.get_series_info(email)?;
+        let patch_path = series_info.series_dir.join("1.json");
+        let content = fs::read_to_string(&patch_path)?;
+        let patch_email: LeiEmail = serde_json::from_str(&content)?;
+        Ok(patch_email)
     }
     
     /// Clean up a completed series
@@ -350,7 +349,7 @@ mod tests {
         
         // Verify patches are in order
         for (i, patch) in patches.iter().enumerate() {
-            assert!(patch.email.subject.contains(&format!("Part {}", i + 1)));
+            assert!(patch.subject.contains(&format!("Part {}", i + 1)));
         }
     }
     

@@ -321,16 +321,32 @@ impl ResponseBuilder {
                 result.branch, patch_status, build_status));
         }
         
-        // Patch and build errors
-        let errors: Vec<&TestResult> = self.test_results.iter()
-            .filter(|r| r.error.is_some())
+        // Build errors - collect only build failures, not patch apply failures
+        let build_errors: Vec<&TestResult> = self.test_results.iter()
+            .filter(|r| matches!(r.patch_status, PatchStatus::Success) && 
+                       r.build_passed == Some(false) && 
+                       r.error.is_some())
             .collect();
         
-        if !errors.is_empty() {
-            body.push_str("\nTest Errors:\n");
-            for result in errors {
+        if !build_errors.is_empty() {
+            body.push_str("\nBuild Errors:\n");
+            for result in build_errors {
                 if let Some(ref error) = result.error {
-                    body.push_str(&format!("{}: {}\n", result.branch, error));
+                    // Extract just the build output part (remove "Build failed: " prefix)
+                    let build_output = error.strip_prefix("Build failed: ").unwrap_or(error);
+                    
+                    // Check if this is output from stable build log
+                    if build_output.contains(": exited with code") {
+                        // This is stable build log output, show it as-is with indentation
+                        body.push_str(&format!("{}:\n", result.branch));
+                        for line in build_output.lines() {
+                            body.push_str(&format!("    {}\n", line));
+                        }
+                        body.push('\n');
+                    } else {
+                        // Generic build error
+                        body.push_str(&format!("{}: {}\n", result.branch, build_output));
+                    }
                 }
             }
         }
@@ -368,6 +384,7 @@ impl EmailResponse {
         Ok(())
     }
     
+    #[allow(dead_code)]
     pub fn send(&self, _email_config: &EmailConfig) -> MailbotResult<()> {
         // For now, we'll save to file instead of sending
         // In production, this would use lettre to send via SMTP

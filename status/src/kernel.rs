@@ -45,10 +45,6 @@ impl KernelVersion {
         format!("origin/linux-{}.{}.y", self.major, self.minor)
     }
     
-    /// Get pending branch name  
-    pub fn pending_branch(&self) -> String {
-        format!("pending-{}.{}", self.major, self.minor)
-    }
 }
 
 impl PartialOrd for KernelVersion {
@@ -268,10 +264,9 @@ mod tests {
     }
     
     #[test]
-    fn test_stable_and_pending_branch_names() {
+    fn test_stable_branch_name() {
         let version = KernelVersion::parse("5.10").unwrap();
         assert_eq!(version.stable_branch(), "origin/linux-5.10.y");
-        assert_eq!(version.pending_branch(), "pending-5.10");
     }
     
     #[test]

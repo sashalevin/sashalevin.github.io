@@ -27,6 +27,10 @@ pub struct Config {
     /// Path to tracking JSON file
     pub tracking_file: PathBuf,
     
+    /// Path to timestamp file for tracking last lei query
+    #[serde(default = "default_timestamp_file")]
+    pub timestamp_file: PathBuf,
+    
     /// Authors to ignore (email addresses)
     pub ignored_authors: Vec<String>,
     
@@ -38,9 +42,6 @@ pub struct Config {
     
     /// Enable debug mode
     pub debug: bool,
-    
-    /// Skip sending emails (dry run mode)
-    pub dry_run: bool,
     
     /// Skip build tests
     pub skip_build: bool,
@@ -93,6 +94,7 @@ impl Config {
             config.worktree_dir = expand_tilde(&config.worktree_dir);
             config.output_dir = expand_tilde(&config.output_dir);
             config.tracking_file = expand_tilde(&config.tracking_file);
+            config.timestamp_file = expand_tilde(&config.timestamp_file);
             
             config
         } else {
@@ -164,6 +166,7 @@ impl Default for Config {
             worktree_dir: PathBuf::from("./worktrees"),
             output_dir: PathBuf::from("./output"),
             tracking_file: PathBuf::from("./status/patch_tracking.json"),
+            timestamp_file: PathBuf::from("./status/last_lei_timestamp"),
             ignored_authors: vec![
                 "Sasha Levin".to_string(),
                 "Linux Kernel Distribution System".to_string(),
@@ -176,10 +179,13 @@ impl Default for Config {
             },
             build_command: "stable build log".to_string(),
             debug: false,
-            dry_run: false,
             skip_build: false,
         }
     }
+}
+
+fn default_timestamp_file() -> PathBuf {
+    PathBuf::from("./status/last_lei_timestamp")
 }
 
 fn expand_tilde<P: AsRef<Path>>(path: P) -> PathBuf {
@@ -210,6 +216,7 @@ mod tests {
             worktree_dir: dir.join("worktrees"),
             output_dir: dir.join("output"),
             tracking_file: dir.join("status/patch_tracking.json"),
+            timestamp_file: dir.join("status/last_lei_timestamp"),
             ignored_authors: vec![
                 "Test Author".to_string(),
             ],
@@ -220,7 +227,6 @@ mod tests {
             },
             build_command: "echo test".to_string(),
             debug: true,
-            dry_run: false,
             skip_build: false,
         }
     }
@@ -244,6 +250,7 @@ mod tests {
             "worktree_dir": "/custom/worktrees",
             "output_dir": "/custom/output",
             "tracking_file": "/custom/patch_tracking.json",
+            "timestamp_file": "/custom/last_timestamp",
             "ignored_authors": ["Test Author"],
             "email": {
                 "from": "test@example.com",
@@ -252,7 +259,6 @@ mod tests {
             },
             "build_command": "make test",
             "debug": true,
-            "dry_run": true,
             "skip_build": false
         }
         "#;

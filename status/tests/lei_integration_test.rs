@@ -24,9 +24,8 @@ fn test_lei_query_integration() {
     // Test lei external setup
     ensure_stable_external().unwrap();
     
-    // Create lei client with temporary state
-    let state_file = temp_dir.path().join("lei_state");
-    let client = LeiClient::new(state_file.to_str().unwrap().to_string());
+    // Create lei client
+    let client = LeiClient::new();
     
     // Query recent patches (5 minutes)
     let emails = client.query_recent_patches(5, &[]).unwrap();

@@ -8,10 +8,9 @@ fn test_cli_process_subcommand() {
     assert!(!args.verbose);
     
     match args.command {
-        Commands::Process { input, input_type, dry_run, skip_build, output_dir, .. } => {
+        Commands::Process { input, input_type, skip_build, output_dir, .. } => {
             assert_eq!(input, "test.json");
             assert_eq!(input_type, None); // Auto-detected
-            assert!(!dry_run);
             assert!(!skip_build);
             assert_eq!(output_dir, "./output");
         }
@@ -28,7 +27,6 @@ fn test_cli_process_with_all_args() {
         "process",
         "-i", "patch.mbox",
         "-t", "mbox",
-        "--dry-run",
         "--skip-build",
         "-o", "/custom/output",
     ]);
@@ -37,10 +35,9 @@ fn test_cli_process_with_all_args() {
     assert!(args.verbose);
     
     match args.command {
-        Commands::Process { input, input_type, dry_run, skip_build, output_dir, .. } => {
+        Commands::Process { input, input_type, skip_build, output_dir, .. } => {
             assert_eq!(input, "patch.mbox");
             assert_eq!(input_type, Some("mbox".to_string()));
-            assert!(dry_run);
             assert!(skip_build);
             assert_eq!(output_dir, "/custom/output");
         }
@@ -72,7 +69,7 @@ fn test_cli_missing_subcommand() {
     assert!(result.is_err());
     
     if let Err(err) = result {
-        assert_eq!(err.kind(), clap::error::ErrorKind::MissingSubcommand);
+        assert_eq!(err.kind(), clap::error::ErrorKind::DisplayHelpOnMissingArgumentOrSubcommand);
     }
 }
 
