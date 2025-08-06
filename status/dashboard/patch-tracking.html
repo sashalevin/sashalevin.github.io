@@ -207,24 +207,24 @@
     <div class="container">
         <div class="header">
             <h1>Linux Stable Patch Tracking</h1>
-            <p class="timestamp">Generated at: 2025-07-18 09:31:21 -04:00</p>
+            <p class="timestamp">Generated at: 2025-08-06 17:18:27 -04:00</p>
         </div>
         
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-value">18</div>
+                <div class="stat-value">174</div>
                 <div class="stat-label">Total Patches Tracked</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">14</div>
+                <div class="stat-value">158</div>
                 <div class="stat-label">Active Patches</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">77%</div>
+                <div class="stat-value">91%</div>
                 <div class="stat-label">Test Pass Rate</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">1.3</div>
+                <div class="stat-value">1.1</div>
                 <div class="stat-label">Avg Branches Tested</div>
             </div>
         </div>
@@ -233,13 +233,17 @@
         <div class="section">
             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                 <div class="stat-card" style="min-width: 150px;">
-                <div class="state state-failed">Issues Found</div>
-                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">4</div>
-                <div class="stat-label" style="font-size: 0.8em;">22%</div>
-            </div><div class="stat-card" style="min-width: 150px;">
                 <div class="state state-tests-passed">Tests Passed</div>
-                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">14</div>
-                <div class="stat-label" style="font-size: 0.8em;">77%</div>
+                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">116</div>
+                <div class="stat-label" style="font-size: 0.8em;">66%</div>
+            </div><div class="stat-card" style="min-width: 150px;">
+                <div class="state state-failed">Issues Found</div>
+                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">16</div>
+                <div class="stat-label" style="font-size: 0.8em;">9%</div>
+            </div><div class="stat-card" style="min-width: 150px;">
+                <div class="state state-queued">Queued</div>
+                <div class="stat-value" style="font-size: 1.2em; margin-top: 5px;">42</div>
+                <div class="stat-label" style="font-size: 0.8em;">24%</div>
             </div>
             </div>
         </div>
@@ -258,93 +262,1080 @@
         </thead>
         <tbody>
             <tr>
-                <td class="subject" title="[PATCH 6.12.y] btrfs: fix block group refcount race in btrfs_create_pending_block_groups()"><a href="https://lore.kernel.org/stable/tencent_C3ACCD708660161A98683D6A583E30255109@qq.com" target="_blank">[PATCH 6.12.y] btrfs: fix block group refcount race in btrfs_create_pending_block_groups()</a></td>
-                <td class="author" title=" &lt;alvalan9@foxmail.com&gt;"> &lt;alvalan9@foxmail.com&gt;</td>
-                <td class="sha1">2d8e5168</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice"><a href="https://lore.kernel.org/stable/20250724181257.291722-8-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">46d8c744</td><td><span class="state state-queued">Queued</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH stable 6.12] selftests/bpf: Set test path for token/obj_priv_implicit_token_envvar"><a href="https://lore.kernel.org/stable/20250716074526.139758-1-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.12] selftests/bpf: Set test path for token/obj_priv_implicit_token_envvar</a></td>
-                <td class="author" title="Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
-                <td class="sha1">f01750ae</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: comedi_test: Fix possible deletion of uninitialized timers"><a href="https://lore.kernel.org/stable/20250724182218.292203-9-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: comedi_test: Fix possible deletion of uninitialized timers</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">1b98304c</td><td><span class="state state-queued">Queued</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 6.12 2/2] arm64: defconfig: enable Maxim TCPCI driver"><a href="https://lore.kernel.org/stable/20250716102854.4012956-2-macpaul.lin@mediatek.com" target="_blank">[PATCH 6.12 2/2] arm64: defconfig: enable Maxim TCPCI driver</a></td>
-                <td class="author" title="Macpaul Lin &lt;macpaul.lin@mediatek.com&gt;">Macpaul Lin &lt;macpaul.lin@mediatek.com&gt;</td>
-                <td class="sha1">d2ca3198</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers"><a href="https://lore.kernel.org/stable/20250724181646.291939-9-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">1b98304c</td><td><span class="state state-queued">Queued</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 6.12 1/2] arm64: defconfig: enable DRM_DISPLAY_CONNECTOR as a module"><a href="https://lore.kernel.org/stable/20250716102854.4012956-1-macpaul.lin@mediatek.com" target="_blank">[PATCH 6.12 1/2] arm64: defconfig: enable DRM_DISPLAY_CONNECTOR as a module</a></td>
-                <td class="author" title="Macpaul Lin &lt;macpaul.lin@mediatek.com&gt;">Macpaul Lin &lt;macpaul.lin@mediatek.com&gt;</td>
-                <td class="sha1">691b5b53</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-6-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">70f2b28b</td><td><span class="state state-queued">Queued</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 6.6.y] arm64: Filter out SME hwcaps when FEAT_SME isn&#39;t implemented"><a href="https://lore.kernel.org/stable/20250716-stable-6-6-sme-feat-filt-v1-1-151d319dc41e@kernel.org" target="_blank">[PATCH 6.6.y] arm64: Filter out SME hwcaps when FEAT_SME isn&#39;t implemented</a></td>
-                <td class="author" title="Mark Brown &lt;broonie@kernel.org&gt;">Mark Brown &lt;broonie@kernel.org&gt;</td>
-                <td class="sha1">a75ad2fc</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-4-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">b14b076c</td><td><span class="state state-queued">Queued</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH stable 6.6 2/2] Revert &quot;selftests/bpf: dummy_st_ops should reject 0 for non-nullable params&quot;"><a href="https://lore.kernel.org/stable/20250717080928.221475-3-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.6 2/2] Revert &quot;selftests/bpf: dummy_st_ops should reject 0 for non-nullable params&quot;</a></td>
+                <td class="subject" title="[PATCH 5.4.y 2/3] power: supply: bq24190_charger: using pm_runtime_resume_and_get instead of pm_runtime_get_sync"><a href="https://lore.kernel.org/stable/20250721114846.1360952-3-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 2/3] power: supply: bq24190_charger: using pm_runtime_resume_and_get instead of pm_runtime_get_sync</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">d96a8940</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718130949.610540-1-arun@arunraghavan.net" target="_blank">[PATCH 5.15.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author" title="Arun Raghavan &lt;arun@arunraghavan.net&gt;">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td class="sha1">dc78f7e5</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 3/4] x86: Fix __get_wchan() for !STACKTRACE"><a href="https://lore.kernel.org/stable/20250722062642.309842-4-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 3/4] x86: Fix __get_wchan() for !STACKTRACE</a></td>
+                <td class="author" title="Siddhi Katage &lt;siddhi.katage@oracle.com&gt;">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td class="sha1">5d1ceb39</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y] jfs: reject on-disk inodes of an unsupported type"><a href="https://lore.kernel.org/stable/20250727100255.532093-1-duttaditya18@gmail.com" target="_blank">[PATCH 6.1.y] jfs: reject on-disk inodes of an unsupported type</a></td>
+                <td class="author" title="Aditya Dutt &lt;duttaditya18@gmail.com&gt;">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td class="sha1">8c3f9a70</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()"><a href="https://lore.kernel.org/stable/20250724182218.292203-7-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">e9cb2629</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 2/5] erofs: sunset erofs_dbg()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-3-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 2/5] erofs: sunset erofs_dbg()</a></td>
+                <td class="author" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td class="sha1">10656f9c</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 4/4] x86: Pin task-stack in __get_wchan()"><a href="https://lore.kernel.org/stable/20250722062642.309842-5-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 4/4] x86: Pin task-stack in __get_wchan()</a></td>
+                <td class="author" title="Siddhi Katage &lt;siddhi.katage@oracle.com&gt;">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td class="sha1">0dc636b3</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250729090420.19726-1-acsjakub@amazon.de" target="_blank">[PATCH 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author" title="Jakub Acs &lt;acsjakub@amazon.de&gt;">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td class="sha1">f1897f2f</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()"><a href="https://lore.kernel.org/stable/20250724181257.291722-7-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">e9cb2629</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-3-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">ed93c6f6</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: Fix some signed shift left operations"><a href="https://lore.kernel.org/stable/20250724182218.292203-2-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: Fix some signed shift left operations</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">ab705c8c</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 1/5] erofs: get rid of debug_one_dentry()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-2-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 1/5] erofs: get rid of debug_one_dentry()</a></td>
+                <td class="author" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td class="sha1">e324eaa9</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: das6402: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-6-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: das6402: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">70f2b28b</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-4-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">b14b076c</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 1/3] power: supply: bq24190_charger: Fix runtime PM imbalance on error"><a href="https://lore.kernel.org/stable/20250721114846.1360952-2-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 1/3] power: supply: bq24190_charger: Fix runtime PM imbalance on error</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">1a37a039</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718131759.641179-1-arun@arunraghavan.net" target="_blank">[PATCH 5.10.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author" title="Arun Raghavan &lt;arun@arunraghavan.net&gt;">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td class="sha1">dc78f7e5</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-5-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">66acb158</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()"><a href="https://lore.kernel.org/stable/20250724181646.291939-7-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">e9cb2629</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-5-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">66acb158</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] jfs: reject on-disk inodes of an unsupported type"><a href="https://lore.kernel.org/stable/20250727100531.533179-1-duttaditya18@gmail.com" target="_blank">[PATCH 5.15.y] jfs: reject on-disk inodes of an unsupported type</a></td>
+                <td class="author" title="Aditya Dutt &lt;duttaditya18@gmail.com&gt;">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td class="sha1">8c3f9a70</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718132625.670333-1-arun@arunraghavan.net" target="_blank">[PATCH 5.4.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author" title="Arun Raghavan &lt;arun@arunraghavan.net&gt;">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td class="sha1">dc78f7e5</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 5/5] erofs: address D-cache aliasing"><a href="https://lore.kernel.org/stable/20250722100029.3052177-6-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 5/5] erofs: address D-cache aliasing</a></td>
+                <td class="author" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td class="sha1">27917e81</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix some signed shift left operations"><a href="https://lore.kernel.org/stable/20250724181646.291939-2-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix some signed shift left operations</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">ab705c8c</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 2/4] sched: Add wrapper for get_wchan() to keep task blocked"><a href="https://lore.kernel.org/stable/20250722062642.309842-3-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 2/4] sched: Add wrapper for get_wchan() to keep task blocked</a></td>
+                <td class="author" title="Siddhi Katage &lt;siddhi.katage@oracle.com&gt;">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td class="sha1">42a20f86</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice"><a href="https://lore.kernel.org/stable/20250724181646.291939-8-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">46d8c744</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 3/5] erofs: drop z_erofs_page_mark_eio()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-4-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 3/5] erofs: drop z_erofs_page_mark_eio()</a></td>
+                <td class="author" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td class="sha1">9a05c6a8</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-6-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">70f2b28b</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 1/4] x86: Fix get_wchan() to support the ORC unwinder"><a href="https://lore.kernel.org/stable/20250722062642.309842-2-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 1/4] x86: Fix get_wchan() to support the ORC unwinder</a></td>
+                <td class="author" title="Siddhi Katage &lt;siddhi.katage@oracle.com&gt;">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td class="sha1">bc9bbb81</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix some signed shift left operations"><a href="https://lore.kernel.org/stable/20250724181257.291722-2-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix some signed shift left operations</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">ab705c8c</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 4/5] erofs: simplify z_erofs_transform_plain()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-5-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 4/5] erofs: simplify z_erofs_transform_plain()</a></td>
+                <td class="author" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td class="sha1">c5539762</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250730073927.27312-1-acsjakub@amazon.de" target="_blank">[PATCH v2 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author" title="Jakub Acs &lt;acsjakub@amazon.de&gt;">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td class="sha1">f1897f2f</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: pcl812: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-4-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: pcl812: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">b14b076c</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: aio_iiro_16: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-5-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: aio_iiro_16: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">66acb158</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 3/3] power: supply: bq24190: Fix use after free bug in bq24190_remove due to race condition"><a href="https://lore.kernel.org/stable/20250721114846.1360952-4-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 3/3] power: supply: bq24190: Fix use after free bug in bq24190_remove due to race condition</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">47c29d69</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-3-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">ed93c6f6</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: das16m1: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-3-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: das16m1: Fix bit shift out of bounds</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">ed93c6f6</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers"><a href="https://lore.kernel.org/stable/20250724181257.291722-9-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">1b98304c</td><td><span class="state state-queued">Queued</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12 6/6] drm/i915/ddi: only call shutdown hooks for valid encoders"><a href="https://lore.kernel.org/stable/ff10c20ae7a05ef436366e71b609374709f1c517.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 6/6] drm/i915/ddi: only call shutdown hooks for valid encoders</a></td>
+                <td class="author" title="Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td class="sha1">60a43ecb</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12 5/6] drm/i915/display: add intel_encoder_is_hdmi()"><a href="https://lore.kernel.org/stable/9da54648dbd77a7eee8a66a1e3a8255bb6cfad32.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 5/6] drm/i915/display: add intel_encoder_is_hdmi()</a></td>
+                <td class="author" title="Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td class="sha1">efa43b75</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12 4/6] drm/i915/ddi: gracefully handle errors from intel_ddi_init_hdmi_connector()"><a href="https://lore.kernel.org/stable/d064859cde86c25f3be1b9b09d274b0082ca337a.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 4/6] drm/i915/ddi: gracefully handle errors from intel_ddi_init_hdmi_connector()</a></td>
+                <td class="author" title="Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td class="sha1">8ea07e29</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12 3/6] drm/i915/hdmi: add error handling in g4x_hdmi_init()"><a href="https://lore.kernel.org/stable/ebf6995a6202f266badbec356c6b87a55cf478dc.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 3/6] drm/i915/hdmi: add error handling in g4x_hdmi_init()</a></td>
+                <td class="author" title="Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td class="sha1">7603ba81</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12 2/6] drm/i915/hdmi: propagate errors from intel_hdmi_init_connector()"><a href="https://lore.kernel.org/stable/938a984204146a4b6628030af87ff374cb41936c.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 2/6] drm/i915/hdmi: propagate errors from intel_hdmi_init_connector()</a></td>
+                <td class="author" title="Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td class="sha1">7fb56536</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12 1/6] drm/i915/ddi: change intel_ddi_init_{dp, hdmi}_connector() return type"><a href="https://lore.kernel.org/stable/e53d47b06b3ba07b4add2c6930ddafba91a49b41.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 1/6] drm/i915/ddi: change intel_ddi_init_{dp, hdmi}_connector() return type</a></td>
+                <td class="author" title="Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td class="sha1">e1980a97</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;"><a href="https://lore.kernel.org/stable/20250731123819.31647-1-visitorckw@gmail.com" target="_blank">[PATCH 6.12.y] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;</a></td>
+                <td class="author" title="Kuan-Wei Chiu &lt;visitorckw@gmail.com&gt;">Kuan-Wei Chiu &lt;visitorckw@gmail.com&gt;</td>
+                <td class="sha1">48fd7ebe</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y v2] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;"><a href="https://lore.kernel.org/stable/20250731130315.33984-1-visitorckw@gmail.com" target="_blank">[PATCH 6.12.y v2] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;</a></td>
+                <td class="author" title="Kuan-Wei Chiu &lt;visitorckw@gmail.com&gt;">Kuan-Wei Chiu &lt;visitorckw@gmail.com&gt;</td>
+                <td class="sha1">48fd7ebe</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 6/6] mptcp: do not queue data on closed subflows"><a href="https://lore.kernel.org/stable/20250731112353.2638719-14-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 6/6] mptcp: do not queue data on closed subflows</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">c886d702</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 5/6] mptcp: drop unused sk in mptcp_push_release"><a href="https://lore.kernel.org/stable/20250731112353.2638719-13-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 5/6] mptcp: drop unused sk in mptcp_push_release</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">b8e0def3</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 4/6] selftests: mptcp: Initialize variables to quiet gcc 12 warnings"><a href="https://lore.kernel.org/stable/20250731112353.2638719-12-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 4/6] selftests: mptcp: Initialize variables to quiet gcc 12 warnings</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">fd37c2ec</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 3/6] mptcp: introduce MAPPING_BAD_CSUM"><a href="https://lore.kernel.org/stable/20250731112353.2638719-11-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 3/6] mptcp: introduce MAPPING_BAD_CSUM</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">31bf11de</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 2/6] mptcp: fix error mibs accounting"><a href="https://lore.kernel.org/stable/20250731112353.2638719-10-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 2/6] mptcp: fix error mibs accounting</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">0c1f78a4</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 1/6] selftests: mptcp: add missing join check"><a href="https://lore.kernel.org/stable/20250731112353.2638719-9-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 1/6] selftests: mptcp: add missing join check</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">857898eb</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 6.12.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250730073945.27790-1-acsjakub@amazon.de" target="_blank">[PATCH v2 6.12.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author" title="Jakub Acs &lt;acsjakub@amazon.de&gt;">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td class="sha1">f1897f2f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 6.6.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250730073956.28488-1-acsjakub@amazon.de" target="_blank">[PATCH v2 6.6.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author" title="Jakub Acs &lt;acsjakub@amazon.de&gt;">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td class="sha1">f1897f2f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 3/3] selftests: mptcp: connect: also cover checksum"><a href="https://lore.kernel.org/stable/20250730102806.1405622-8-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 3/3] selftests: mptcp: connect: also cover checksum</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">fdf0f60a</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 2/3] selftests: mptcp: connect: also cover alt modes"><a href="https://lore.kernel.org/stable/20250730102806.1405622-7-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 2/3] selftests: mptcp: connect: also cover alt modes</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">37848a45</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 1/3] selftests: mptcp: make sendfile selftest work"><a href="https://lore.kernel.org/stable/20250730102806.1405622-6-matttbe@kernel.org" target="_blank">[PATCH 5.15.y 1/3] selftests: mptcp: make sendfile selftest work</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">df9e03ae</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] selftests: mptcp: connect: also cover alt modes"><a href="https://lore.kernel.org/stable/20250730111805.1659125-2-matttbe@kernel.org" target="_blank">[PATCH 5.10.y] selftests: mptcp: connect: also cover alt modes</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">37848a45</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only"><a href="https://lore.kernel.org/stable/20250730015406.32569-5-isaacmanjarres@google.com" target="_blank">[PATCH 5.10.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">ea0916e0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only"><a href="https://lore.kernel.org/stable/20250730015406.32569-4-isaacmanjarres@google.com" target="_blank">[PATCH 5.10.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">8ec396d0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE"><a href="https://lore.kernel.org/stable/20250730015406.32569-3-isaacmanjarres@google.com" target="_blank">[PATCH 5.10.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">28464bbb</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y 1/4] mm: drop the assumption that VM_SHARED always implies writable"><a href="https://lore.kernel.org/stable/20250730015406.32569-2-isaacmanjarres@google.com" target="_blank">[PATCH 5.10.y 1/4] mm: drop the assumption that VM_SHARED always implies writable</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">e8e17ee9</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only"><a href="https://lore.kernel.org/stable/20250730015152.29758-5-isaacmanjarres@google.com" target="_blank">[PATCH 6.6.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">ea0916e0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only"><a href="https://lore.kernel.org/stable/20250730015152.29758-4-isaacmanjarres@google.com" target="_blank">[PATCH 6.6.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">8ec396d0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE"><a href="https://lore.kernel.org/stable/20250730015152.29758-3-isaacmanjarres@google.com" target="_blank">[PATCH 6.6.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">28464bbb</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 1/4] mm: drop the assumption that VM_SHARED always implies writable"><a href="https://lore.kernel.org/stable/20250730015152.29758-2-isaacmanjarres@google.com" target="_blank">[PATCH 6.6.y 1/4] mm: drop the assumption that VM_SHARED always implies writable</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">e8e17ee9</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only"><a href="https://lore.kernel.org/stable/20250730015247.30827-5-isaacmanjarres@google.com" target="_blank">[PATCH 6.1.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">ea0916e0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only"><a href="https://lore.kernel.org/stable/20250730015247.30827-4-isaacmanjarres@google.com" target="_blank">[PATCH 6.1.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">8ec396d0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE"><a href="https://lore.kernel.org/stable/20250730015247.30827-3-isaacmanjarres@google.com" target="_blank">[PATCH 6.1.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">28464bbb</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 1/4] mm: drop the assumption that VM_SHARED always implies writable"><a href="https://lore.kernel.org/stable/20250730015247.30827-2-isaacmanjarres@google.com" target="_blank">[PATCH 6.1.y 1/4] mm: drop the assumption that VM_SHARED always implies writable</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">e8e17ee9</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only"><a href="https://lore.kernel.org/stable/20250730015337.31730-5-isaacmanjarres@google.com" target="_blank">[PATCH 5.15.y 4/4] selftests/memfd: add test for mapping write-sealed memfd read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">ea0916e0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only"><a href="https://lore.kernel.org/stable/20250730015337.31730-4-isaacmanjarres@google.com" target="_blank">[PATCH 5.15.y 3/4] mm: reinstate ability to map write-sealed memfd mappings read-only</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">8ec396d0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE"><a href="https://lore.kernel.org/stable/20250730015337.31730-3-isaacmanjarres@google.com" target="_blank">[PATCH 5.15.y 2/4] mm: update memfd seal write check to include F_SEAL_WRITE</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">28464bbb</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y 1/4] mm: drop the assumption that VM_SHARED always implies writable"><a href="https://lore.kernel.org/stable/20250730015337.31730-2-isaacmanjarres@google.com" target="_blank">[PATCH 5.15.y 1/4] mm: drop the assumption that VM_SHARED always implies writable</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">e8e17ee9</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 3/3] mm: perform the mapping_map_writable() check after call_mmap()"><a href="https://lore.kernel.org/stable/20250730005818.2793577-4-isaacmanjarres@google.com" target="_blank">[PATCH 5.4.y 3/3] mm: perform the mapping_map_writable() check after call_mmap()</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">15897894</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 2/3] mm: update memfd seal write check to include F_SEAL_WRITE"><a href="https://lore.kernel.org/stable/20250730005818.2793577-3-isaacmanjarres@google.com" target="_blank">[PATCH 5.4.y 2/3] mm: update memfd seal write check to include F_SEAL_WRITE</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">28464bbb</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 1/3] mm: drop the assumption that VM_SHARED always implies writable"><a href="https://lore.kernel.org/stable/20250730005818.2793577-2-isaacmanjarres@google.com" target="_blank">[PATCH 5.4.y 1/3] mm: drop the assumption that VM_SHARED always implies writable</a></td>
+                <td class="author" title="Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;">Isaac J. Manjarres &lt;isaacmanjarres@google.com&gt;</td>
+                <td class="sha1">e8e17ee9</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 3/3] mptcp: reset fallback status gracefully at disconnect() time"><a href="https://lore.kernel.org/stable/20250728132919.3904847-8-matttbe@kernel.org" target="_blank">[PATCH 6.1.y 3/3] mptcp: reset fallback status gracefully at disconnect() time</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">da9b2fc7</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 2/3] mptcp: plug races between subflow fail and subflow creation"><a href="https://lore.kernel.org/stable/20250728132919.3904847-7-matttbe@kernel.org" target="_blank">[PATCH 6.1.y 2/3] mptcp: plug races between subflow fail and subflow creation</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">def5b7b2</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y 1/3] mptcp: make fallback action and fallback decision atomic"><a href="https://lore.kernel.org/stable/20250728132919.3904847-6-matttbe@kernel.org" target="_blank">[PATCH 6.1.y 1/3] mptcp: make fallback action and fallback decision atomic</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">f8a1d9b1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y v2] KVM: x86: Free vCPUs before freeing VM state"><a href="https://lore.kernel.org/stable/20250728175002.4021103-1-chengkev@google.com" target="_blank">[PATCH 6.12.y v2] KVM: x86: Free vCPUs before freeing VM state</a></td>
+                <td class="author" title="Kevin Cheng &lt;chengkev@google.com&gt;">Kevin Cheng &lt;chengkev@google.com&gt;</td>
+                <td class="sha1">17bcd714</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y v2] KVM: x86: Free vCPUs before freeing VM state"><a href="https://lore.kernel.org/stable/20250728175122.4021478-1-chengkev@google.com" target="_blank">[PATCH 6.12.y v2] KVM: x86: Free vCPUs before freeing VM state</a></td>
+                <td class="author" title="Kevin Cheng &lt;chengkev@google.com&gt;">Kevin Cheng &lt;chengkev@google.com&gt;</td>
+                <td class="sha1">17bcd714</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 7/7] x86: use cmov for user address masking"><a href="https://lore.kernel.org/stable/20250728175701.3286764-8-jtoantran@google.com" target="_blank">[PATCH v2 7/7] x86: use cmov for user address masking</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">91309a70</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 6/7] x86: fix off-by-one in access_ok()"><a href="https://lore.kernel.org/stable/20250728175701.3286764-7-jtoantran@google.com" target="_blank">[PATCH v2 6/7] x86: fix off-by-one in access_ok()</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">573f45a9</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 5/7] x86: fix user address masking non-canonical speculation issue"><a href="https://lore.kernel.org/stable/20250728175701.3286764-6-jtoantran@google.com" target="_blank">[PATCH v2 5/7] x86: fix user address masking non-canonical speculation issue</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">86e6b154</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 4/7] arm64: add &#39;runtime constant&#39; support"><a href="https://lore.kernel.org/stable/20250728175701.3286764-5-jtoantran@google.com" target="_blank">[PATCH v2 4/7] arm64: add &#39;runtime constant&#39; support</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">94a2bc0f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 3/7] runtime constants: add x86 architecture support"><a href="https://lore.kernel.org/stable/20250728175701.3286764-4-jtoantran@google.com" target="_blank">[PATCH v2 3/7] runtime constants: add x86 architecture support</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">e3c92e81</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 2/7] runtime constants: add default dummy infrastructure"><a href="https://lore.kernel.org/stable/20250728175701.3286764-3-jtoantran@google.com" target="_blank">[PATCH v2 2/7] runtime constants: add default dummy infrastructure</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">e7829855</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 1/7] vfs: dcache: move hashlen_hash() from callers into d_hash()"><a href="https://lore.kernel.org/stable/20250728175701.3286764-2-jtoantran@google.com" target="_blank">[PATCH v2 1/7] vfs: dcache: move hashlen_hash() from callers into d_hash()</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">e60cc611</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15.y] KVM: arm64: sys_regs: disable -Wuninitialized-const-pointer warning"><a href="https://lore.kernel.org/stable/20250728-b4-stable-disable-uninit-ptr-warn-5-15-v1-1-e373a895b9c5@google.com" target="_blank">[PATCH 5.15.y] KVM: arm64: sys_regs: disable -Wuninitialized-const-pointer warning</a></td>
+                <td class="author" title="Justin Stitt &lt;justinstitt@google.com&gt;">Justin Stitt &lt;justinstitt@google.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y] KVM: arm64: sys_regs: disable -Wuninitialized-const-pointer warning"><a href="https://lore.kernel.org/stable/20250728-stable-disable-unit-ptr-warn-v1-1-958be9b66520@google.com" target="_blank">[PATCH 6.1.y] KVM: arm64: sys_regs: disable -Wuninitialized-const-pointer warning</a></td>
+                <td class="author" title="Justin Stitt &lt;justinstitt@google.com&gt;">Justin Stitt &lt;justinstitt@google.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v5.10] btrfs: fix deadlock when cloning inline extents and using qgroups"><a href="https://lore.kernel.org/stable/20250729050753.98449-1-shivani.agarwal@broadcom.com" target="_blank">[PATCH v5.10] btrfs: fix deadlock when cloning inline extents and using qgroups</a></td>
+                <td class="author" title="Shivani Agarwal &lt;shivani.agarwal@broadcom.com&gt;">Shivani Agarwal &lt;shivani.agarwal@broadcom.com&gt;</td>
+                <td class="sha1">f9baa501</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v5.10] block: don&#39;t call rq_qos_ops-&gt;done_bio if the bio isn&#39;t  tracked"><a href="https://lore.kernel.org/stable/20250729050901.98518-1-shivani.agarwal@broadcom.com" target="_blank">[PATCH v5.10] block: don&#39;t call rq_qos_ops-&gt;done_bio if the bio isn&#39;t  tracked</a></td>
+                <td class="author" title="Shivani Agarwal &lt;shivani.agarwal@broadcom.com&gt;">Shivani Agarwal &lt;shivani.agarwal@broadcom.com&gt;</td>
+                <td class="sha1">a647a524</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH stable 6.6 1/1] Revert &quot;selftests/bpf: Add a cgroup prog bpf_get_ns_current_pid_tgid() test&quot;"><a href="https://lore.kernel.org/stable/20250729053652.73667-1-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.6 1/1] Revert &quot;selftests/bpf: Add a cgroup prog bpf_get_ns_current_pid_tgid() test&quot;</a></td>
                 <td class="author" title="Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
                 <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH stable 6.6 1/2] Revert &quot;selftests/bpf: adjust dummy_st_ops_success to detect additional error&quot;"><a href="https://lore.kernel.org/stable/20250717080928.221475-2-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.6 1/2] Revert &quot;selftests/bpf: adjust dummy_st_ops_success to detect additional error&quot;</a></td>
-                <td class="author" title="Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
+                <td class="subject" title="[PATCH 6.12.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250729090347.17922-1-acsjakub@amazon.de" target="_blank">[PATCH 6.12.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author" title="Jakub Acs &lt;acsjakub@amazon.de&gt;">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td class="sha1">f1897f2f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250729090401.18684-1-acsjakub@amazon.de" target="_blank">[PATCH 6.6.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author" title="Jakub Acs &lt;acsjakub@amazon.de&gt;">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td class="sha1">f1897f2f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12 4/4] Revert &quot;drm/xe/forcewake: Add a helper xe_force_wake_ref_has_domain()&quot;"><a href="https://lore.kernel.org/stable/20250729110525.49838-5-tomitamoeko@gmail.com" target="_blank">[PATCH 6.12 4/4] Revert &quot;drm/xe/forcewake: Add a helper xe_force_wake_ref_has_domain()&quot;</a></td>
+                <td class="author" title="Tomita Moeko &lt;tomitamoeko@gmail.com&gt;">Tomita Moeko &lt;tomitamoeko@gmail.com&gt;</td>
                 <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 5.4.y 6/6] net_sched: sch_sfq: reject invalid perturb period"><a href="https://lore.kernel.org/stable/20250717124556.589696-7-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 6/6] net_sched: sch_sfq: reject invalid perturb period</a></td>
-                <td class="author" title="Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td class="sha1">7ca52541</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 6.12 3/4] Revert &quot;drm/xe/devcoredump: Update handling of xe_force_wake_get return&quot;"><a href="https://lore.kernel.org/stable/20250729110525.49838-4-tomitamoeko@gmail.com" target="_blank">[PATCH 6.12 3/4] Revert &quot;drm/xe/devcoredump: Update handling of xe_force_wake_get return&quot;</a></td>
+                <td class="author" title="Tomita Moeko &lt;tomitamoeko@gmail.com&gt;">Tomita Moeko &lt;tomitamoeko@gmail.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 5.4.y 5/6] net_sched: sch_sfq: move the limit validation"><a href="https://lore.kernel.org/stable/20250717124556.589696-6-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 5/6] net_sched: sch_sfq: move the limit validation</a></td>
-                <td class="author" title="Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td class="sha1">b3bf8f63</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 6.12 2/4] Revert &quot;drm/xe/tests/mocs: Update xe_force_wake_get() return handling&quot;"><a href="https://lore.kernel.org/stable/20250729110525.49838-3-tomitamoeko@gmail.com" target="_blank">[PATCH 6.12 2/4] Revert &quot;drm/xe/tests/mocs: Update xe_force_wake_get() return handling&quot;</a></td>
+                <td class="author" title="Tomita Moeko &lt;tomitamoeko@gmail.com&gt;">Tomita Moeko &lt;tomitamoeko@gmail.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 5.4.y 4/6] net_sched: sch_sfq: use a temporary work area for validating configuration"><a href="https://lore.kernel.org/stable/20250717124556.589696-5-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 4/6] net_sched: sch_sfq: use a temporary work area for validating configuration</a></td>
-                <td class="author" title="Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td class="sha1">8c0cea59</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 6.12 1/4] Revert &quot;drm/xe/gt: Update handling of xe_force_wake_get return&quot;"><a href="https://lore.kernel.org/stable/20250729110525.49838-2-tomitamoeko@gmail.com" target="_blank">[PATCH 6.12 1/4] Revert &quot;drm/xe/gt: Update handling of xe_force_wake_get return&quot;</a></td>
+                <td class="author" title="Tomita Moeko &lt;tomitamoeko@gmail.com&gt;">Tomita Moeko &lt;tomitamoeko@gmail.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 5.4.y 3/6] net_sched: sch_sfq: don&#39;t allow 1 packet limit"><a href="https://lore.kernel.org/stable/20250717124556.589696-4-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 3/6] net_sched: sch_sfq: don&#39;t allow 1 packet limit</a></td>
-                <td class="author" title="Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td class="sha1">10685681</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 6.1/6.6] drm/amd/display: Add null check for head_pipe in dcn32_acquire_idle_pipe_for_head_pipe_in_layer"><a href="https://lore.kernel.org/stable/20250729114924.138111-1-d.dulov@aladdin.ru" target="_blank">[PATCH 6.1/6.6] drm/amd/display: Add null check for head_pipe in dcn32_acquire_idle_pipe_for_head_pipe_in_layer</a></td>
+                <td class="author" title="Daniil Dulov &lt;d.dulov@aladdin.ru&gt;">Daniil Dulov &lt;d.dulov@aladdin.ru&gt;</td>
+                <td class="sha1">ac214044</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 5.4.y 2/6] net_sched: sch_sfq: handle bigger packets"><a href="https://lore.kernel.org/stable/20250717124556.589696-3-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 2/6] net_sched: sch_sfq: handle bigger packets</a></td>
-                <td class="author" title="Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td class="sha1">e4650d7a</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH v2 5.4] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large"><a href="https://lore.kernel.org/stable/20250728121821.276086-1-abbotti@mev.co.uk" target="_blank">[PATCH v2 5.4] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">08ae4b20</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 5.4.y 1/6] net_sched: sch_sfq: annotate data-races around q-&gt;perturb_period"><a href="https://lore.kernel.org/stable/20250717124556.589696-2-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 1/6] net_sched: sch_sfq: annotate data-races around q-&gt;perturb_period</a></td>
-                <td class="author" title="Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td class="sha1">a17ef9e6</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="subject" title="[PATCH 6.6] arm64: kaslr: fix nokaslr cmdline parsing"><a href="https://lore.kernel.org/stable/20250728124644.63207-1-chenridong@huaweicloud.com" target="_blank">[PATCH 6.6] arm64: kaslr: fix nokaslr cmdline parsing</a></td>
+                <td class="author" title="Chen Ridong &lt;chenridong@huaweicloud.com&gt;">Chen Ridong &lt;chenridong@huaweicloud.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH stable 6.12 6.15 1/1] selftests/bpf: Add tests with stack ptr register in conditional jmp"><a href="https://lore.kernel.org/stable/20250728072018.40760-1-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.12 6.15 1/1] selftests/bpf: Add tests with stack ptr register in conditional jmp</a></td>
+                <td class="author" title="Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
+                <td class="sha1">5ffb537e</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v5.10] ptp: Fix possible memory leak in ptp_clock_register()"><a href="https://lore.kernel.org/stable/20250728081121.95098-1-shivani.agarwal@broadcom.com" target="_blank">[PATCH v5.10] ptp: Fix possible memory leak in ptp_clock_register()</a></td>
+                <td class="author" title="Shivani Agarwal &lt;shivani.agarwal@broadcom.com&gt;">Shivani Agarwal &lt;shivani.agarwal@broadcom.com&gt;</td>
+                <td class="sha1">4225fea1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 3/3] mptcp: reset fallback status gracefully at disconnect() time"><a href="https://lore.kernel.org/stable/20250728091448.3494479-8-matttbe@kernel.org" target="_blank">[PATCH 6.6.y 3/3] mptcp: reset fallback status gracefully at disconnect() time</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">da9b2fc7</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 2/3] mptcp: plug races between subflow fail and subflow creation"><a href="https://lore.kernel.org/stable/20250728091448.3494479-7-matttbe@kernel.org" target="_blank">[PATCH 6.6.y 2/3] mptcp: plug races between subflow fail and subflow creation</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">def5b7b2</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 1/3] mptcp: make fallback action and fallback decision atomic"><a href="https://lore.kernel.org/stable/20250728091448.3494479-6-matttbe@kernel.org" target="_blank">[PATCH 6.6.y 1/3] mptcp: make fallback action and fallback decision atomic</a></td>
+                <td class="author" title="Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;">Matthieu Baerts (NGI0) &lt;matttbe@kernel.org&gt;</td>
+                <td class="sha1">f8a1d9b1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 5.4] comedi: Fix initialization of data for instructions that write to subdevice"><a href="https://lore.kernel.org/stable/20250728122156.276222-1-abbotti@mev.co.uk" target="_blank">[PATCH v2 5.4] comedi: Fix initialization of data for instructions that write to subdevice</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">46d8c744</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6 5/5] sched,freezer: Remove unnecessary warning in __thaw_task"><a href="https://lore.kernel.org/stable/20250728025444.34009-6-chenridong@huaweicloud.com" target="_blank">[PATCH 6.6 5/5] sched,freezer: Remove unnecessary warning in __thaw_task</a></td>
+                <td class="author" title="Chen Ridong &lt;chenridong@huaweicloud.com&gt;">Chen Ridong &lt;chenridong@huaweicloud.com&gt;</td>
+                <td class="sha1">9beb8c5e</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6 4/5] freezer,sched: Clean saved_state when restoring it during thaw"><a href="https://lore.kernel.org/stable/20250728025444.34009-5-chenridong@huaweicloud.com" target="_blank">[PATCH 6.6 4/5] freezer,sched: Clean saved_state when restoring it during thaw</a></td>
+                <td class="author" title="Chen Ridong &lt;chenridong@huaweicloud.com&gt;">Chen Ridong &lt;chenridong@huaweicloud.com&gt;</td>
+                <td class="sha1">418146e3</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6 3/5] freezer,sched: Do not restore saved_state of a thawed task"><a href="https://lore.kernel.org/stable/20250728025444.34009-4-chenridong@huaweicloud.com" target="_blank">[PATCH 6.6 3/5] freezer,sched: Do not restore saved_state of a thawed task</a></td>
+                <td class="author" title="Chen Ridong &lt;chenridong@huaweicloud.com&gt;">Chen Ridong &lt;chenridong@huaweicloud.com&gt;</td>
+                <td class="sha1">23ab79e8</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6 2/5] freezer,sched: Use saved_state to reduce some spurious wakeups"><a href="https://lore.kernel.org/stable/20250728025444.34009-3-chenridong@huaweicloud.com" target="_blank">[PATCH 6.6 2/5] freezer,sched: Use saved_state to reduce some spurious wakeups</a></td>
+                <td class="author" title="Chen Ridong &lt;chenridong@huaweicloud.com&gt;">Chen Ridong &lt;chenridong@huaweicloud.com&gt;</td>
+                <td class="sha1">8f0eed4a</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6 1/5] sched/core: Remove ifdeffery for saved_state"><a href="https://lore.kernel.org/stable/20250728025444.34009-2-chenridong@huaweicloud.com" target="_blank">[PATCH 6.6 1/5] sched/core: Remove ifdeffery for saved_state</a></td>
+                <td class="author" title="Chen Ridong &lt;chenridong@huaweicloud.com&gt;">Chen Ridong &lt;chenridong@huaweicloud.com&gt;</td>
+                <td class="sha1">fbaa6a18</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] jfs: reject on-disk inodes of an unsupported type"><a href="https://lore.kernel.org/stable/20250727095111.527745-1-duttaditya18@gmail.com" target="_blank">[PATCH 6.12.y] jfs: reject on-disk inodes of an unsupported type</a></td>
+                <td class="author" title="Aditya Dutt &lt;duttaditya18@gmail.com&gt;">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td class="sha1">8c3f9a70</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y] jfs: reject on-disk inodes of an unsupported type"><a href="https://lore.kernel.org/stable/20250727095645.530309-1-duttaditya18@gmail.com" target="_blank">[PATCH 6.6.y] jfs: reject on-disk inodes of an unsupported type</a></td>
+                <td class="author" title="Aditya Dutt &lt;duttaditya18@gmail.com&gt;">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td class="sha1">8c3f9a70</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] KVM: x86: Free vCPUs before freeing VM state"><a href="https://lore.kernel.org/stable/20250725185805.2867461-3-chengkev@google.com" target="_blank">[PATCH 6.12.y] KVM: x86: Free vCPUs before freeing VM state</a></td>
+                <td class="author" title="Kevin Cheng &lt;chengkev@google.com&gt;">Kevin Cheng &lt;chengkev@google.com&gt;</td>
+                <td class="sha1">17bcd714</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large"><a href="https://lore.kernel.org/stable/20250724181257.291722-1-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">08ae4b20</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large"><a href="https://lore.kernel.org/stable/20250724181646.291939-1-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">08ae4b20</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 8/8] act_mirred: use the backlog for nested calls to mirred ingress"><a href="https://lore.kernel.org/stable/20250724192619.217203-9-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 8/8] act_mirred: use the backlog for nested calls to mirred ingress</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">ca22da2f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 7/8] net/sched: act_mirred: better wording on protection against excessive stack growth"><a href="https://lore.kernel.org/stable/20250724192619.217203-8-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 7/8] net/sched: act_mirred: better wording on protection against excessive stack growth</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">78dcdffe</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 6/8] net/sched: act_mirred: refactor the handle of xmit"><a href="https://lore.kernel.org/stable/20250724192619.217203-7-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 6/8] net/sched: act_mirred: refactor the handle of xmit</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">fa6d6399</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 5/8] selftests: forwarding: tc_actions.sh: add matchall mirror test"><a href="https://lore.kernel.org/stable/20250724192619.217203-6-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 5/8] selftests: forwarding: tc_actions.sh: add matchall mirror test</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">075c8aa7</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 4/8] net: sched: don&#39;t expose action qstats to skb_tc_reinsert()"><a href="https://lore.kernel.org/stable/20250724192619.217203-5-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 4/8] net: sched: don&#39;t expose action qstats to skb_tc_reinsert()</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">ef816f3c</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 3/8] net: sched: extract qstats update code into functions"><a href="https://lore.kernel.org/stable/20250724192619.217203-4-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 3/8] net: sched: extract qstats update code into functions</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">26b537a8</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 2/8] net: sched: extract bstats update code into function"><a href="https://lore.kernel.org/stable/20250724192619.217203-3-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 2/8] net: sched: extract bstats update code into function</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">5e1ad95b</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y 1/8] net: sched: extract common action counters update code into function"><a href="https://lore.kernel.org/stable/20250724192619.217203-2-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 1/8] net: sched: extract common action counters update code into function</a></td>
+                <td class="author" title=" &lt;skulkarni@mvista.com&gt;"> &lt;skulkarni@mvista.com&gt;</td>
+                <td class="sha1">c8ecebd0</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v2 6.1] net: add netdev_lockdep_set_classes() to virtual drivers"><a href="https://lore.kernel.org/stable/20250724200524.172820-1-sumanth.gavini@yahoo.com" target="_blank">[PATCH v2 6.1] net: add netdev_lockdep_set_classes() to virtual drivers</a></td>
+                <td class="author" title="Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;">Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;</td>
+                <td class="sha1">0bef5120</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y] KVM: arm64: silence -Wuninitialized-const-pointer warning"><a href="https://lore.kernel.org/stable/20250724-b4-clidr-unint-const-ptr-v1-1-67c4d620b6b6@google.com" target="_blank">[PATCH 6.1.y] KVM: arm64: silence -Wuninitialized-const-pointer warning</a></td>
+                <td class="author" title="Justin Stitt &lt;justinstitt@google.com&gt;">Justin Stitt &lt;justinstitt@google.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y v2 1/1] block: Fix bounce check logic in blk_queue_may_bounce()"><a href="https://lore.kernel.org/stable/20250725112710.219313-1-quic_hardshar@quicinc.com" target="_blank">[PATCH 6.6.y v2 1/1] block: Fix bounce check logic in blk_queue_may_bounce()</a></td>
+                <td class="author" title="Hardeep Sharma &lt;quic_hardshar@quicinc.com&gt;">Hardeep Sharma &lt;quic_hardshar@quicinc.com&gt;</td>
+                <td class="sha1">-</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.10] drm/amd/display: Pass non-null to dcn20_validate_apply_pipe_split_flags"><a href="https://lore.kernel.org/stable/20250724102449.63028-1-d.dulov@aladdin.ru" target="_blank">[PATCH 5.10] drm/amd/display: Pass non-null to dcn20_validate_apply_pipe_split_flags</a></td>
+                <td class="author" title="Daniil Dulov &lt;d.dulov@aladdin.ru&gt;">Daniil Dulov &lt;d.dulov@aladdin.ru&gt;</td>
+                <td class="sha1">55595987</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.15/6.1] drm/amd/display: Pass non-null to dcn20_validate_apply_pipe_split_flags"><a href="https://lore.kernel.org/stable/20250724102449.63028-2-d.dulov@aladdin.ru" target="_blank">[PATCH 5.15/6.1] drm/amd/display: Pass non-null to dcn20_validate_apply_pipe_split_flags</a></td>
+                <td class="author" title="Daniil Dulov &lt;d.dulov@aladdin.ru&gt;">Daniil Dulov &lt;d.dulov@aladdin.ru&gt;</td>
+                <td class="sha1">55595987</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12] Drivers: hv: Make the sysfs node size for the ring buffer dynamic"><a href="https://lore.kernel.org/stable/20250723070200.2775-1-namjain@linux.microsoft.com" target="_blank">[PATCH 6.12] Drivers: hv: Make the sysfs node size for the ring buffer dynamic</a></td>
+                <td class="author" title="Naman Jain &lt;namjain@linux.microsoft.com&gt;">Naman Jain &lt;namjain@linux.microsoft.com&gt;</td>
+                <td class="sha1">65995e97</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v1 6/6] x86: fix off-by-one in access_ok()"><a href="https://lore.kernel.org/stable/20250723163209.1929303-7-jtoantran@google.com" target="_blank">[PATCH v1 6/6] x86: fix off-by-one in access_ok()</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">573f45a9</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v1 5/6] x86: fix user address masking non-canonical speculation issue"><a href="https://lore.kernel.org/stable/20250723163209.1929303-6-jtoantran@google.com" target="_blank">[PATCH v1 5/6] x86: fix user address masking non-canonical speculation issue</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">86e6b154</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v1 4/6] arm64: add &#39;runtime constant&#39; support"><a href="https://lore.kernel.org/stable/20250723163209.1929303-5-jtoantran@google.com" target="_blank">[PATCH v1 4/6] arm64: add &#39;runtime constant&#39; support</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">94a2bc0f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v1 3/6] runtime constants: add x86 architecture support"><a href="https://lore.kernel.org/stable/20250723163209.1929303-4-jtoantran@google.com" target="_blank">[PATCH v1 3/6] runtime constants: add x86 architecture support</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">e3c92e81</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v1 2/6] runtime constants: add default dummy infrastructure"><a href="https://lore.kernel.org/stable/20250723163209.1929303-3-jtoantran@google.com" target="_blank">[PATCH v1 2/6] runtime constants: add default dummy infrastructure</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">e7829855</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v1 1/6] vfs: dcache: move hashlen_hash() from callers into d_hash()"><a href="https://lore.kernel.org/stable/20250723163209.1929303-2-jtoantran@google.com" target="_blank">[PATCH v1 1/6] vfs: dcache: move hashlen_hash() from callers into d_hash()</a></td>
+                <td class="author" title="Jimmy Tran &lt;jtoantran@google.com&gt;">Jimmy Tran &lt;jtoantran@google.com&gt;</td>
+                <td class="sha1">e60cc611</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] rust: use `#[used(compiler)]` to fix build and `modpost` with Rust &gt;= 1.89.0"><a href="https://lore.kernel.org/stable/20250721194736.1150349-1-ojeda@kernel.org" target="_blank">[PATCH 6.12.y] rust: use `#[used(compiler)]` to fix build and `modpost` with Rust &gt;= 1.89.0</a></td>
+                <td class="author" title="Miguel Ojeda &lt;ojeda@kernel.org&gt;">Miguel Ojeda &lt;ojeda@kernel.org&gt;</td>
+                <td class="sha1">74981592</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.15.y] rust: use `#[used(compiler)]` to fix build and `modpost` with Rust &gt;= 1.89.0"><a href="https://lore.kernel.org/stable/20250721194904.1150898-1-ojeda@kernel.org" target="_blank">[PATCH 6.15.y] rust: use `#[used(compiler)]` to fix build and `modpost` with Rust &gt;= 1.89.0</a></td>
+                <td class="author" title="Miguel Ojeda &lt;ojeda@kernel.org&gt;">Miguel Ojeda &lt;ojeda@kernel.org&gt;</td>
+                <td class="sha1">74981592</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] net: libwx: fix multicast packets received count"><a href="https://lore.kernel.org/stable/DCAB16D0A9C714C3+20250722020037.3406-1-jiawenwu@trustnetic.com" target="_blank">[PATCH 6.12.y] net: libwx: fix multicast packets received count</a></td>
+                <td class="author" title="Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;">Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;</td>
+                <td class="sha1">2b30a3d1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.15.y] net: libwx: fix multicast packets received count"><a href="https://lore.kernel.org/stable/528914E284765D4D+20250722020129.3432-1-jiawenwu@trustnetic.com" target="_blank">[PATCH 6.15.y] net: libwx: fix multicast packets received count</a></td>
+                <td class="author" title="Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;">Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;</td>
+                <td class="sha1">2b30a3d1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] net: libwx: fix multicast packets received count"><a href="https://lore.kernel.org/stable/1FD2A049AA18CEF9+20250722060854.8327-1-jiawenwu@trustnetic.com" target="_blank">[PATCH 6.12.y] net: libwx: fix multicast packets received count</a></td>
+                <td class="author" title="Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;">Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;</td>
+                <td class="sha1">2b30a3d1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.15.y] net: libwx: fix multicast packets received count"><a href="https://lore.kernel.org/stable/29E146077CD96A7C+20250722060931.8347-1-jiawenwu@trustnetic.com" target="_blank">[PATCH 6.15.y] net: libwx: fix multicast packets received count</a></td>
+                <td class="author" title="Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;">Jiawen Wu &lt;jiawenwu@trustnetic.com&gt;</td>
+                <td class="sha1">2b30a3d1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y] erofs: address D-cache aliasing"><a href="https://lore.kernel.org/stable/20250722094449.2950654-1-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.6.y] erofs: address D-cache aliasing</a></td>
+                <td class="author" title="Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td class="sha1">27917e81</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1 v2] crypto: qat - fix ring to service map for QAT GEN4"><a href="https://lore.kernel.org/stable/20250722150910.6768-1-giovanni.cabiddu@intel.com" target="_blank">[PATCH 6.1 v2] crypto: qat - fix ring to service map for QAT GEN4</a></td>
+                <td class="author" title="Giovanni Cabiddu &lt;giovanni.cabiddu@intel.com&gt;">Giovanni Cabiddu &lt;giovanni.cabiddu@intel.com&gt;</td>
+                <td class="sha1">a238487f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH stable 6.12 1/1] selftests/bpf: Add tests with stack ptr register in conditional jmp"><a href="https://lore.kernel.org/stable/20250721084531.58557-1-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.12 1/1] selftests/bpf: Add tests with stack ptr register in conditional jmp</a></td>
+                <td class="author" title="Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
+                <td class="sha1">5ffb537e</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 1/2] regulator: pwm-regulator: Calculate the output voltage for disabled PWMs"><a href="https://lore.kernel.org/stable/20250718141016.312952-2-amadeus@jmu.edu.cn" target="_blank">[PATCH 6.6.y 1/2] regulator: pwm-regulator: Calculate the output voltage for disabled PWMs</a></td>
+                <td class="author" title="Chukun Pan &lt;amadeus@jmu.edu.cn&gt;">Chukun Pan &lt;amadeus@jmu.edu.cn&gt;</td>
+                <td class="sha1">6a7d11ef</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y 2/2] regulator: pwm-regulator: Manage boot-on with disabled PWM channels"><a href="https://lore.kernel.org/stable/20250718141016.312952-3-amadeus@jmu.edu.cn" target="_blank">[PATCH 6.6.y 2/2] regulator: pwm-regulator: Manage boot-on with disabled PWM channels</a></td>
+                <td class="author" title="Chukun Pan &lt;amadeus@jmu.edu.cn&gt;">Chukun Pan &lt;amadeus@jmu.edu.cn&gt;</td>
+                <td class="sha1">b3cbdcc1</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr>
@@ -352,6 +1343,27 @@
                 <td class="subject" title="[PATCH 6.1] crypto: qat - fix ring to service map for QAT GEN4"><a href="https://lore.kernel.org/stable/20250717170835.25211-1-giovanni.cabiddu@intel.com" target="_blank">[PATCH 6.1] crypto: qat - fix ring to service map for QAT GEN4</a></td>
                 <td class="author" title="Giovanni Cabiddu &lt;giovanni.cabiddu@intel.com&gt;">Giovanni Cabiddu &lt;giovanni.cabiddu@intel.com&gt;</td>
                 <td class="sha1">a238487f</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.12.y] btrfs: fix block group refcount race in btrfs_create_pending_block_groups()"><a href="https://lore.kernel.org/stable/tencent_C3ACCD708660161A98683D6A583E30255109@qq.com" target="_blank">[PATCH 6.12.y] btrfs: fix block group refcount race in btrfs_create_pending_block_groups()</a></td>
+                <td class="author" title=" &lt;alvalan9@foxmail.com&gt;"> &lt;alvalan9@foxmail.com&gt;</td>
+                <td class="sha1">2d8e5168</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.6.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718125421.532335-1-arun@arunraghavan.net" target="_blank">[PATCH 6.6.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author" title="Arun Raghavan &lt;arun@arunraghavan.net&gt;">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td class="sha1">dc78f7e5</td><td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718130201.576416-1-arun@arunraghavan.net" target="_blank">[PATCH 6.1.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author" title="Arun Raghavan &lt;arun@arunraghavan.net&gt;">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td class="sha1">dc78f7e5</td><td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td class="test-result"><span class="test-passed">1/1 passed</span></td>
                 <td>0/0</td>
             </tr></tbody></table>
@@ -371,9 +1383,100 @@
         </thead>
         <tbody>
             <tr>
-                <td class="subject" title="[PATCH] ipv6: make addrconf_wq single threaded"><a href="https://lore.kernel.org/stable/20250718102231.5561-2-bacs@librecast.net" target="_blank">[PATCH] ipv6: make addrconf_wq single threaded</a></td>
-                <td class="author" title="Brett A C Sheffield &lt;bacs@librecast.net&gt;">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
-                <td class="sha1">dfd2ee08</td>
+                <td class="subject" title="[PATCH] ice/ptp: fix crosstimestamp reporting"><a href="https://lore.kernel.org/stable/20250725-ice_crosstimestamp_reporting-v1-1-3d0473bb7b57@blochl.de" target="_blank">[PATCH] ice/ptp: fix crosstimestamp reporting</a></td>
+                <td class="author" title="Markus Blöchl &lt;markus@blochl.de&gt;">Markus Blöchl &lt;markus@blochl.de&gt;</td>
+                <td class="sha1">a5a441ae</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: Fix initialization of data for instructions that write to subdevice"><a href="https://lore.kernel.org/stable/20250724182218.292203-8-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: Fix initialization of data for instructions that write to subdevice</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">46d8c744</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 5.4.y] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large"><a href="https://lore.kernel.org/stable/20250724182218.292203-1-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large</a></td>
+                <td class="author" title="Ian Abbott &lt;abbotti@mev.co.uk&gt;">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td class="sha1">08ae4b20</td>
+                <td class="test-result"><span class="test-passed">1/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH 6.1] net: add netdev_lockdep_set_classes() to virtual drivers"><a href="https://lore.kernel.org/stable/20250724043010.129297-1-sumanth.gavini@yahoo.com" target="_blank">[PATCH 6.1] net: add netdev_lockdep_set_classes() to virtual drivers</a></td>
+                <td class="author" title="Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;">Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;</td>
+                <td class="sha1">0bef5120</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 6.12] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134019.2370983-1-mzhivich@akamai.com" target="_blank">[PATCH v3 6.12] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134208.2371260-1-mzhivich@akamai.com" target="_blank">[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134221.2371313-1-mzhivich@akamai.com" target="_blank">[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 5.10] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134528.2371704-1-mzhivich@akamai.com" target="_blank">[PATCH v3 5.10] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134121.2371126-1-mzhivich@akamai.com" target="_blank">[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 5.15] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134542.2371783-1-mzhivich@akamai.com" target="_blank">[PATCH v3 5.15] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 6.1] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134559.2371838-1-mzhivich@akamai.com" target="_blank">[PATCH v3 6.1] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()"><a href="https://lore.kernel.org/stable/20250723134140.2371189-1-mzhivich@akamai.com" target="_blank">[PATCH v3 6.6] x86/bugs: Fix use of possibly uninit value in amd_check_tsa_microcode()</a></td>
+                <td class="author" title="Michael Zhivich &lt;mzhivich@akamai.com&gt;">Michael Zhivich &lt;mzhivich@akamai.com&gt;</td>
+                <td class="sha1">-</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH] Fix SMB311 posix special file creation to servers which do not advertise reparse support"><a href="https://lore.kernel.org/stable/20250720203248.5702-1-eraykrdg1@gmail.com" target="_blank">[PATCH] Fix SMB311 posix special file creation to servers which do not advertise reparse support</a></td>
+                <td class="author" title="Ahmet Eray Karadag &lt;eraykrdg1@gmail.com&gt;">Ahmet Eray Karadag &lt;eraykrdg1@gmail.com&gt;</td>
+                <td class="sha1">8767cb3f</td>
+                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
+                <td>0/0</td>
+            </tr>
+            <tr>
+                <td class="subject" title="[PATCH] Fix SMB311 posix special file creation to servers which do not advertise reparse support"><a href="https://lore.kernel.org/stable/20250720022612.3857405-1-junttang@sogang.ac.kr" target="_blank">[PATCH] Fix SMB311 posix special file creation to servers which do not advertise reparse support</a></td>
+                <td class="author" title="Junhyeok Park &lt;decargon123@gmail.com&gt;">Junhyeok Park &lt;decargon123@gmail.com&gt;</td>
+                <td class="sha1">8767cb3f</td>
                 <td class="test-result"><span class="test-failed">0/1 passed</span></td>
                 <td>0/0</td>
             </tr>
@@ -385,16 +1488,9 @@
                 <td>0/0</td>
             </tr>
             <tr>
-                <td class="subject" title="[PATCH 6.1] HID: mcp2221: Set driver data before I2C adapter add"><a href="https://lore.kernel.org/stable/20250716195316.176786-1-sumanth.gavini@yahoo.com" target="_blank">[PATCH 6.1] HID: mcp2221: Set driver data before I2C adapter add</a></td>
-                <td class="author" title="Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;">Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;</td>
-                <td class="sha1">f2d4a583</td>
-                <td class="test-result"><span class="test-failed">0/1 passed</span></td>
-                <td>0/0</td>
-            </tr>
-            <tr>
-                <td class="subject" title="[PATCH V2 6.1] HID: mcp2221: Set driver data before I2C adapter add"><a href="https://lore.kernel.org/stable/20250717000151.183803-1-sumanth.gavini@yahoo.com" target="_blank">[PATCH V2 6.1] HID: mcp2221: Set driver data before I2C adapter add</a></td>
-                <td class="author" title="Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;">Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;</td>
-                <td class="sha1">f2d4a583</td>
+                <td class="subject" title="[PATCH] ipv6: make addrconf_wq single threaded"><a href="https://lore.kernel.org/stable/20250718102231.5561-2-bacs@librecast.net" target="_blank">[PATCH] ipv6: make addrconf_wq single threaded</a></td>
+                <td class="author" title="Brett A C Sheffield &lt;bacs@librecast.net&gt;">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
+                <td class="sha1">dfd2ee08</td>
                 <td class="test-result"><span class="test-failed">0/1 passed</span></td>
                 <td>0/0</td>
             </tr></tbody></table>
@@ -414,148 +1510,352 @@
         </thead>
         <tbody>
             <tr>
-                <td class="timestamp">9 min ago</td>
-                <td class="subject" title="[PATCH 6.12.y] btrfs: fix block group refcount race in btrfs_create_pending_block_groups()"><a href="https://lore.kernel.org/stable/tencent_C3ACCD708660161A98683D6A583E30255109@qq.com" target="_blank">[PATCH 6.12.y] btrfs: fix block group refcount race in btrfs_create_pending_block_groups()</a></td>
-                <td class="author"> &lt;alvalan9@foxmail.com&gt;</td>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice"><a href="https://lore.kernel.org/stable/20250724181257.291722-8-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: comedi_test: Fix possible deletion of uninitialized timers"><a href="https://lore.kernel.org/stable/20250724182218.292203-9-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: comedi_test: Fix possible deletion of uninitialized timers</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers"><a href="https://lore.kernel.org/stable/20250724181646.291939-9-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-6-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-4-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.4.y 2/3] power: supply: bq24190_charger: using pm_runtime_resume_and_get instead of pm_runtime_get_sync"><a href="https://lore.kernel.org/stable/20250721114846.1360952-3-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 2/3] power: supply: bq24190_charger: using pm_runtime_resume_and_get instead of pm_runtime_get_sync</a></td>
+                <td class="author"> &lt;skulkarni@mvista.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.15.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718130949.610540-1-arun@arunraghavan.net" target="_blank">[PATCH 5.15.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.15</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.15.y 3/4] x86: Fix __get_wchan() for !STACKTRACE"><a href="https://lore.kernel.org/stable/20250722062642.309842-4-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 3/4] x86: Fix __get_wchan() for !STACKTRACE</a></td>
+                <td class="author">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.15</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 6.1.y] jfs: reject on-disk inodes of an unsupported type"><a href="https://lore.kernel.org/stable/20250727100255.532093-1-duttaditya18@gmail.com" target="_blank">[PATCH 6.1.y] jfs: reject on-disk inodes of an unsupported type</a></td>
+                <td class="author">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()"><a href="https://lore.kernel.org/stable/20250724182218.292203-7-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">just now</td>
+                <td class="subject" title="[PATCH 6.1.y 2/5] erofs: sunset erofs_dbg()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-3-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 2/5] erofs: sunset erofs_dbg()</a></td>
+                <td class="author">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.15.y 4/4] x86: Pin task-stack in __get_wchan()"><a href="https://lore.kernel.org/stable/20250722062642.309842-5-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 4/4] x86: Pin task-stack in __get_wchan()</a></td>
+                <td class="author">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.15</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250729090420.19726-1-acsjakub@amazon.de" target="_blank">[PATCH 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()"><a href="https://lore.kernel.org/stable/20250724181257.291722-7-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-3-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: Fix some signed shift left operations"><a href="https://lore.kernel.org/stable/20250724182218.292203-2-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: Fix some signed shift left operations</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 6.1.y 1/5] erofs: get rid of debug_one_dentry()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-2-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 1/5] erofs: get rid of debug_one_dentry()</a></td>
+                <td class="author">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: das6402: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-6-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: das6402: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-4-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: pcl812: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y 1/3] power: supply: bq24190_charger: Fix runtime PM imbalance on error"><a href="https://lore.kernel.org/stable/20250721114846.1360952-2-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 1/3] power: supply: bq24190_charger: Fix runtime PM imbalance on error</a></td>
+                <td class="author"> &lt;skulkarni@mvista.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718131759.641179-1-arun@arunraghavan.net" target="_blank">[PATCH 5.10.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181257.291722-5-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()"><a href="https://lore.kernel.org/stable/20250724181646.291939-7-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">1 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-5-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: aio_iiro_16: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 5.15.y] jfs: reject on-disk inodes of an unsupported type"><a href="https://lore.kernel.org/stable/20250727100531.533179-1-duttaditya18@gmail.com" target="_blank">[PATCH 5.15.y] jfs: reject on-disk inodes of an unsupported type</a></td>
+                <td class="author">Aditya Dutt &lt;duttaditya18@gmail.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.15</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode"><a href="https://lore.kernel.org/stable/20250718132625.670333-1-arun@arunraghavan.net" target="_blank">[PATCH 5.4.y] ASoC: fsl_sai: Force a software reset when starting in consumer mode</a></td>
+                <td class="author">Arun Raghavan &lt;arun@arunraghavan.net&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 6.1.y 5/5] erofs: address D-cache aliasing"><a href="https://lore.kernel.org/stable/20250722100029.3052177-6-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 5/5] erofs: address D-cache aliasing</a></td>
+                <td class="author">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix some signed shift left operations"><a href="https://lore.kernel.org/stable/20250724181646.291939-2-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix some signed shift left operations</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 5.15.y 2/4] sched: Add wrapper for get_wchan() to keep task blocked"><a href="https://lore.kernel.org/stable/20250722062642.309842-3-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 2/4] sched: Add wrapper for get_wchan() to keep task blocked</a></td>
+                <td class="author">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.15</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice"><a href="https://lore.kernel.org/stable/20250724181646.291939-8-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix initialization of data for instructions that write to subdevice</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 6.1.y 3/5] erofs: drop z_erofs_page_mark_eio()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-4-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 3/5] erofs: drop z_erofs_page_mark_eio()</a></td>
+                <td class="author">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-6-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das6402: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 min ago</td>
+                <td class="subject" title="[PATCH 5.15.y 1/4] x86: Fix get_wchan() to support the ORC unwinder"><a href="https://lore.kernel.org/stable/20250722062642.309842-2-siddhi.katage@oracle.com" target="_blank">[PATCH 5.15.y 1/4] x86: Fix get_wchan() to support the ORC unwinder</a></td>
+                <td class="author">Siddhi Katage &lt;siddhi.katage@oracle.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.15</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: Fix some signed shift left operations"><a href="https://lore.kernel.org/stable/20250724181257.291722-2-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: Fix some signed shift left operations</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 6.1.y 4/5] erofs: simplify z_erofs_transform_plain()"><a href="https://lore.kernel.org/stable/20250722100029.3052177-5-hsiangkao@linux.alibaba.com" target="_blank">[PATCH 6.1.y 4/5] erofs: simplify z_erofs_transform_plain()</a></td>
+                <td class="author">Gao Xiang &lt;hsiangkao@linux.alibaba.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH v2 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma"><a href="https://lore.kernel.org/stable/20250730073927.27312-1-acsjakub@amazon.de" target="_blank">[PATCH v2 6.1.y] mm: khugepaged: fix call hpage_collapse_scan_file() for anonymous vma</a></td>
+                <td class="author">Jakub Acs &lt;acsjakub@amazon.de&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 6.1</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: pcl812: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-4-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: pcl812: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: aio_iiro_16: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-5-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: aio_iiro_16: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y 3/3] power: supply: bq24190: Fix use after free bug in bq24190_remove due to race condition"><a href="https://lore.kernel.org/stable/20250721114846.1360952-4-skulkarni@mvista.com" target="_blank">[PATCH 5.4.y 3/3] power: supply: bq24190: Fix use after free bug in bq24190_remove due to race condition</a></td>
+                <td class="author"> &lt;skulkarni@mvista.com&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724181646.291939-3-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: das16m1: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 5.4.y] comedi: das16m1: Fix bit shift out of bounds"><a href="https://lore.kernel.org/stable/20250724182218.292203-3-abbotti@mev.co.uk" target="_blank">[PATCH 5.4.y] comedi: das16m1: Fix bit shift out of bounds</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.4</td>
+            </tr>
+            <tr>
+                <td class="timestamp">3 min ago</td>
+                <td class="subject" title="[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers"><a href="https://lore.kernel.org/stable/20250724181257.291722-9-abbotti@mev.co.uk" target="_blank">[PATCH 5.10.y] comedi: comedi_test: Fix possible deletion of uninitialized timers</a></td>
+                <td class="author">Ian Abbott &lt;abbotti@mev.co.uk&gt;</td>
+                <td><span class="state state-queued">Queued</span></td>
+                <td>Patch found in stable queue for: 5.10</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 days ago</td>
+                <td class="subject" title="[PATCH 6.12 6/6] drm/i915/ddi: only call shutdown hooks for valid encoders"><a href="https://lore.kernel.org/stable/ff10c20ae7a05ef436366e71b609374709f1c517.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 6/6] drm/i915/ddi: only call shutdown hooks for valid encoders</a></td>
+                <td class="author">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>Response generated for series patch</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 days ago</td>
+                <td class="subject" title="[PATCH 6.12 5/6] drm/i915/display: add intel_encoder_is_hdmi()"><a href="https://lore.kernel.org/stable/9da54648dbd77a7eee8a66a1e3a8255bb6cfad32.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 5/6] drm/i915/display: add intel_encoder_is_hdmi()</a></td>
+                <td class="author">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>Response generated for series patch</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 days ago</td>
+                <td class="subject" title="[PATCH 6.12 4/6] drm/i915/ddi: gracefully handle errors from intel_ddi_init_hdmi_connector()"><a href="https://lore.kernel.org/stable/d064859cde86c25f3be1b9b09d274b0082ca337a.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 4/6] drm/i915/ddi: gracefully handle errors from intel_ddi_init_hdmi_connector()</a></td>
+                <td class="author">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>Response generated for series patch</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 days ago</td>
+                <td class="subject" title="[PATCH 6.12 3/6] drm/i915/hdmi: add error handling in g4x_hdmi_init()"><a href="https://lore.kernel.org/stable/ebf6995a6202f266badbec356c6b87a55cf478dc.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 3/6] drm/i915/hdmi: add error handling in g4x_hdmi_init()</a></td>
+                <td class="author">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>Response generated for series patch</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 days ago</td>
+                <td class="subject" title="[PATCH 6.12 2/6] drm/i915/hdmi: propagate errors from intel_hdmi_init_connector()"><a href="https://lore.kernel.org/stable/938a984204146a4b6628030af87ff374cb41936c.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 2/6] drm/i915/hdmi: propagate errors from intel_hdmi_init_connector()</a></td>
+                <td class="author">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>Response generated for series patch</td>
+            </tr>
+            <tr>
+                <td class="timestamp">2 days ago</td>
+                <td class="subject" title="[PATCH 6.12 1/6] drm/i915/ddi: change intel_ddi_init_{dp, hdmi}_connector() return type"><a href="https://lore.kernel.org/stable/e53d47b06b3ba07b4add2c6930ddafba91a49b41.1754302552.git.senozhatsky@chromium.org" target="_blank">[PATCH 6.12 1/6] drm/i915/ddi: change intel_ddi_init_{dp, hdmi}_connector() return type</a></td>
+                <td class="author">Sergey Senozhatsky &lt;senozhatsky@chromium.org&gt;</td>
+                <td><span class="state state-tests-passed">Tests Passed</span></td>
+                <td>Response generated for series patch</td>
+            </tr>
+            <tr>
+                <td class="timestamp">6 days ago</td>
+                <td class="subject" title="[PATCH 6.12.y] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;"><a href="https://lore.kernel.org/stable/20250731123819.31647-1-visitorckw@gmail.com" target="_blank">[PATCH 6.12.y] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;</a></td>
+                <td class="author">Kuan-Wei Chiu &lt;visitorckw@gmail.com&gt;</td>
                 <td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td>All tests passed successfully</td>
             </tr>
             <tr>
-                <td class="timestamp">22 min ago</td>
-                <td class="subject" title="[PATCH] ipv6: make addrconf_wq single threaded"><a href="https://lore.kernel.org/stable/20250718102231.5561-2-bacs@librecast.net" target="_blank">[PATCH] ipv6: make addrconf_wq single threaded</a></td>
-                <td class="author">Brett A C Sheffield &lt;bacs@librecast.net&gt;</td>
-                <td><span class="state state-failed">Issues Found</span></td>
-                <td>Issues found: origin/linux-6.15.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: net/ipv6/addrconf.c:7388
-error: net/ipv6/addrconf.c: patch does not apply
-hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
-
-Rejects: ; origin/linux-6.12.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: net/ipv6/addrconf.c:7388
-error: net/ipv6/addrconf.c: patch does not apply
-hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
-
-Rejects: </td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH v3 6.1] HID: mcp2221: Set driver data before I2C adapter add"><a href="https://lore.kernel.org/stable/20250718023634.267341-1-sumanth.gavini@yahoo.com" target="_blank">[PATCH v3 6.1] HID: mcp2221: Set driver data before I2C adapter add</a></td>
-                <td class="author">Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;</td>
-                <td><span class="state state-failed">Issues Found</span></td>
-                <td>Issues found: origin/linux-6.1.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: drivers/hid/hid-mcp2221.c:873
-error: drivers/hid/hid-mcp2221.c: patch does not apply
-hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
-
-Rejects: </td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH stable 6.12] selftests/bpf: Set test path for token/obj_priv_implicit_token_envvar"><a href="https://lore.kernel.org/stable/20250716074526.139758-1-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.12] selftests/bpf: Set test path for token/obj_priv_implicit_token_envvar</a></td>
-                <td class="author">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>All tests passed successfully</td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH 6.12 2/2] arm64: defconfig: enable Maxim TCPCI driver"><a href="https://lore.kernel.org/stable/20250716102854.4012956-2-macpaul.lin@mediatek.com" target="_blank">[PATCH 6.12 2/2] arm64: defconfig: enable Maxim TCPCI driver</a></td>
-                <td class="author">Macpaul Lin &lt;macpaul.lin@mediatek.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH 6.12 1/2] arm64: defconfig: enable DRM_DISPLAY_CONNECTOR as a module"><a href="https://lore.kernel.org/stable/20250716102854.4012956-1-macpaul.lin@mediatek.com" target="_blank">[PATCH 6.12 1/2] arm64: defconfig: enable DRM_DISPLAY_CONNECTOR as a module</a></td>
-                <td class="author">Macpaul Lin &lt;macpaul.lin@mediatek.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH 6.6.y] arm64: Filter out SME hwcaps when FEAT_SME isn&#39;t implemented"><a href="https://lore.kernel.org/stable/20250716-stable-6-6-sme-feat-filt-v1-1-151d319dc41e@kernel.org" target="_blank">[PATCH 6.6.y] arm64: Filter out SME hwcaps when FEAT_SME isn&#39;t implemented</a></td>
-                <td class="author">Mark Brown &lt;broonie@kernel.org&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>All tests passed successfully</td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH 6.1] HID: mcp2221: Set driver data before I2C adapter add"><a href="https://lore.kernel.org/stable/20250716195316.176786-1-sumanth.gavini@yahoo.com" target="_blank">[PATCH 6.1] HID: mcp2221: Set driver data before I2C adapter add</a></td>
-                <td class="author">Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;</td>
-                <td><span class="state state-failed">Issues Found</span></td>
-                <td>Issues found: origin/linux-6.1.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: drivers/hid/hid-mcp2221.c:873
-error: drivers/hid/hid-mcp2221.c: patch does not apply
-hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
-
-Rejects: </td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH V2 6.1] HID: mcp2221: Set driver data before I2C adapter add"><a href="https://lore.kernel.org/stable/20250717000151.183803-1-sumanth.gavini@yahoo.com" target="_blank">[PATCH V2 6.1] HID: mcp2221: Set driver data before I2C adapter add</a></td>
-                <td class="author">Sumanth Gavini &lt;sumanth.gavini@yahoo.com&gt;</td>
-                <td><span class="state state-failed">Issues Found</span></td>
-                <td>Issues found: origin/linux-6.1.y: Patch failed to apply: Patch validation error: Failed to apply patch: error: patch failed: drivers/hid/hid-mcp2221.c:873
-error: drivers/hid/hid-mcp2221.c: patch does not apply
-hint: Use &#39;git am --show-current-patch=diff&#39; to see the failed patch
-
-Rejects: </td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH stable 6.6 2/2] Revert &quot;selftests/bpf: dummy_st_ops should reject 0 for non-nullable params&quot;"><a href="https://lore.kernel.org/stable/20250717080928.221475-3-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.6 2/2] Revert &quot;selftests/bpf: dummy_st_ops should reject 0 for non-nullable params&quot;</a></td>
-                <td class="author">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">8 hours ago</td>
-                <td class="subject" title="[PATCH stable 6.6 1/2] Revert &quot;selftests/bpf: adjust dummy_st_ops_success to detect additional error&quot;"><a href="https://lore.kernel.org/stable/20250717080928.221475-2-shung-hsi.yu@suse.com" target="_blank">[PATCH stable 6.6 1/2] Revert &quot;selftests/bpf: adjust dummy_st_ops_success to detect additional error&quot;</a></td>
-                <td class="author">Shung-Hsi Yu &lt;shung-hsi.yu@suse.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">9 hours ago</td>
-                <td class="subject" title="[PATCH 5.4.y 6/6] net_sched: sch_sfq: reject invalid perturb period"><a href="https://lore.kernel.org/stable/20250717124556.589696-7-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 6/6] net_sched: sch_sfq: reject invalid perturb period</a></td>
-                <td class="author">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">9 hours ago</td>
-                <td class="subject" title="[PATCH 5.4.y 5/6] net_sched: sch_sfq: move the limit validation"><a href="https://lore.kernel.org/stable/20250717124556.589696-6-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 5/6] net_sched: sch_sfq: move the limit validation</a></td>
-                <td class="author">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">9 hours ago</td>
-                <td class="subject" title="[PATCH 5.4.y 4/6] net_sched: sch_sfq: use a temporary work area for validating configuration"><a href="https://lore.kernel.org/stable/20250717124556.589696-5-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 4/6] net_sched: sch_sfq: use a temporary work area for validating configuration</a></td>
-                <td class="author">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">9 hours ago</td>
-                <td class="subject" title="[PATCH 5.4.y 3/6] net_sched: sch_sfq: don&#39;t allow 1 packet limit"><a href="https://lore.kernel.org/stable/20250717124556.589696-4-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 3/6] net_sched: sch_sfq: don&#39;t allow 1 packet limit</a></td>
-                <td class="author">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">9 hours ago</td>
-                <td class="subject" title="[PATCH 5.4.y 2/6] net_sched: sch_sfq: handle bigger packets"><a href="https://lore.kernel.org/stable/20250717124556.589696-3-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 2/6] net_sched: sch_sfq: handle bigger packets</a></td>
-                <td class="author">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">9 hours ago</td>
-                <td class="subject" title="[PATCH 5.4.y 1/6] net_sched: sch_sfq: annotate data-races around q-&gt;perturb_period"><a href="https://lore.kernel.org/stable/20250717124556.589696-2-harshit.m.mogalapalli@oracle.com" target="_blank">[PATCH 5.4.y 1/6] net_sched: sch_sfq: annotate data-races around q-&gt;perturb_period</a></td>
-                <td class="author">Harshit Mogalapalli &lt;harshit.m.mogalapalli@oracle.com&gt;</td>
-                <td><span class="state state-tests-passed">Tests Passed</span></td>
-                <td>Response generated for series patch</td>
-            </tr>
-            <tr>
-                <td class="timestamp">10 hours ago</td>
-                <td class="subject" title="[PATCH 6.1] crypto: qat - fix ring to service map for QAT GEN4"><a href="https://lore.kernel.org/stable/20250717170835.25211-1-giovanni.cabiddu@intel.com" target="_blank">[PATCH 6.1] crypto: qat - fix ring to service map for QAT GEN4</a></td>
-                <td class="author">Giovanni Cabiddu &lt;giovanni.cabiddu@intel.com&gt;</td>
+                <td class="timestamp">6 days ago</td>
+                <td class="subject" title="[PATCH 6.12.y v2] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;"><a href="https://lore.kernel.org/stable/20250731130315.33984-1-visitorckw@gmail.com" target="_blank">[PATCH 6.12.y v2] Revert &quot;bcache: remove heap-related macros and switch to generic min_heap&quot;</a></td>
+                <td class="author">Kuan-Wei Chiu &lt;visitorckw@gmail.com&gt;</td>
                 <td><span class="state state-tests-passed">Tests Passed</span></td>
                 <td>All tests passed successfully</td>
             </tr></tbody></table>

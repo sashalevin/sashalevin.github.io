@@ -124,8 +124,9 @@ impl SeriesManager {
             // Use the first message's ID
             self.clean_message_id(reply_to)
         } else {
-            // This is the first message
-            self.clean_message_id(&email.message_id)
+            // Extract base series ID from message ID
+            // For series patches like <timestamp.id-N-domain>, extract <timestamp.id-domain>
+            self.extract_series_base_id(&email.message_id)
         };
         
         let series_dir = self.pending_dir.join(&series_id);
@@ -151,6 +152,37 @@ impl SeriesManager {
         message_id
             .trim_matches('<')
             .trim_matches('>')
+            .chars()
+            .map(|c| if c.is_alphanumeric() || c == '-' || c == '_' { c } else { '_' })
+            .collect()
+    }
+    
+    /// Extract base series ID from a message ID by removing patch number suffix
+    /// For example: <timestamp.id-2-domain> -> <timestamp.id-domain>
+    fn extract_series_base_id(&self, message_id: &str) -> String {
+        let trimmed = message_id.trim_matches('<').trim_matches('>');
+        
+        // For patch series, the typical pattern is: base-id-N-username@domain
+        // where N is the patch number. We want to remove -N- to get base-id-username@domain
+        // 
+        // Examples:
+        // 20250718141016.312952-2-amadeus@jmu.edu.cn -> 20250718141016.312952-amadeus@jmu.edu.cn
+        // 20250718141016.312952-3-amadeus@jmu.edu.cn -> 20250718141016.312952-amadeus@jmu.edu.cn
+        
+        // Look for pattern: -digits- followed by username starting with a letter
+        // This ensures we're matching the patch number pattern
+        let re = regex::Regex::new(r"-(\d+)-([a-zA-Z][^@]*@)").unwrap();
+        
+        let base_id = if let Some(_captures) = re.captures(trimmed) {
+            // Found a patch number pattern, remove it
+            re.replace(trimmed, "-$2").to_string()
+        } else {
+            // No patch number pattern found, use as-is
+            trimmed.to_string()
+        };
+        
+        // Clean for filesystem use
+        base_id
             .chars()
             .map(|c| if c.is_alphanumeric() || c == '-' || c == '_' { c } else { '_' })
             .collect()
@@ -193,6 +225,40 @@ mod tests {
         assert_eq!(
             manager.clean_message_id("<test-patch@kernel.org>"),
             "test-patch_kernel_org"
+        );
+    }
+    
+    #[test]
+    fn test_extract_series_base_id() {
+        let manager = SeriesManager::new(PathBuf::from("/tmp"));
+        
+        // Test series patch message IDs
+        assert_eq!(
+            manager.extract_series_base_id("<20250718141016.312952-2-amadeus@jmu.edu.cn>"),
+            "20250718141016_312952-amadeus_jmu_edu_cn"
+        );
+        
+        assert_eq!(
+            manager.extract_series_base_id("<20250718141016.312952-3-amadeus@jmu.edu.cn>"),
+            "20250718141016_312952-amadeus_jmu_edu_cn"
+        );
+        
+        // Test non-series message ID (no -N- pattern)
+        assert_eq!(
+            manager.extract_series_base_id("<regular-patch@example.com>"),
+            "regular-patch_example_com"
+        );
+        
+        // Test with complex ID that has patch number pattern
+        assert_eq!(
+            manager.extract_series_base_id("<id-123-10-user@domain.com>"),
+            "id-123-user_domain_com"
+        );
+        
+        // Test actual series pattern with patch number
+        assert_eq!(
+            manager.extract_series_base_id("<prefix-123-5-username@example.com>"),
+            "prefix-123-username_example_com"
         );
     }
     

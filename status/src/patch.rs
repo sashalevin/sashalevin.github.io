@@ -200,14 +200,18 @@ impl PatchProcessor {
         
         // Try to find the commit - this matches mailbot.sh logic (lines 1510-1518)
         let found_sha1 = if let Some(ref sha) = claimed_sha1 {
+            info!("Found claimed SHA1: {}", sha);
             // Validate the claimed SHA1
             if self.git_repo.is_ancestor(sha, "origin/master").unwrap_or(false) {
+                info!("SHA1 {} is valid ancestor of origin/master", sha);
                 Some(sha.clone())
             } else {
+                info!("SHA1 {} is not ancestor of origin/master, trying to find by subject", sha);
                 // Claimed SHA doesn't validate, try to find by subject
                 self.find_commit_by_subject(&email.clean_subject())?
             }
         } else {
+            info!("No claimed SHA1 found, trying to find by subject: {}", email.clean_subject());
             // No claimed SHA, try to find by subject
             self.find_commit_by_subject(&email.clean_subject())?
         };
@@ -522,6 +526,9 @@ impl PatchProcessor {
         // Clean up series directory
         self.series_manager.cleanup_series(first_email)?;
         
+        // Save tracking store after series processing
+        self.save_tracking_store();
+        
         Ok(())
     }
     
@@ -767,6 +774,29 @@ impl PatchProcessor {
         // Add test results to response
         for result in results {
             response_builder.add_test_result(result);
+        }
+        
+        // Check for newer kernel status if we have a valid SHA1
+        if let Some(ref sha) = patch.found_sha1 {
+            let newer_results = self.check_newer_kernels(sha, &patch.target_versions)?;
+            response_builder.set_newer_kernel_results(newer_results);
+            
+            // Check for fixes and reverts
+            let fixes = self.git_repo.find_fixes_for_commit(sha)?;
+            let reverts = self.git_repo.find_reverts_for_commit(sha)?;
+            
+            if !fixes.is_empty() {
+                response_builder.set_fixes(fixes);
+            }
+            
+            if !reverts.is_empty() {
+                response_builder.set_reverts(reverts);
+            }
+            
+            // Generate diff with upstream if possible
+            if let Some(diff) = self.generate_upstream_diff(patch, sha)? {
+                response_builder.set_diff_output(diff);
+            }
         }
         
         // Generate and save response
@@ -1042,9 +1072,12 @@ impl PatchProcessor {
         let patch_content = Self::format_patch_content(&patch_info.email);
         if worktree.apply_patch(&patch_content).is_ok() {
             let new_sha = worktree.get_head_sha()?;
-            match self.git_repo.range_diff(sha, &new_sha) {
+            match worktree.range_diff(sha, &new_sha) {
                 Ok(diff) => Ok(Some(diff)),
-                Err(_) => Ok(Some("Note: Could not generate diff with upstream commit".to_string())),
+                Err(e) => {
+                    warn!("git-range-diff failed for {} vs {}: {}", sha, new_sha, e);
+                    Ok(Some("Note: Could not generate diff with upstream commit".to_string()))
+                }
             }
         } else {
             Ok(Some("Note: Could not generate diff - patch failed to apply for comparison".to_string()))

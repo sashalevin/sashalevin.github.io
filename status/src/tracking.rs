@@ -4,6 +4,7 @@ use std::fs;
 use std::path::Path;
 use chrono::{DateTime, Utc};
 use crate::error::{MailbotError as Error, Result};
+use tracing::debug;
 
 /// Generate a lore.kernel.org URL from a message ID
 pub fn message_id_to_lore_url(message_id: &str) -> String {
@@ -361,12 +362,12 @@ pub fn update_tracking_status(store: &mut TrackingStore, stable_queue_dir: &Path
     for patch in active_patches {
         if let Some(sha1) = &patch.sha1 {
             // Check if patch is in stable queue
-            if is_patch_in_queue(sha1, &patch.subject, stable_queue_dir)? {
+            if let Some(queued_versions) = is_patch_in_queue(sha1, &patch.subject, &patch.target_versions, stable_queue_dir)? {
                 store.update_state(&patch.message_id, PatchState::Queued)?;
                 store.add_processing_event(&patch.message_id, ProcessingEvent {
                     timestamp: Utc::now(),
                     event_type: ProcessingEventType::StateChanged,
-                    details: "Patch found in stable queue".to_string(),
+                    details: format!("Patch found in stable queue for: {}", queued_versions.join(", ")),
                 })?;
             }
             // Check if patch has been released (with caching)
@@ -397,32 +398,42 @@ pub fn update_tracking_status(store: &mut TrackingStore, stable_queue_dir: &Path
     Ok(())
 }
 
-/// Check if a patch is in the stable queue
-fn is_patch_in_queue(sha1: &str, subject: &str, stable_queue_dir: &Path) -> Result<bool> {
+/// Check if a patch is in the stable queue for target versions
+fn is_patch_in_queue(sha1: &str, subject: &str, target_versions: &[String], stable_queue_dir: &Path) -> Result<Option<Vec<String>>> {
     use std::fs;
     
-    // Check queue directories for all versions
-    let queue_parent = stable_queue_dir.parent().unwrap_or(stable_queue_dir);
+    let mut queued_versions = Vec::new();
+    // stable_queue_dir already points to stable-queue directory
+    let queue_parent = stable_queue_dir;
     
-    if let Ok(entries) = fs::read_dir(queue_parent) {
-        for entry in entries.flatten() {
-            let path = entry.path();
-            if path.is_dir() && path.file_name().unwrap().to_str().unwrap().starts_with("queue-") {
-                // Search for the SHA1 or subject in patch files
-                if let Ok(patch_entries) = fs::read_dir(&path) {
-                    for patch_entry in patch_entries.flatten() {
-                        if let Ok(content) = fs::read_to_string(patch_entry.path()) {
-                            if content.contains(sha1) || content.contains(subject) {
-                                return Ok(true);
-                            }
+    // Only check queue directories that match target versions
+    for version in target_versions {
+        let queue_dir = queue_parent.join(format!("queue-{}", version));
+        debug!("Checking queue directory: {:?} for version {}", queue_dir, version);
+        
+        if queue_dir.exists() && queue_dir.is_dir() {
+            // Search for the SHA1 or subject in patch files
+            if let Ok(patch_entries) = fs::read_dir(&queue_dir) {
+                for patch_entry in patch_entries.flatten() {
+                    if let Ok(content) = fs::read_to_string(patch_entry.path()) {
+                        if content.contains(sha1) || content.contains(subject) {
+                            debug!("Found patch {} in queue for version {}", subject, version);
+                            queued_versions.push(version.clone());
+                            break; // Found in this version, move to next
                         }
                     }
                 }
             }
+        } else {
+            debug!("Queue directory does not exist: {:?}", queue_dir);
         }
     }
     
-    Ok(false)
+    if queued_versions.is_empty() {
+        Ok(None)
+    } else {
+        Ok(Some(queued_versions))
+    }
 }
 
 /// Check if a patch has been released in stable branches

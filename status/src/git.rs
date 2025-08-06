@@ -249,22 +249,6 @@ impl GitRepo {
         ))
     }
     
-    /// Run git range-diff
-    pub fn range_diff(&self, old_commit: &str, new_commit: &str) -> MailbotResult<String> {
-        let output = Command::new("git")
-            .arg("-C")
-            .arg(&self.path)
-            .arg("range-diff")
-            .arg(format!("{old_commit}^..{old_commit}"))
-            .arg(format!("{new_commit}^..{new_commit}"))
-            .output()?;
-        
-        if output.status.success() {
-            Ok(String::from_utf8_lossy(&output.stdout).to_string())
-        } else {
-            Err(MailbotError::Git(git2::Error::from_str(&String::from_utf8_lossy(&output.stderr))))
-        }
-    }
     
     /// Check for fixes referencing a commit
     pub fn find_fixes_for_commit(&self, sha1: &str) -> MailbotResult<Vec<(String, String)>> {
@@ -334,6 +318,23 @@ impl GitRepo {
 }
 
 impl Worktree {
+    /// Run git range-diff from within the worktree
+    pub fn range_diff(&self, old_commit: &str, new_commit: &str) -> MailbotResult<String> {
+        let output = Command::new("git")
+            .arg("-C")
+            .arg(&self.path)
+            .arg("range-diff")
+            .arg(format!("{old_commit}^..{old_commit}"))
+            .arg(format!("{new_commit}^..{new_commit}"))
+            .output()?;
+        
+        if output.status.success() {
+            Ok(String::from_utf8_lossy(&output.stdout).to_string())
+        } else {
+            Err(MailbotError::Git(git2::Error::from_str(&String::from_utf8_lossy(&output.stderr))))
+        }
+    }
+    
     /// Apply a patch file using git am
     pub fn apply_patch(&self, patch_content: &str) -> MailbotResult<()> {
         debug!("Applying patch to worktree at {:?}", self.path);
